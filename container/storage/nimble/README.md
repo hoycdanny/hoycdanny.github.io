@@ -50,6 +50,38 @@ nltadm --status
 docker volume create -d nimble mytestvol
 ```
 
+* check socket
+
+```
+curl -XPOST --unix-socket /run/docker/plugins/nimble/nimble.sock http:/Plugin.Activate
+```
+
+* 建置volume plugin 
+
+```
+mkdir -p /usr/libexec/kubernetes/kubelet-plugins/volume/exec/dev.hpe.com~nimble
+curl -sLo /usr/libexec/kubernetes/kubelet-plugins/volume/exec/dev.hpe.com~nimble/nimble https://dl.bintray.com/hpe-storage/dory/dory-master
+chmod 755 /usr/libexec/kubernetes/kubelet-plugins/volume/exec/dev.hpe.com~nimble/nimble
+```
+
+* 新增nimble.json
+
+```
+vim /usr/libexec/kubernetes/kubelet-plugins/volume/exec/dev.hpe.com~nimble/nimble.json
+
+{
+    "logFilePath": "/var/log/dory.log",
+    "logDebug": false,
+    "stripK8sFromOptions": true,
+    "dockerVolumePluginSocketPath": "/run/docker/plugins/nimble.sock",
+    "createVolumes": true,
+    "enable1.6": false,
+    "listOfStorageResourceOptions" :    ["size","sizeInGiB"],
+    "factorForConversion": 1073741824,
+    "defaultOptions": [{"mountConflictDelay": 30}, {"manager": "k8s"}]
+}
+```
+
 * 安裝Dory
 
 ```
