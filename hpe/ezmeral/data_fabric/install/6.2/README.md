@@ -5,7 +5,7 @@
 ```shell=
 vim /etc/sysctl.conf
 ```
-家入下面兩個選項
+在sysctl.conf中加入下面兩個選項
 ```shell=
 vm.swappiness=1
 ```
