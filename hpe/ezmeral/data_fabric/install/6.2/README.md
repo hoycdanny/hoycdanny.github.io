@@ -3,8 +3,13 @@
 ### Apollo 4530 (ProLiant XL450 Gen9 Server *3)
 
 * OS Red Hat Enterprise Linux release 8.2 (Ootpa)
-* 15 * MB6000JVYZD
-* 
+* 2 *	Intel(R) Xeon(R) CPU E5-2660 v4 @ 2.00GHz 14 core
+* 8 *  DDR4-2400 32GB 
+* 1 *	VK000480GWJPE RI 480G SSD
+* 15 * MB6000JVYZD 6TB 12G 7.2K 3.5 SAS
+* 1 *  X710 for 10GbE
+
+
 
 ## 環境配置
 ### 檢查CPU與作業系統
@@ -80,7 +85,7 @@ wget https://package.mapr.com/releases/installer/mapr-setup.sh -P /tmp
 ```shell=
 bash /tmp/mapr-setup.sh
 ```
-看到`Install required packages?`記得輸入`y`並按下`[Enter]`
+#### `Install required packages?`輸入`y`並按下`[Enter]`
 
 ```shell=
                         HPE Ezmeral Data Fabric Distribution Initialization and Update
@@ -127,7 +132,7 @@ Testing connection to http://package.mapr.com/releases/installer...
 ...Success
 ```
 
-這邊需要輸入相關訊息包含uid, gid, password
+#### 輸入相關訊息包含`uid, gid, password`
 
 ```shell=
 Enter [host:]port that cluster nodes connect to this host on [df-node1.hpe-taiwan-cic.net:9443]:
@@ -164,13 +169,13 @@ Failed to set locale, defaulting to C.UTF-8
 ```
 
 
-#### 輸入IP開始安裝https://IP-Address:9443
+#### 輸入`mapr`帳號密碼登入`https://IP-Address:9443`
 ![](https://i.imgur.com/SQBtQVN.png)
 ![](https://i.imgur.com/OqHAuFb.png)
 
 ---
 
-####註冊MapR User [連結](https://mapr.com/user/)
+#### 註冊MapR User [連結](https://mapr.com/user/)
 ![](https://i.imgur.com/oGTem4v.png)
 
 ---
@@ -195,8 +200,7 @@ Failed to set locale, defaulting to C.UTF-8
 
 ---
 
-*Note 記得選硬碟！*
-#### 如下圖
+#### 選擇硬碟
 ![](https://i.imgur.com/VcMVSJD.png)
 
 ---
@@ -209,16 +213,13 @@ Failed to set locale, defaulting to C.UTF-8
 
 ---
 
-#### 開始安裝
+#### 安裝完成
 ![](https://i.imgur.com/idiw3sI.png)
+![](https://i.imgur.com/Ye3ofZ0.png)
 
 ---
 
-#### 安裝完成
-![](https://i.imgur.com/s3aJksf.png)
-![](https://i.imgur.com/Ye3ofZ0.png)
-
-#### 輸入IP使用MapR https://<ip>:8443
+#### 輸入`mapr`帳號密碼 `https://<IP-Address>:8443`
 ![](https://i.imgur.com/4LUU0YH.png)
 
 ![](https://i.imgur.com/jsEzIa0.png)
