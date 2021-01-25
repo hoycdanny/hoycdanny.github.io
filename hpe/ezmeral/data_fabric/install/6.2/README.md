@@ -1,13 +1,25 @@
-```
+# HPE Data Fabric 6.2 基本安裝
+## 安裝Installer
+
+### 調整Syscrtl 配置
+```shell=
 vim /etc/sysctl.conf
-vm.swappiness=1 
+```
+```shell=
+vm.swappiness=1
+```
+> [參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-memory.html?hl=swappiness)
+```shell=
 net.ipv4.tcp_retries2=5
 ```
-```
+> [參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-infrastructure.html?hl=ipv4.tcp_retries2)
+### Start chronyd service
+```shell=
 sysctl -p
 systemctl start chronyd
 ```
-```
+### Disable & Stop SELINUX service
+```shell=
 setenforce 0
 sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 ```
