@@ -99,11 +99,11 @@ Enter MapR cluster admin name [mapr]: [MapR Admin 預設是mapr] 按[Enter] 下�
 
 User 'mapr' does not exist. Creating new cluster admin account...
 
-Enter 'mapr' uid [5000]: ·[預設uid是5000] 按[Enter] 下一步
-Enter 'mapr' group name ··[mapr]: [預設group name是mapr] 按[Enter] 下一步
-Enter 'mapr' gid [5000]: ·[預設gid是5000] 按[Enter] 下一步
-Enter 'mapr' password: ···[輸入mapr的密碼] 按[Enter] 下 一步
-Confirm 'mapr' password:··[輸入mapr的密碼] 按[Enter] 下一步
+Enter 'mapr' uid [5000]:          [預設uid是5000] 按[Enter] 下一步
+Enter 'mapr' group name [mapr]:   [預設group name是mapr] 按[Enter] 下一步
+Enter 'mapr' gid [5000]:          [預設gid是5000] 按[Enter] 下一步
+Enter 'mapr' password:            [輸入mapr的密碼] 按[Enter] 下 一步
+Confirm 'mapr' password:          [再次輸入mapr的密碼] 按[Enter] 下一步
 ...Success
 
 
