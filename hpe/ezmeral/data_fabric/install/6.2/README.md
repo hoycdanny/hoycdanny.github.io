@@ -41,11 +41,11 @@ getent hosts 'df-node1.hpe-taiwan-cic.net'
 getent hosts 'df-node2.hpe-taiwan-cic.net'
 getent hosts 'df-node3.hpe-taiwan-cic.net'
 ```
-
-`20.6.0.121 df-node1.hpe-taiwan-cic.net`
-`20.6.0.122 df-node1.hpe-taiwan-cic.net`
-`20.6.0.123 df-node1.hpe-taiwan-cic.net`
-
+```
+20.6.0.121 df-node1.hpe-taiwan-cic.net
+20.6.0.122 df-node1.hpe-taiwan-cic.net
+20.6.0.123 df-node1.hpe-taiwan-cic.net
+```
 ## 安裝Installer
 
 ### 調整Syscrtl 配置
