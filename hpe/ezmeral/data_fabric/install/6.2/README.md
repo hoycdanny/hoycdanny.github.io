@@ -1,4 +1,16 @@
 # HPE Data Fabric 6.2 基本安裝
+## 環境描述
+### Apollo 4530
+
+## 環境配置
+
+### 網路配置檢查
+```shell=
+hostname -f
+> df-node1.hpe-taiwan-cic.net
+getent hosts 'df-node1.hpe-taiwan-cic.net'
+> 20.6.0.121 df-node1.hpe-taiwan-cic.net
+```
 ## 安裝Installer
 
 ### 調整Syscrtl 配置
