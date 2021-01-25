@@ -1,16 +1,46 @@
 # HPE Data Fabric 6.2 基本安裝
 ## 環境描述
-### Apollo 4530
+### Apollo 4530 (ProLiant XL450 Gen9 Server *3)
+
+* OS Red Hat Enterprise Linux release 8.2 (Ootpa)
+* 15 * MB6000JVYZD
+* 
 
 ## 環境配置
+### 檢查CPU與作業系統
+```shell=
+uname -m
+```
+`x86_64`
+
+ *i386, i486, i586, i686 這些都不支援MapR*
+ 
+### 檢查作業系統版本
+```shell=
+cat /etc/redhat-release
+```
+`Red Hat Enterprise Linux release 8.2 (Ootpa)`
+
+[作業系統支援列表](https://docs.datafabric.hpe.com/62/InteropMatrix/r_os_matrix_6.x.html)
 
 ### 網路配置檢查
 ```shell=
 hostname -f
-> df-node1.hpe-taiwan-cic.net
-getent hosts 'df-node1.hpe-taiwan-cic.net'
-> 20.6.0.121 df-node1.hpe-taiwan-cic.net
 ```
+`df-node1.hpe-taiwan-cic.net`
+
+檢查每個節點是否可透過FQDN溝通
+
+```shell=
+getent hosts 'df-node1.hpe-taiwan-cic.net'
+getent hosts 'df-node2.hpe-taiwan-cic.net'
+getent hosts 'df-node3.hpe-taiwan-cic.net'
+```
+
+`20.6.0.121 df-node1.hpe-taiwan-cic.net`
+`20.6.0.122 df-node1.hpe-taiwan-cic.net`
+`20.6.0.123 df-node1.hpe-taiwan-cic.net`
+
 ## 安裝Installer
 
 ### 調整Syscrtl 配置
@@ -18,16 +48,17 @@ getent hosts 'df-node1.hpe-taiwan-cic.net'
 vim /etc/sysctl.conf
 ```
 在sysctl.conf中加入下面兩個選項
-```shell=
-vm.swappiness=1
-```
-*[參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-memory.html?hl=swappiness)*
-```shell=
-net.ipv4.tcp_retries2=5
-```
-*[參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-infrastructure.html?hl=ipv4.tcp_retries2)*
-```shell=
+
+`vm.swappiness=1`
+
+`net.ipv4.tcp_retries2=5`
+
+*[swappiness, ](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-memory.html?hl=swappiness)*
+*[tcp_retries2](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-infrastructure.html?hl=ipv4.tcp_retries2)*
+
 重新啟動服務
+
+```shell=
 sysctl -p
 ```
 ### Start chronyd service
@@ -39,24 +70,18 @@ systemctl start chronyd
 setenforce 0
 sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 ```
+### 下載MapR Installer
 ```shell=
-[root@df-node1 ~]# wget https://package.mapr.com/releases/installer/mapr-setup.sh -P /tmp
---2021-01-25 13:50:04--  https://package.mapr.com/releases/installer/mapr-setup.sh
-Resolving package.mapr.com (package.mapr.com)... 13.35.34.92, 13.35.34.88, 13.35.34.67, ...
-Connecting to package.mapr.com (package.mapr.com)|13.35.34.92|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 138961 (136K) [text/x-sh]
-Saving to: '/tmp/mapr-setup.sh'
-
-mapr-setup.sh               100%[==========================================>] 135.70K  --.-KB/s    in 0.01s
-
-2021-01-25 13:50:04 (9.57 MB/s) - '/tmp/mapr-setup.sh' saved [138961/138961]
+wget https://package.mapr.com/releases/installer/mapr-setup.sh -P /tmp
 ```
-開始安裝MapR Installer
+
+### 開始安裝MapR Installer
+
 ```shell=
 bash /tmp/mapr-setup.sh
-看到`Install required packages?`記得輸入`y`並按下`[Enter]`
 ```
+看到`Install required packages?`記得輸入`y`並按下`[Enter]`
+
 ```shell=
                         HPE Ezmeral Data Fabric Distribution Initialization and Update
 
@@ -101,7 +126,9 @@ Testing connection to http://package.mapr.com/releases/installer...
 
 ...Success
 ```
+
 這邊需要輸入相關訊息包含uid, gid, password
+
 ```shell=
 Enter [host:]port that cluster nodes connect to this host on [df-node1.hpe-taiwan-cic.net:9443]:
 
@@ -135,3 +162,64 @@ Failed to set locale, defaulting to C.UTF-8
 
                                    https://df-node1.hpe-taiwan-cic.net:9443
 ```
+
+
+#### 輸入IP開始安裝https://IP-Address:9443
+![](https://i.imgur.com/SQBtQVN.png)
+![](https://i.imgur.com/OqHAuFb.png)
+
+---
+
+####註冊MapR User [連結](https://mapr.com/user/)
+![](https://i.imgur.com/oGTem4v.png)
+
+---
+
+![](https://i.imgur.com/MdmBdiV.png)
+![](https://i.imgur.com/x3NsMBn.png)
+![](https://i.imgur.com/38iCfKm.png)
+![](https://i.imgur.com/FaUB5GM.png)
+![](https://i.imgur.com/XI8kobJ.png)
+![](https://i.imgur.com/ae672bv.png)
+
+#### 輸入Node hostname
+![](https://i.imgur.com/4Viml90.png)
+
+#### 輸入帳號與密碼 這邊使用`root` 透過`ssh`
+![](https://i.imgur.com/Byisssi.png)
+
+---
+
+#### 驗證完畢
+![](https://i.imgur.com/8gGLOhr.png)
+
+---
+
+*Note 記得選硬碟！*
+#### 如下圖
+![](https://i.imgur.com/VcMVSJD.png)
+
+---
+
+#### 確認Layout
+#### 可參考[這邊](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PlanningtheCluster-examples.html)規劃
+
+![](https://i.imgur.com/ZxNYu3L.png)
+
+
+---
+
+#### 開始安裝
+![](https://i.imgur.com/idiw3sI.png)
+
+---
+
+#### 安裝完成
+![](https://i.imgur.com/s3aJksf.png)
+![](https://i.imgur.com/Ye3ofZ0.png)
+
+#### 輸入IP使用MapR https://<ip>:8443
+![](https://i.imgur.com/4LUU0YH.png)
+
+![](https://i.imgur.com/jsEzIa0.png)
+
