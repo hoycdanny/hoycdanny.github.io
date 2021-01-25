@@ -89,6 +89,8 @@ Testing connection to http://package.mapr.com/releases/installer...
 
 ...Success
 ```
+這邊需要輸入相關訊息包含uid, gid, password
+```shell=
 Enter [host:]port that cluster nodes connect to this host on [df-node1.hpe-taiwan-cic.net:9443]:
 
 Testing for cluster admin account...
