@@ -39,9 +39,13 @@ Saving to: '/tmp/mapr-setup.sh'
 mapr-setup.sh               100%[==========================================>] 135.70K  --.-KB/s    in 0.01s
 
 2021-01-25 13:50:04 (9.57 MB/s) - '/tmp/mapr-setup.sh' saved [138961/138961]
-
-[root@df-node1 ~]# bash /tmp/mapr-setup.sh
-
+```
+開始安裝MapR Installer
+```shell=
+bash /tmp/mapr-setup.sh
+看到`Install required packages?`記得輸入`y`並按下`[Enter]`
+```
+```shell=
                         HPE Ezmeral Data Fabric Distribution Initialization and Update
 
                 Copyright 2021 Hewlett Packard Enterprise Development LP., All Rights Reserved
@@ -84,20 +88,20 @@ Failed to set locale, defaulting to C.UTF-8
 Testing connection to http://package.mapr.com/releases/installer...
 
 ...Success
-
+```
 Enter [host:]port that cluster nodes connect to this host on [df-node1.hpe-taiwan-cic.net:9443]:
 
 Testing for cluster admin account...
 
-Enter MapR cluster admin name [mapr]:
+Enter MapR cluster admin name [mapr]: [MapR Admin 預設是mapr] 按[Enter] 下一步
 
 User 'mapr' does not exist. Creating new cluster admin account...
 
-Enter 'mapr' uid [5000]:
-Enter 'mapr' group name [mapr]:
-Enter 'mapr' gid [5000]:
-Enter 'mapr' password:
-Confirm 'mapr' password:
+Enter 'mapr' uid [5000]: ·[預設uid是5000] 按[Enter] 下一步
+Enter 'mapr' group name ··[mapr]: [預設group name是mapr] 按[Enter] 下一步
+Enter 'mapr' gid [5000]: ·[預設gid是5000] 按[Enter] 下一步
+Enter 'mapr' password: ···[輸入mapr的密碼] 按[Enter] 下 一步
+Confirm 'mapr' password:··[輸入mapr的密碼] 按[Enter] 下一步
 ...Success
 
 
