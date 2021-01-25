@@ -5,18 +5,21 @@
 ```shell=
 vim /etc/sysctl.conf
 ```
+家入下面兩個選項
 ```shell=
 vm.swappiness=1
 ```
-[參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-memory.html?hl=swappiness)
+*[參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-memory.html?hl=swappiness)*
 ```shell=
 net.ipv4.tcp_retries2=5
 ```
-[參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-infrastructure.html?hl=ipv4.tcp_retries2)
-
+*[參考連結](https://docs.datafabric.hpe.com/62/AdvancedInstallation/PreparingEachNode-infrastructure.html?hl=ipv4.tcp_retries2)*
+```shell=
+重新啟動服務
+sysctl -p
+```
 ### Start chronyd service
 ```shell=
-sysctl -p
 systemctl start chronyd
 ```
 ### Disable & Stop SELINUX service
