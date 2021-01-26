@@ -170,7 +170,7 @@ Failed to set locale, defaulting to C.UTF-8
 
 
 #### 輸入`mapr`帳號密碼登入`https://IP-Address:9443`
-![](https://github.com/hoycdanny/hoycdanny.github.io/blob/master/hpe/ezmeral/data_fabric/install/6.2/img/1.png)
+![](https://raw.githubusercontent.com/hoycdanny/hoycdanny.github.io/master/hpe/ezmeral/data_fabric/install/6.2/img/1.png)
 ![](https://i.imgur.com/OqHAuFb.png)
 
 ---
