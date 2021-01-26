@@ -12,6 +12,13 @@ Apollo 4200 Gen9 *4
 1* Mellanox Technologies MT27520 40G
 ```
 
+## 測試總結
+block           | 讀取  | iops | 寫入 | iops
+--------------|:-----:|-----:| ----:|------------------------
+8k    | 132MiB/s |  16.9k |    33.1MiB/s | 4234
+256k    | 1671MiB/s |  6683 |  485MiB/s | 1938
+
+
 ## 寫入測試
 
 ### 4node hdd write Block=>8k nfs-client=>1
@@ -73,6 +80,74 @@ mytest: (groupid=0, jobs=100): err= 0: pid=1482875: Tue Jan 26 21:24:06 2021
 Run status group 0 (all jobs):
   WRITE: bw=485MiB/s (508MB/s), 485MiB/s-485MiB/s (508MB/s-508MB/s), io=473GiB (508GB), run=1000098-1000098msec
 ```
+
+
+## 讀取測試
+
+### 4node hdd read Block=>8k nfs-client=>1
+
+> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 5 (file:filesetup.c:223, func=write, error=Input/output error): pid=0: Tue Jan 26 23:14:21 2021
+   read: IOPS=16.9k, BW=132MiB/s (139MB/s)(129GiB/1000023msec)
+    clat (usec): min=108, max=147073, avg=5571.40, stdev=3880.19
+     lat (usec): min=108, max=147073, avg=5571.69, stdev=3880.19
+    clat percentiles (usec):
+     |  1.00th=[  562],  5.00th=[ 1827], 10.00th=[ 3130], 20.00th=[ 3851],
+     | 30.00th=[ 4228], 40.00th=[ 4555], 50.00th=[ 4883], 60.00th=[ 5211],
+     | 70.00th=[ 5604], 80.00th=[ 6194], 90.00th=[ 7177], 95.00th=[13304],
+     | 99.00th=[22938], 99.50th=[26608], 99.90th=[37487], 99.95th=[42730],
+     | 99.99th=[55837]
+   bw (  KiB/s): min=   16, max= 3392, per=1.06%, avg=1434.36, stdev=144.67, samples=188585
+   iops        : min=    2, max=  424, avg=179.26, stdev=18.09, samples=188585
+  lat (usec)   : 250=0.08%, 500=0.72%, 750=0.84%, 1000=0.78%
+  lat (msec)   : 2=3.13%, 4=18.08%, 10=70.12%, 20=4.47%, 50=1.75%
+  lat (msec)   : 100=0.02%, 250=0.01%
+  cpu          : usr=0.11%, sys=1.02%, ctx=17129835, majf=0, minf=198
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=16917044,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=132MiB/s (139MB/s), 132MiB/s-132MiB/s (139MB/s-139MB/s), io=129GiB (139GB), run=1000023-1000023msec```
+```
+
+### 4node hdd read Block=>256k nfs-client=>1
+
+>fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=2548228: Wed Jan 27 01:23:57 2021
+   read: IOPS=6683, BW=1671MiB/s (1752MB/s)(1632GiB/1000017msec)
+    clat (usec): min=684, max=241536, avg=14957.49, stdev=5765.86
+     lat (usec): min=685, max=241536, avg=14957.85, stdev=5765.87
+    clat percentiles (msec):
+     |  1.00th=[   10],  5.00th=[   12], 10.00th=[   12], 20.00th=[   13],
+     | 30.00th=[   14], 40.00th=[   14], 50.00th=[   14], 60.00th=[   15],
+     | 70.00th=[   15], 80.00th=[   16], 90.00th=[   18], 95.00th=[   23],
+     | 99.00th=[   42], 99.50th=[   52], 99.90th=[   77], 99.95th=[   88],
+     | 99.99th=[  115]
+   bw (  KiB/s): min= 8704, max=21504, per=1.00%, avg=17107.72, stdev=1333.75, samples=199979
+   iops        : min=   34, max=   84, avg=66.78, stdev= 5.22, samples=199979
+  lat (usec)   : 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=1.44%, 20=92.63%, 50=5.38%
+  lat (msec)   : 100=0.52%, 250=0.02%
+  cpu          : usr=0.06%, sys=0.38%, ctx=6684750, majf=0, minf=6400
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=6683638,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=1671MiB/s (1752MB/s), 1671MiB/s-1671MiB/s (1752MB/s-1752MB/s), io=1632GiB (1752GB), run=1000017-1000017msec
+```
+---
+
+## 多NFS Client主機測試同時400人在線上
 
 ### 4node hdd write Block=>256k nfs-client=>4
 
@@ -196,65 +271,5 @@ Run status group 0 (all jobs):
   WRITE: bw=200MiB/s (209MB/s), 200MiB/s-200MiB/s (209MB/s-209MB/s), io=195GiB (209GB), run=1000485-1000485msec
 ```
 
-## 讀取測試
 
-### 4node hdd read Block=>8k nfs-client=>1
 
-> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
-
-```shell=
-mytest: (groupid=0, jobs=100): err= 5 (file:filesetup.c:223, func=write, error=Input/output error): pid=0: Tue Jan 26 23:14:21 2021
-   read: IOPS=16.9k, BW=132MiB/s (139MB/s)(129GiB/1000023msec)
-    clat (usec): min=108, max=147073, avg=5571.40, stdev=3880.19
-     lat (usec): min=108, max=147073, avg=5571.69, stdev=3880.19
-    clat percentiles (usec):
-     |  1.00th=[  562],  5.00th=[ 1827], 10.00th=[ 3130], 20.00th=[ 3851],
-     | 30.00th=[ 4228], 40.00th=[ 4555], 50.00th=[ 4883], 60.00th=[ 5211],
-     | 70.00th=[ 5604], 80.00th=[ 6194], 90.00th=[ 7177], 95.00th=[13304],
-     | 99.00th=[22938], 99.50th=[26608], 99.90th=[37487], 99.95th=[42730],
-     | 99.99th=[55837]
-   bw (  KiB/s): min=   16, max= 3392, per=1.06%, avg=1434.36, stdev=144.67, samples=188585
-   iops        : min=    2, max=  424, avg=179.26, stdev=18.09, samples=188585
-  lat (usec)   : 250=0.08%, 500=0.72%, 750=0.84%, 1000=0.78%
-  lat (msec)   : 2=3.13%, 4=18.08%, 10=70.12%, 20=4.47%, 50=1.75%
-  lat (msec)   : 100=0.02%, 250=0.01%
-  cpu          : usr=0.11%, sys=1.02%, ctx=17129835, majf=0, minf=198
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=16917044,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: bw=132MiB/s (139MB/s), 132MiB/s-132MiB/s (139MB/s-139MB/s), io=129GiB (139GB), run=1000023-1000023msec```
-
->fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
-
-### 4node hdd read Block=>256k nfs-client=>1
-
-```shell=
-mytest: (groupid=0, jobs=100): err= 0: pid=2548228: Wed Jan 27 01:23:57 2021
-   read: IOPS=6683, BW=1671MiB/s (1752MB/s)(1632GiB/1000017msec)
-    clat (usec): min=684, max=241536, avg=14957.49, stdev=5765.86
-     lat (usec): min=685, max=241536, avg=14957.85, stdev=5765.87
-    clat percentiles (msec):
-     |  1.00th=[   10],  5.00th=[   12], 10.00th=[   12], 20.00th=[   13],
-     | 30.00th=[   14], 40.00th=[   14], 50.00th=[   14], 60.00th=[   15],
-     | 70.00th=[   15], 80.00th=[   16], 90.00th=[   18], 95.00th=[   23],
-     | 99.00th=[   42], 99.50th=[   52], 99.90th=[   77], 99.95th=[   88],
-     | 99.99th=[  115]
-   bw (  KiB/s): min= 8704, max=21504, per=1.00%, avg=17107.72, stdev=1333.75, samples=199979
-   iops        : min=   34, max=   84, avg=66.78, stdev= 5.22, samples=199979
-  lat (usec)   : 750=0.01%, 1000=0.01%
-  lat (msec)   : 2=0.01%, 4=0.01%, 10=1.44%, 20=92.63%, 50=5.38%
-  lat (msec)   : 100=0.52%, 250=0.02%
-  cpu          : usr=0.06%, sys=0.38%, ctx=6684750, majf=0, minf=6400
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=6683638,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: bw=1671MiB/s (1752MB/s), 1671MiB/s-1671MiB/s (1752MB/s-1752MB/s), io=1632GiB (1752GB), run=1000017-1000017msec
-```
