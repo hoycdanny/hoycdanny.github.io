@@ -14,7 +14,7 @@ Apollo 4200 Gen9 *4
 
 ## 寫入測試
 
-### 4node hdd write Block=>8k
+### 4node hdd write Block=>8k nfs-client=>1
 
 > fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
 
@@ -44,7 +44,7 @@ Run status group 0 (all jobs):
   WRITE: bw=33.1MiB/s (34.7MB/s), 33.1MiB/s-33.1MiB/s (34.7MB/s-34.7MB/s), io=32.3GiB (34.7GB), run=1000707-1000707msec
 ```
 
-### 4node hdd write Block=>256k 
+### 4node hdd write Block=>256k nfs-client=>1
 
 > fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
 
@@ -72,4 +72,123 @@ mytest: (groupid=0, jobs=100): err= 0: pid=1482875: Tue Jan 26 21:24:06 2021
 
 Run status group 0 (all jobs):
   WRITE: bw=485MiB/s (508MB/s), 485MiB/s-485MiB/s (508MB/s-508MB/s), io=473GiB (508GB), run=1000098-1000098msec
+```
+
+### 4node hdd write Block=>256k nfs-client=>4
+
+> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+> fio -filename=/mapr/my.cluster.com/hdd/h2 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+> fio -filename=/mapr/my.cluster.com/hdd/h3 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+> fio -filename=/mapr/my.cluster.com/hdd/h4 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+#### nfs-client-1
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=1789467: Tue Jan 26 22:34:05 2021
+  write: IOPS=656, BW=164MiB/s (172MB/s)(160GiB/1000627msec)
+    clat (msec): min=2, max=9489, avg=152.17, stdev=399.22
+     lat (msec): min=2, max=9489, avg=152.19, stdev=399.22
+    clat percentiles (msec):
+     |  1.00th=[    4],  5.00th=[    5], 10.00th=[    6], 20.00th=[    8],
+     | 30.00th=[   13], 40.00th=[   21], 50.00th=[   32], 60.00th=[   47],
+     | 70.00th=[   74], 80.00th=[  144], 90.00th=[  443], 95.00th=[  651],
+     | 99.00th=[ 2123], 99.50th=[ 3104], 99.90th=[ 4597], 99.95th=[ 4933],
+     | 99.99th=[ 5604]
+   bw (  KiB/s): min=  503, max=22528, per=1.48%, avg=2492.66, stdev=1985.71, samples=134913
+   iops        : min=    1, max=   88, avg= 9.66, stdev= 7.76, samples=134913
+  lat (msec)   : 4=2.26%, 10=23.09%, 20=14.23%, 50=21.92%, 100=13.78%
+  lat (msec)   : 250=9.62%, 500=6.83%, 750=4.39%, 1000=1.45%
+  cpu          : usr=0.02%, sys=0.04%, ctx=657770, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,657089,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=164MiB/s (172MB/s), 164MiB/s-164MiB/s (172MB/s-172MB/s), io=160GiB (172GB), run=1000627-1000627msec
+```
+
+#### nfs-client-2
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=3765554: Tue Jan 26 22:33:56 2021
+  write: IOPS=331, BW=82.8MiB/s (86.8MB/s)(80.9GiB/1000612msec)
+    clat (msec): min=2, max=9765, avg=287.27, stdev=495.74
+     lat (msec): min=2, max=9765, avg=287.29, stdev=495.74
+    clat percentiles (msec):
+     |  1.00th=[    5],  5.00th=[    6], 10.00th=[    9], 20.00th=[   17],
+     | 30.00th=[   30], 40.00th=[   51], 50.00th=[   90], 60.00th=[  182],
+     | 70.00th=[  342], 80.00th=[  485], 90.00th=[  667], 95.00th=[  986],
+     | 99.00th=[ 2735], 99.50th=[ 3540], 99.90th=[ 4665], 99.95th=[ 4933],
+     | 99.99th=[ 6074]
+   bw (  KiB/s): min=  499, max=10752, per=1.55%, avg=1310.85, stdev=968.57, samples=129366
+   iops        : min=    1, max=   42, avg= 5.06, stdev= 3.79, samples=129366
+  lat (msec)   : 4=0.60%, 10=12.14%, 20=10.48%, 50=16.57%, 100=11.99%
+  lat (msec)   : 250=12.73%, 500=16.53%, 750=11.05%, 1000=3.05%
+  cpu          : usr=0.01%, sys=0.02%, ctx=332019, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,331371,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=82.8MiB/s (86.8MB/s), 82.8MiB/s-82.8MiB/s (86.8MB/s-86.8MB/s), io=80.9GiB (86.9GB), run=1000612-1000612msec
+```
+
+#### nfs-client-3
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=1843726: Tue Jan 26 22:34:08 2021
+  write: IOPS=414, BW=104MiB/s (109MB/s)(101GiB/1000418msec)
+    clat (msec): min=2, max=17354, avg=241.23, stdev=712.21
+     lat (msec): min=2, max=17354, avg=241.25, stdev=712.21
+    clat percentiles (msec):
+     |  1.00th=[    4],  5.00th=[    6], 10.00th=[    7], 20.00th=[   11],
+     | 30.00th=[   18], 40.00th=[   27], 50.00th=[   41], 60.00th=[   64],
+     | 70.00th=[  111], 80.00th=[  296], 90.00th=[  558], 95.00th=[  827],
+     | 99.00th=[ 3775], 99.50th=[ 5604], 99.90th=[ 8356], 99.95th=[ 9060],
+     | 99.99th=[10671]
+   bw (  KiB/s): min=  504, max=17920, per=1.82%, avg=1934.96, stdev=1548.13, samples=109632
+   iops        : min=    1, max=   70, avg= 7.49, stdev= 6.05, samples=109632
+  lat (msec)   : 4=1.04%, 10=17.96%, 20=14.18%, 50=21.78%, 100=13.44%
+  lat (msec)   : 250=10.10%, 500=9.31%, 750=6.35%, 1000=1.96%
+  cpu          : usr=0.01%, sys=0.03%, ctx=414856, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,414517,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=104MiB/s (109MB/s), 104MiB/s-104MiB/s (109MB/s-109MB/s), io=101GiB (109GB), run=1000418-1000418msec
+```
+
+#### nfs-client-4
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=3825371: Tue Jan 26 22:33:08 2021
+  write: IOPS=798, BW=200MiB/s (209MB/s)(195GiB/1000485msec)
+    clat (msec): min=3, max=16992, avg=125.22, stdev=315.66
+     lat (msec): min=3, max=16992, avg=125.24, stdev=315.66
+    clat percentiles (msec):
+     |  1.00th=[    5],  5.00th=[    6], 10.00th=[    7], 20.00th=[   13],
+     | 30.00th=[   23], 40.00th=[   35], 50.00th=[   50], 60.00th=[   71],
+     | 70.00th=[   86], 80.00th=[  142], 90.00th=[  380], 95.00th=[  550],
+     | 99.00th=[  885], 99.50th=[ 1070], 99.90th=[ 2265], 99.95th=[ 6812],
+     | 99.99th=[13087]
+   bw (  KiB/s): min=  506, max=18944, per=1.19%, avg=2427.65, stdev=2088.35, samples=168365
+   iops        : min=    1, max=   74, avg= 9.42, stdev= 8.16, samples=168365
+  lat (msec)   : 4=0.61%, 10=16.27%, 20=10.34%, 50=23.18%, 100=23.95%
+  lat (msec)   : 250=12.01%, 500=7.20%, 750=4.56%, 1000=1.25%
+  cpu          : usr=0.02%, sys=0.05%, ctx=799086, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,798523,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=200MiB/s (209MB/s), 200MiB/s-200MiB/s (209MB/s-209MB/s), io=195GiB (209GB), run=1000485-1000485msec
 ```
