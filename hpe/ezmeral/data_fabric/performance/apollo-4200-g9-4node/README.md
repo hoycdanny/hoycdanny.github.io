@@ -14,12 +14,12 @@ Apollo 4200 Gen9 *4
 
 ## 測試總結
 
-|   Block|       讀取|   IOPS|       寫入 |    IOPS|
-| -------|----------|--------| ----------|--------|
-|  hdd-8k| 132MiB/s |  16.9k | 33.1MiB/s | 4234   |
-|hdd-256k| 1671MiB/s|  6683  |  485MiB/s | 1938   |
-|  ssd-8k| |    |  60.4MiB/s| 7725   |
-|ssd-256k| |    |   733MiB/s| 2930   |
+|   Block|       讀取|    IOPS|       寫入 |    IOPS|
+|--------|----------|--------|-----------|--------|
+|  hdd-8k|  132MiB/s|   16.9k|  33.1MiB/s|    4234|
+|hdd-256k| 1671MiB/s|    6683|   485MiB/s|    1938|
+|  ssd-8k|  126MiB/s|   16.1k|  60.4MiB/s|    7725|
+|ssd-256k| |    |   733MiB/s| 2930|
 ## 寫入測試
 
 ### 4node hdd write Block=>8k nfs-client=>1
@@ -182,6 +182,32 @@ Run status group 0 (all jobs):
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
 
 ```shell=
+mytest: Laying out IO file (1 file / 1048576MiB)
+fio: pid=0, err=5/file:filesetup.c:223, func=write, error=Input/output error
+Jobs: 99 (f=99): [X(1),r(99)][100.0%][r=127MiB/s,w=0KiB/s][r=16.2k,w=0 IOPS][eta 00m:00s]
+mytest: (groupid=0, jobs=100): err= 5 (file:filesetup.c:223, func=write, error=Input/output error): pid=0: Wed Jan 27 12:45:42 2021
+   read: IOPS=16.1k, BW=126MiB/s (132MB/s)(123GiB/1000015msec)
+    clat (usec): min=96, max=42508, avg=5730.94, stdev=2231.22
+     lat (usec): min=96, max=42509, avg=5731.22, stdev=2231.22
+    clat percentiles (usec):
+     |  1.00th=[  578],  5.00th=[ 1893], 10.00th=[ 3425], 20.00th=[ 4359],
+     | 30.00th=[ 4883], 40.00th=[ 5211], 50.00th=[ 5604], 60.00th=[ 5997],
+     | 70.00th=[ 6390], 80.00th=[ 6915], 90.00th=[ 8029], 95.00th=[ 9896],
+     | 99.00th=[13173], 99.50th=[14091], 99.90th=[16319], 99.95th=[17171],
+     | 99.99th=[19792]
+   bw (  KiB/s): min=  368, max= 4176, per=1.08%, avg=1394.36, stdev=121.70, samples=184651
+   iops        : min=   46, max=  522, avg=174.26, stdev=15.22, samples=184651
+  lat (usec)   : 100=0.01%, 250=0.07%, 500=0.68%, 750=0.80%, 1000=0.75%
+  lat (msec)   : 2=3.03%, 4=9.35%, 10=80.50%, 20=4.80%, 50=0.01%
+  cpu          : usr=0.10%, sys=1.32%, ctx=16442590, majf=0, minf=198
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=16103287,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=126MiB/s (132MB/s), 126MiB/s-126MiB/s (132MB/s-132MB/s), io=123GiB (132GB), run=1000015-1000015msec
 ```
 
 
