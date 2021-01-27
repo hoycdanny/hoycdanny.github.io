@@ -16,9 +16,10 @@ Apollo 4200 Gen9 *4
 
 |   Block|       讀取|   IOPS|       寫入 |    IOPS|
 | -------|----------|--------| ----------|--------|
-|      8k| 132MiB/s |  16.9k | 33.1MiB/s | 4234   |
-|    256k| 1671MiB/s|  6683  |  485MiB/s | 1938   |
-
+|  hdd-8k| 132MiB/s |  16.9k | 33.1MiB/s | 4234   |
+|hdd-256k| 1671MiB/s|  6683  |  485MiB/s | 1938   |
+|  ssd-8k| |    |  60.4MiB/s| 7725   |
+|ssd-256k| |    |   733MiB/s| 2930   |
 ## 寫入測試
 
 ### 4node hdd write Block=>8k nfs-client=>1
@@ -50,6 +51,38 @@ mytest: (groupid=0, jobs=100): err= 0: pid=1560194: Tue Jan 26 21:41:54 2021
 Run status group 0 (all jobs):
   WRITE: bw=33.1MiB/s (34.7MB/s), 33.1MiB/s-33.1MiB/s (34.7MB/s-34.7MB/s), io=32.3GiB (34.7GB), run=1000707-1000707msec
 ```
+### 4node ssd write Block=>8k nfs-client=>1
+
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=1247834: Wed Jan 27 12:15:40 2021
+  write: IOPS=7725, BW=60.4MiB/s (63.3MB/s)(58.9GiB/1000011msec)
+    clat (usec): min=1888, max=274110, avg=12903.83, stdev=4668.98
+     lat (usec): min=1889, max=274111, avg=12904.49, stdev=4668.98
+    clat percentiles (msec):
+     |  1.00th=[    8],  5.00th=[    9], 10.00th=[   10], 20.00th=[   11],
+     | 30.00th=[   11], 40.00th=[   12], 50.00th=[   13], 60.00th=[   14],
+     | 70.00th=[   15], 80.00th=[   16], 90.00th=[   17], 95.00th=[   18],
+     | 99.00th=[   22], 99.50th=[   26], 99.90th=[   74], 99.95th=[   94],
+     | 99.99th=[  155]
+   bw (  KiB/s): min=   15, max=  816, per=1.00%, avg=619.49, stdev=66.40, samples=199437
+   iops        : min=    1, max=  102, avg=77.39, stdev= 8.30, samples=199437
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=17.59%, 20=80.43%, 50=1.78%
+  lat (msec)   : 100=0.15%, 250=0.04%, 500=0.01%
+  cpu          : usr=0.07%, sys=0.15%, ctx=7726097, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,7725459,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=60.4MiB/s (63.3MB/s), 60.4MiB/s-60.4MiB/s (63.3MB/s-63.3MB/s), io=58.9GiB (63.3GB), run=1000011-1000011msec
+```
+
+
+
 
 ### 4node hdd write Block=>256k nfs-client=>1
 
@@ -79,6 +112,36 @@ mytest: (groupid=0, jobs=100): err= 0: pid=1482875: Tue Jan 26 21:24:06 2021
 
 Run status group 0 (all jobs):
   WRITE: bw=485MiB/s (508MB/s), 485MiB/s-485MiB/s (508MB/s-508MB/s), io=473GiB (508GB), run=1000098-1000098msec
+```
+
+### 4node ssd write Block=>256k nfs-client=>1
+
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=933020: Wed Jan 27 11:04:25 2021
+  write: IOPS=2930, BW=733MiB/s (768MB/s)(715GiB/1000030msec)
+    clat (msec): min=3, max=383, avg=33.99, stdev=11.29
+     lat (msec): min=3, max=383, avg=34.00, stdev=11.29
+    clat percentiles (msec):
+     |  1.00th=[   17],  5.00th=[   23], 10.00th=[   25], 20.00th=[   28],
+     | 30.00th=[   29], 40.00th=[   31], 50.00th=[   33], 60.00th=[   35],
+     | 70.00th=[   38], 80.00th=[   41], 90.00th=[   44], 95.00th=[   47],
+     | 99.00th=[   71], 99.50th=[  101], 99.90th=[  150], 99.95th=[  171],
+     | 99.99th=[  220]
+   bw (  KiB/s): min=  512, max=14336, per=1.00%, avg=7523.77, stdev=913.06, samples=199355
+   iops        : min=    2, max=   56, avg=29.30, stdev= 3.58, samples=199355
+  lat (msec)   : 4=0.01%, 10=0.13%, 20=2.56%, 50=93.97%, 100=2.83%
+  lat (msec)   : 250=0.50%, 500=0.01%
+  cpu          : usr=0.07%, sys=0.18%, ctx=2931467, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,2930610,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=733MiB/s (768MB/s), 733MiB/s-733MiB/s (768MB/s-768MB/s), io=715GiB (768GB), run=1000030-1000030msec
 ```
 
 
@@ -114,6 +177,13 @@ mytest: (groupid=0, jobs=100): err= 5 (file:filesetup.c:223, func=write, error=I
 Run status group 0 (all jobs):
    READ: bw=132MiB/s (139MB/s), 132MiB/s-132MiB/s (139MB/s-139MB/s), io=129GiB (139GB), run=1000023-1000023msec```
 ```
+### 4node ssd read Block=>8k nfs-client=>1
+
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+```shell=
+```
+
 
 ### 4node hdd read Block=>256k nfs-client=>1
 
@@ -145,6 +215,15 @@ mytest: (groupid=0, jobs=100): err= 0: pid=2548228: Wed Jan 27 01:23:57 2021
 Run status group 0 (all jobs):
    READ: bw=1671MiB/s (1752MB/s), 1671MiB/s-1671MiB/s (1752MB/s-1752MB/s), io=1632GiB (1752GB), run=1000017-1000017msec
 ```
+
+### 4node ssd read Block=>256k nfs-client=>1
+
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
+
+```shell=
+```
+
+
 ---
 
 ## 多NFS Client主機測試同時400人在線上
