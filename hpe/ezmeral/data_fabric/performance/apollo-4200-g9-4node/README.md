@@ -19,7 +19,7 @@ Apollo 4200 Gen9 *4
 |  hdd-8k|  132MiB/s|   16.9k|  33.1MiB/s|    4234|
 |hdd-256k| 1671MiB/s|    6683|   485MiB/s|    1938|
 |  ssd-8k|  126MiB/s|   16.1k|  60.4MiB/s|    7725|
-|ssd-256k| |    |   733MiB/s| 2930|
+|ssd-256k| 1681MiB/s|    6724|   733MiB/s|    2930|
 ## 寫入測試
 
 ### 4node hdd write Block=>8k nfs-client=>1
@@ -247,6 +247,29 @@ Run status group 0 (all jobs):
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=256k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
 
 ```shell=
+mytest: (groupid=0, jobs=100): err= 0: pid=1461320: Wed Jan 27 13:02:53 2021
+   read: IOPS=6724, BW=1681MiB/s (1763MB/s)(1642GiB/1000015msec)
+    clat (usec): min=679, max=48419, avg=14867.21, stdev=2037.09
+     lat (usec): min=679, max=48419, avg=14867.57, stdev=2037.10
+    clat percentiles (usec):
+     |  1.00th=[10421],  5.00th=[11994], 10.00th=[12649], 20.00th=[13435],
+     | 30.00th=[13960], 40.00th=[14222], 50.00th=[14615], 60.00th=[14877],
+     | 70.00th=[15533], 80.00th=[16450], 90.00th=[17695], 95.00th=[18482],
+     | 99.00th=[20317], 99.50th=[21365], 99.90th=[24773], 99.95th=[26346],
+     | 99.99th=[29754]
+   bw (  KiB/s): min=14222, max=22016, per=1.00%, avg=17211.26, stdev=786.45, samples=199994
+   iops        : min=   55, max=   86, avg=67.18, stdev= 3.08, samples=199994
+  lat (usec)   : 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=0.64%, 20=97.96%, 50=1.40%
+  cpu          : usr=0.06%, sys=0.38%, ctx=6725389, majf=0, minf=6400
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=6724230,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=1681MiB/s (1763MB/s), 1681MiB/s-1681MiB/s (1763MB/s-1763MB/s), io=1642GiB (1763GB), run=1000015-1000015msec
 ```
 
 
