@@ -20,6 +20,8 @@ Apollo 4200 Gen9 *4
 |hdd-256k| 1671MiB/s|    6683|   485MiB/s|    1938|
 |  ssd-8k|  126MiB/s|   16.1k|  60.4MiB/s|    7725|
 |ssd-256k| 1681MiB/s|    6724|   733MiB/s|    2930|
+
+
 ## 寫入測試
 
 ### 4node hdd write Block=>8k nfs-client=>1
