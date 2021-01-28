@@ -46,15 +46,15 @@ Mellanox switches SN2010 *2
 
 ## 測試總結
 
-|   Block|       讀取|    IOPS|       寫入 |    IOPS|
-|--------|----------|--------|-----------|--------|
-|  hdd-8k|  132MiB/s|   16.9k|  33.1MiB/s|    4234|
-|hdd-256k| 1671MiB/s|    6683|   485MiB/s|    1938|
-|  ssd-8k|  126MiB/s|   16.1k|  60.4MiB/s|    7725|
-|ssd-256k| 1681MiB/s|    6724|   733MiB/s|    2930|
+|    Type|   Block|  Direct|   iodepth|  ioengine|      size|   numjobs|   runtime|      Read|Read/IOPS|      Write|Write/IOPS|
+|--------|--------|--------|----------|----------|----------|----------|----------|----------|---------|-----------|----------|
+|     hdd|      8k|       1|         1|     psync|       1TB|       100|      1000|  132MiB/s|    16.9k|  33.1MiB/s|      4234|
+|     hdd|    256k|       1|         1|     psync|       1TB|       100|      1000| 1671MiB/s|     6683|   485MiB/s|      1938|
+|     ssd|      8k|       1|         1|     psync|       1TB|       100|      1000|  126MiB/s|    16.1k|  60.4MiB/s|      7725|
+|     ssd|    256k|       1|         1|     psync|       1TB|       100|      1000| 1681MiB/s|     6724|   733MiB/s|      2930|
 
 
-## 寫入測試
+## Write
 
 ### 4node hdd write Block=>8k nfs-client=>1
 
