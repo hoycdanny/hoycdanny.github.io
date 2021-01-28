@@ -46,12 +46,266 @@ Mellanox switches SN2010 *2
 
 ## 測試總結
 
-|    Type|   Block|  Direct|   iodepth|  ioengine|      size|   numjobs|   runtime|      Read|Read/IOPS|      Write|Write/IOPS|
+|    Type|   Block|  Direct|   iodepth|  ioengine|      size|   numjobs|        rw|      Read|Read/IOPS|      Write|Write/IOPS|
 |--------|--------|--------|----------|----------|----------|----------|----------|----------|---------|-----------|----------|
-|     hdd|      8k|       1|         1|     psync|       1TB|       100|      1000|  132MiB/s|    16.9k|  33.1MiB/s|      4234|
-|     hdd|    256k|       1|         1|     psync|       1TB|       100|      1000| 1671MiB/s|     6683|   485MiB/s|      1938|
-|     ssd|      8k|       1|         1|     psync|       1TB|       100|      1000|  126MiB/s|    16.1k|  60.4MiB/s|      7725|
-|     ssd|    256k|       1|         1|     psync|       1TB|       100|      1000| 1681MiB/s|     6724|   733MiB/s|      2930|
+|     hdd|      1M|       1|        64|    libaio|       1TB|         8|       r/w|  812MiB/s|      805|   416MiB/s|       416|
+|     ssd|      1M|       1|        64|    libaio|       1TB|         8|       r/w|  811MiB/s|      811|   405MiB/s|       126|
+|     hdd|      4k|       1|        64|    libaio|       1TB|         8|  rand-r/w|   36.5MiB|     9334|    20MiB/s|      5132|
+|     ssd|      4k|       1|        64|    libaio|       1TB|         8|  rand-r/w|   44.1MiB|    11.3k|  21.2MiB/s|      5425|
+|     hdd|      8k|       1|         1|     psync|       1TB|       100|  rand-r/w|  132MiB/s|    16.9k|  33.1MiB/s|      4234|
+|     hdd|    256k|       1|         1|     psync|       1TB|       100|  rand-r/w| 1671MiB/s|     6683|   485MiB/s|      1938|
+|     ssd|      8k|       1|         1|     psync|       1TB|       100|  rand-r/w|  126MiB/s|    16.1k|  60.4MiB/s|      7725|
+|     ssd|    256k|       1|         1|     psync|       1TB|       100|  rand-r/w| 1681MiB/s|     6724|   733MiB/s|      2930|
+
+## Test IOPS by performing random writes, using an I/O block size of 4 KB and an I/O depth of at least 64
+
+### hdd write IOPS
+> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=randwrite -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=8): err= 0: pid=3567633: Thu Jan 28 12:16:17 2021
+  write: IOPS=5132, BW=20.0MiB/s (21.0MB/s)(1208MiB/60264msec)
+    slat (usec): min=2, max=363, avg=15.51, stdev= 6.51
+    clat (usec): min=1728, max=3720.1k, avg=99686.62, stdev=183649.76
+     lat (usec): min=1746, max=3720.1k, avg=99702.58, stdev=183650.09
+    clat percentiles (msec):
+     |  1.00th=[    3],  5.00th=[    5], 10.00th=[    6], 20.00th=[    9],
+     | 30.00th=[   15], 40.00th=[   24], 50.00th=[   45], 60.00th=[   86],
+     | 70.00th=[  107], 80.00th=[  124], 90.00th=[  176], 95.00th=[  368],
+     | 99.00th=[ 1045], 99.50th=[ 1167], 99.90th=[ 1770], 99.95th=[ 2056],
+     | 99.99th=[ 2735]
+   bw (  KiB/s): min=  160, max= 4440, per=12.53%, avg=2572.76, stdev=1194.31, samples=960
+   iops        : min=   40, max= 1110, avg=643.17, stdev=298.59, samples=960
+  lat (msec)   : 2=0.03%, 4=3.11%, 10=19.66%, 20=14.06%, 50=14.55%
+  lat (msec)   : 100=14.41%, 250=26.89%, 500=3.58%, 750=1.67%, 1000=0.89%
+  cpu          : usr=0.68%, sys=1.21%, ctx=288233, majf=0, minf=8
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.8%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=0,309289,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+  WRITE: bw=20.0MiB/s (21.0MB/s), 20.0MiB/s-20.0MiB/s (21.0MB/s-21.0MB/s), io=1208MiB (1267MB), run=60264-60264msec
+```
+
+### ssd write IOPS
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=randwrite -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell
+mytest: (groupid=0, jobs=8): err= 0: pid=3586340: Thu Jan 28 12:20:16 2021
+  write: IOPS=5425, BW=21.2MiB/s (22.2MB/s)(1275MiB/60183msec)
+    slat (usec): min=2, max=385, avg=15.48, stdev= 6.29
+    clat (msec): min=2, max=1668, avg=93.74, stdev=71.16
+     lat (msec): min=2, max=1668, avg=93.75, stdev=71.16
+    clat percentiles (msec):
+     |  1.00th=[   23],  5.00th=[   50], 10.00th=[   53], 20.00th=[   56],
+     | 30.00th=[   62], 40.00th=[   74], 50.00th=[   94], 60.00th=[  100],
+     | 70.00th=[  104], 80.00th=[  110], 90.00th=[  118], 95.00th=[  129],
+     | 99.00th=[  493], 99.50th=[  701], 99.90th=[  818], 99.95th=[  852],
+     | 99.99th=[  860]
+   bw (  KiB/s): min=   16, max= 3536, per=12.60%, avg=2733.24, stdev=846.83, samples=954
+   iops        : min=    4, max=  884, avg=683.28, stdev=211.71, samples=954
+  lat (msec)   : 4=0.01%, 10=0.23%, 20=0.59%, 50=5.21%, 100=56.37%
+  lat (msec)   : 250=35.60%, 500=1.00%, 750=0.66%, 1000=0.33%
+  cpu          : usr=0.70%, sys=1.31%, ctx=302484, majf=0, minf=8
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.8%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=0,326522,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+  WRITE: bw=21.2MiB/s (22.2MB/s), 21.2MiB/s-21.2MiB/s (22.2MB/s-22.2MB/s), io=1275MiB (1337MB), run=60183-60183msec
+```
+
+### hdd read IOPS
+> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=randread -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=8): err= 0: pid=3577362: Thu Jan 28 12:18:06 2021
+   read: IOPS=9334, BW=36.5MiB/s (38.2MB/s)(2189MiB/60030msec)
+    slat (usec): min=2, max=839, avg=12.99, stdev= 5.19
+    clat (usec): min=525, max=170195, avg=54817.14, stdev=42889.56
+     lat (usec): min=534, max=170205, avg=54830.55, stdev=42889.62
+    clat percentiles (usec):
+     |  1.00th=[  1631],  5.00th=[  2376], 10.00th=[  3195], 20.00th=[  5473],
+     | 30.00th=[ 10421], 40.00th=[ 23200], 50.00th=[ 65274], 60.00th=[ 83362],
+     | 70.00th=[ 91751], 80.00th=[ 95945], 90.00th=[105382], 95.00th=[115868],
+     | 99.00th=[129500], 99.50th=[135267], 99.90th=[143655], 99.95th=[145753],
+     | 99.99th=[147850]
+   bw (  KiB/s): min= 3240, max= 6360, per=12.49%, avg=4664.59, stdev=497.18, samples=960
+   iops        : min=  810, max= 1590, avg=1166.12, stdev=124.30, samples=960
+  lat (usec)   : 750=0.01%, 1000=0.03%
+  lat (msec)   : 2=2.66%, 4=11.50%, 10=15.18%, 20=9.23%, 50=7.15%
+  lat (msec)   : 100=40.26%, 250=13.98%
+  cpu          : usr=1.04%, sys=1.99%, ctx=535103, majf=0, minf=520
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.9%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=560346,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+   READ: bw=36.5MiB/s (38.2MB/s), 36.5MiB/s-36.5MiB/s (38.2MB/s-38.2MB/s), io=2189MiB (2295MB), run=60030-60030msec
+```
+
+### ssd read IOPS
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=randread -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=8): err= 0: pid=3607785: Thu Jan 28 12:24:59 2021
+   read: IOPS=11.3k, BW=44.1MiB/s (46.2MB/s)(2646MiB/60034msec)
+    slat (usec): min=2, max=404, avg=12.61, stdev= 5.35
+    clat (usec): min=330, max=107770, avg=45346.97, stdev=19836.31
+     lat (usec): min=340, max=107784, avg=45359.98, stdev=19836.42
+    clat percentiles (msec):
+     |  1.00th=[    4],  5.00th=[   11], 10.00th=[   19], 20.00th=[   30],
+     | 30.00th=[   34], 40.00th=[   39], 50.00th=[   44], 60.00th=[   52],
+     | 70.00th=[   61], 80.00th=[   64], 90.00th=[   70], 95.00th=[   78],
+     | 99.00th=[   86], 99.50th=[   89], 99.90th=[   94], 99.95th=[   96],
+     | 99.99th=[  103]
+   bw (  KiB/s): min= 4304, max= 7024, per=12.50%, avg=5639.53, stdev=505.73, samples=960
+   iops        : min= 1076, max= 1756, avg=1409.87, stdev=126.44, samples=960
+  lat (usec)   : 500=0.02%, 750=0.06%, 1000=0.08%
+  lat (msec)   : 2=0.33%, 4=0.94%, 10=3.50%, 20=6.06%, 50=46.99%
+  lat (msec)   : 100=42.00%, 250=0.02%
+  cpu          : usr=1.21%, sys=2.30%, ctx=646515, majf=0, minf=520
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=99.9%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=677359,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+   READ: bw=44.1MiB/s (46.2MB/s), 44.1MiB/s-44.1MiB/s (46.2MB/s-46.2MB/s), io=2646MiB (2774MB), run=60034-60034msec
+```
+
+
+## Test throughput by performing sequential writes with multiple parallel streams (8+), using an I/O block size of 1 MB and an I/O depth of at least 64
+
+### hdd write throughput
+> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=write -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=8): err= 0: pid=3463327: Thu Jan 28 11:53:31 2021
+  write: IOPS=416, BW=416MiB/s (436MB/s)(25.3GiB/62182msec)
+    slat (usec): min=90, max=1647, avg=255.36, stdev=58.21
+    clat (msec): min=4, max=9113, avg=1165.52, stdev=1071.69
+     lat (msec): min=4, max=9114, avg=1165.77, stdev=1071.69
+    clat percentiles (msec):
+     |  1.00th=[   42],  5.00th=[  131], 10.00th=[  234], 20.00th=[  481],
+     | 30.00th=[  751], 40.00th=[  894], 50.00th=[ 1028], 60.00th=[ 1167],
+     | 70.00th=[ 1368], 80.00th=[ 1536], 90.00th=[ 1838], 95.00th=[ 2089],
+     | 99.00th=[ 7483], 99.50th=[ 7953], 99.90th=[ 8557], 99.95th=[ 8926],
+     | 99.99th=[ 9060]
+   bw (  KiB/s): min= 2043, max=413696, per=16.32%, avg=69517.25, stdev=52671.70, samples=747
+   iops        : min=    1, max=  404, avg=67.81, stdev=51.44, samples=747
+  lat (msec)   : 10=0.11%, 20=0.20%, 50=1.06%, 100=2.09%, 250=7.54%
+  lat (msec)   : 500=9.57%, 750=9.37%, 1000=17.95%
+  cpu          : usr=0.40%, sys=1.02%, ctx=24563, majf=0, minf=8
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.2%, 16=0.5%, 32=1.0%, >=64=98.1%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=0,25871,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+  WRITE: bw=416MiB/s (436MB/s), 416MiB/s-416MiB/s (436MB/s-436MB/s), io=25.3GiB (27.1GB), run=62182-62182msec
+```
+
+### ssd write throughput
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=write -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```
+Jobs: 1 (f=1): [_(1),W(1),_(6)][13.0%][r=0KiB/s,w=126MiB/s][r=0,w=126 IOPS][eta 07m:08s]
+mytest: (groupid=0, jobs=8): err= 0: pid=3510205: Thu Jan 28 12:03:45 2021
+  write: IOPS=404, BW=405MiB/s (424MB/s)(25.3GiB/64016msec)
+    slat (usec): min=102, max=780, avg=249.56, stdev=47.69
+    clat (msec): min=5, max=4627, avg=1207.10, stdev=482.78
+     lat (msec): min=5, max=4627, avg=1207.35, stdev=482.78
+    clat percentiles (msec):
+     |  1.00th=[   92],  5.00th=[  380], 10.00th=[  625], 20.00th=[  902],
+     | 30.00th=[ 1099], 40.00th=[ 1183], 50.00th=[ 1234], 60.00th=[ 1284],
+     | 70.00th=[ 1351], 80.00th=[ 1435], 90.00th=[ 1636], 95.00th=[ 1804],
+     | 99.00th=[ 2735], 99.50th=[ 3742], 99.90th=[ 4144], 99.95th=[ 4396],
+     | 99.99th=[ 4597]
+   bw (  KiB/s): min= 1777, max=280576, per=16.52%, avg=68435.18, stdev=43939.24, samples=760
+   iops        : min=    1, max=  274, avg=66.77, stdev=42.91, samples=760
+  lat (msec)   : 10=0.04%, 20=0.07%, 50=0.30%, 100=0.81%, 250=1.84%
+  lat (msec)   : 500=3.52%, 750=8.76%, 1000=8.37%
+  cpu          : usr=0.41%, sys=0.98%, ctx=26071, majf=0, minf=8
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.2%, 16=0.5%, 32=1.0%, >=64=98.1%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=0,25905,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+  WRITE: bw=405MiB/s (424MB/s), 405MiB/s-405MiB/s (424MB/s-424MB/s), io=25.3GiB (27.2GB), run=64016-64016msec
+```
+
+### ssd read throughput
+> fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=read -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell=
+mytest: (groupid=0, jobs=8): err= 0: pid=3531753: Thu Jan 28 12:07:29 2021
+   read: IOPS=811, BW=811MiB/s (851MB/s)(48.0GiB/60598msec)
+    slat (usec): min=60, max=3759, avg=179.36, stdev=56.91
+    clat (msec): min=2, max=2114, avg=629.40, stdev=320.15
+     lat (msec): min=2, max=2114, avg=629.58, stdev=320.15
+    clat percentiles (msec):
+     |  1.00th=[   17],  5.00th=[   93], 10.00th=[  140], 20.00th=[  296],
+     | 30.00th=[  443], 40.00th=[  617], 50.00th=[  709], 60.00th=[  726],
+     | 70.00th=[  760], 80.00th=[  885], 90.00th=[ 1028], 95.00th=[ 1133],
+     | 99.00th=[ 1334], 99.50th=[ 1452], 99.90th=[ 1754], 99.95th=[ 1821],
+     | 99.99th=[ 2022]
+   bw (  KiB/s): min= 2035, max=544768, per=12.77%, avg=106095.02, stdev=72490.95, samples=939
+   iops        : min=    1, max=  532, avg=103.56, stdev=70.80, samples=939
+  lat (msec)   : 4=0.07%, 10=0.44%, 20=0.67%, 50=1.66%, 100=2.78%
+  lat (msec)   : 250=11.01%, 500=17.40%, 750=34.58%, 1000=19.62%
+  cpu          : usr=0.13%, sys=1.86%, ctx=49360, majf=0, minf=789
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.3%, 32=0.5%, >=64=99.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=49161,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+   READ: bw=811MiB/s (851MB/s), 811MiB/s-811MiB/s (851MB/s-851MB/s), io=48.0GiB (51.5GB), run=60598-60598msec
+```
+
+### hdd read throughput
+
+> fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=read -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
+
+```shell=
+Jobs: 8 (f=8): [R(8)][100.0%][r=812MiB/s,w=0KiB/s][r=812,w=0 IOPS][eta 00m:00s]
+mytest: (groupid=0, jobs=8): err= 0: pid=3486132: Thu Jan 28 11:58:26 2021
+   read: IOPS=805, BW=806MiB/s (845MB/s)(47.7GiB/60553msec)
+    slat (usec): min=70, max=4425, avg=180.51, stdev=60.74
+    clat (usec): min=1921, max=1862.8k, avg=634005.91, stdev=372110.00
+     lat (msec): min=2, max=1862, avg=634.19, stdev=372.11
+    clat percentiles (msec):
+     |  1.00th=[   16],  5.00th=[   62], 10.00th=[  107], 20.00th=[  167],
+     | 30.00th=[  292], 40.00th=[  684], 50.00th=[  743], 60.00th=[  810],
+     | 70.00th=[  885], 80.00th=[  978], 90.00th=[ 1062], 95.00th=[ 1116],
+     | 99.00th=[ 1284], 99.50th=[ 1351], 99.90th=[ 1670], 99.95th=[ 1703],
+     | 99.99th=[ 1787]
+   bw (  KiB/s): min= 2019, max=540672, per=12.98%, avg=107107.33, stdev=91026.66, samples=923
+   iops        : min=    1, max=  528, avg=104.54, stdev=88.91, samples=923
+  lat (msec)   : 2=0.01%, 4=0.10%, 10=0.48%, 20=0.71%, 50=2.57%
+  lat (msec)   : 100=5.64%, 250=16.91%, 500=9.43%, 750=17.08%, 1000=29.44%
+  cpu          : usr=0.13%, sys=1.84%, ctx=48721, majf=0, minf=2316
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.3%, 32=0.5%, >=64=99.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued rwts: total=48798,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+   READ: bw=806MiB/s (845MB/s), 806MiB/s-806MiB/s (845MB/s-845MB/s), io=47.7GiB (51.2GB), run=60553-60553msec
+```
 
 
 ## Write
