@@ -48,14 +48,14 @@ Mellanox switches SN2010 *2
 
 |    Type|   Block|  Direct|   iodepth|  ioengine|      size|   numjobs|        rw|      Read|Read/IOPS|      Write|Write/IOPS|
 |--------|--------|--------|----------|----------|----------|----------|----------|----------|---------|-----------|----------|
-|     hdd|      1M|       1|        64|    libaio|       1TB|         8|       r/w|  812MiB/s|      805|   416MiB/s|       416|
-|     ssd|      1M|       1|        64|    libaio|       1TB|         8|       r/w|  811MiB/s|      811|   405MiB/s|       126|
-|     hdd|      4k|       1|        64|    libaio|       1TB|         8|  rand-r/w|   36.5MiB|     9334|    20MiB/s|      5132|
-|     ssd|      4k|       1|        64|    libaio|       1TB|         8|  rand-r/w|   44.1MiB|    11.3k|  21.2MiB/s|      5425|
-|     hdd|      8k|       1|         1|     psync|       1TB|       100|  rand-r/w|  132MiB/s|    16.9k|  33.1MiB/s|      4234|
-|     hdd|    256k|       1|         1|     psync|       1TB|       100|  rand-r/w| 1671MiB/s|     6683|   485MiB/s|      1938|
-|     ssd|      8k|       1|         1|     psync|       1TB|       100|  rand-r/w|  126MiB/s|    16.1k|  60.4MiB/s|      7725|
-|     ssd|    256k|       1|         1|     psync|       1TB|       100|  rand-r/w| 1681MiB/s|     6724|   733MiB/s|      2930|
+|     hdd|      1M|       1|        64|    libaio|       1TB|         8|Sequential|  812MiB/s|      805|   416MiB/s|       416|
+|     ssd|      1M|       1|        64|    libaio|       1TB|         8|Sequential|  811MiB/s|      811|   405MiB/s|       126|
+|     hdd|      4k|       1|        64|    libaio|       1TB|         8|    Random|   36.5MiB|     9334|    20MiB/s|      5132|
+|     ssd|      4k|       1|        64|    libaio|       1TB|         8|    Random|   44.1MiB|    11.3k|  21.2MiB/s|      5425|
+|     hdd|      8k|       1|         1|     psync|       1TB|       100|    Random|  132MiB/s|    16.9k|  33.1MiB/s|      4234|
+|     hdd|    256k|       1|         1|     psync|       1TB|       100|    Random| 1671MiB/s|     6683|   485MiB/s|      1938|
+|     ssd|      8k|       1|         1|     psync|       1TB|       100|    Random|  126MiB/s|    16.1k|  60.4MiB/s|      7725|
+|     ssd|    256k|       1|         1|     psync|       1TB|       100|    Random| 1681MiB/s|     6724|   733MiB/s|      2930|
 
 ## Test IOPS by performing random writes, using an I/O block size of 4 KB and an I/O depth of at least 64
 
