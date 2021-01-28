@@ -5,12 +5,40 @@
 
 Apollo 4200 Gen9 *4
 ```
+Node 1
 1* CPU E5-2620 v4 @ 2.10GHz 
 1* Memory 64G 
 3* RI   SSD  VK000960GWSRT
 9* 7.2K HDD  MB010000GWAYN
 1* Mellanox Technologies MT27520 40G
+
+Node 2
+1* CPU E5-2620 v4 @ 2.10GHz 
+1* Memory 64G 
+3* RI   SSD  VK000960GWSRT
+9* 7.2K HDD  MB010000GWAYN
+1* Mellanox Technologies MT27520 40G
+
+Node 3
+1* CPU E5-2620 v4 @ 2.10GHz 
+1* Memory 64G 
+3* RI   SSD  VK000960GWSRT
+9* 7.2K HDD  MB010000GWAYN
+1* Mellanox Technologies MT27520 40G
+
+Node 4
+1* CPU E5-2620 v4 @ 2.10GHz 
+1* Memory 64G 
+3* RI   SSD  VK000960GWSRT
+9* 7.2K HDD  MB010000GWAYN
+1* Mellanox Technologies MT27520 40G
+
+Mellanox switches  *2
 ```
+
+*Note*
+> Benchmark Job Fio and dd run on node 1
+
 
 ## 測試總結
 
