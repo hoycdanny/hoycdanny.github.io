@@ -11,6 +11,7 @@ Node 1
 3* RI   SSD  VK000960GWSRT
 9* 7.2K HDD  MB010000GWAYN
 1* Mellanox Technologies MT27520 40G
+2* 40G DAC Cable
 
 Node 2
 1* CPU E5-2620 v4 @ 2.10GHz 
@@ -18,6 +19,7 @@ Node 2
 3* RI   SSD  VK000960GWSRT
 9* 7.2K HDD  MB010000GWAYN
 1* Mellanox Technologies MT27520 40G
+2* 40G DAC Cable
 
 Node 3
 1* CPU E5-2620 v4 @ 2.10GHz 
@@ -25,6 +27,7 @@ Node 3
 3* RI   SSD  VK000960GWSRT
 9* 7.2K HDD  MB010000GWAYN
 1* Mellanox Technologies MT27520 40G
+2* 40G DAC Cable
 
 Node 4
 1* CPU E5-2620 v4 @ 2.10GHz 
@@ -32,8 +35,9 @@ Node 4
 3* RI   SSD  VK000960GWSRT
 9* 7.2K HDD  MB010000GWAYN
 1* Mellanox Technologies MT27520 40G
+2* 40G DAC Cable
 
-Mellanox switches  *2
+Mellanox switches SN2010 *2
 ```
 
 *Note*
