@@ -5,7 +5,9 @@
 ```shell=
 kubectl create -f csi-maprkdf-v1.0.0.yaml 
 ```
+
 > csi-maprkdf-v1.0.0.yaml
+
 ```
 apiVersion: v1
 kind: Namespace
@@ -395,6 +397,7 @@ spec:
 
 
 ## 取得Container Ticket
+
 ```shell
 [root@node1 ~]# maprlogin password
 [Password for user 'root' at cluster 'my.cluster.com': ]
@@ -413,6 +416,7 @@ d00yMUZ4Z0RZT0NsZVVQbmN5S053ZkdHYXFnQ0l0YUxnZmFLenh6L1Fya2gvMmd0TEV5MzhZSjdX
 Zz0=
 ================================================================================================
 ```
+
 ### 取得MapR Username and Password base64的值
 
 ```
@@ -435,6 +439,7 @@ kubectl create -f mapr-dynamic.yaml
 ```
 
 > mapr-dynamic.yaml
+
 ```
 apiVersion: v1
 kind: Namespace
@@ -516,6 +521,7 @@ data:
         persistentVolumeClaim:
           claimName: test-dynamic-pvc
 ```
+
 記得修改`yaml`中的`restServers, cldbHosts, cluster`
 
 ```shell=
