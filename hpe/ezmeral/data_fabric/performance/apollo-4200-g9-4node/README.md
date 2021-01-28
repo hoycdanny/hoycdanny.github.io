@@ -47,7 +47,7 @@ Mellanox switches SN2010 *2
 ## 測試總結
 
 |    Type|   Block|  Direct|   iodepth|  ioengine|      size|   numjobs|        rw|      Read|Read/IOPS|      Write|Write/IOPS|
-|--------|--------|--------|----------|----------|----------|----------|----------|----------|---------|-----------|----------|
+|-------:|-------:|-------:|---------:|---------:|---------:|---------:|---------:|---------:|--------:|----------:|---------:|
 |     hdd|      1M|       1|        64|    libaio|       1TB|         8|Sequential|  812MiB/s|      805|   416MiB/s|       416|
 |     ssd|      1M|       1|        64|    libaio|       1TB|         8|Sequential|  811MiB/s|      811|   405MiB/s|       126|
 |     hdd|      4k|       1|        64|    libaio|       1TB|         8|    Random|   36.5MiB|     9334|    20MiB/s|      5132|
