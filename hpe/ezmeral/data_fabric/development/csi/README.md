@@ -2,6 +2,10 @@
 
 ## 設定CSI環境
 
+```shell=
+kubectl create -f csi-maprkdf-v1.0.0.yaml 
+```
+> csi-maprkdf-v1.0.0.yaml
 ```
 apiVersion: v1
 kind: Namespace
@@ -390,6 +394,47 @@ spec:
 ```
 
 
+## 取得Container Ticket
+```shell
+[root@node1 ~]# maprlogin password
+[Password for user 'root' at cluster 'my.cluster.com': ]
+MapR credentials of user 'root' for cluster 'my.cluster.com' are written to '/tmp/maprticket_0'
+[root@node1 ~]# cat /tmp/maprticket_0
+my.cluster.com yqN0UeJpqvryHOPMSyljAoJtUEDrP6CMq4LzJPVE5PQCW4fsmrLC4AqD55+QvhN/tOO4mV+Lyh0K31MxP9dD188XgWS4246MAE/YVcXZT3omLmpdNYOzI30YW1RYbG3nYcuLpFimI5Cu116ySg9AFvp6suBe0iT+2YHpS/4szB+OPbkBuZy/njz818U/qplhy51S7J07axiJioYYqSNNlwM21FxgDYOCleUPncyKNwfGGaqgCItaLgfaKzxz/Qrkh/2gtLEy38YJ7Wg=
+[root@node1 ~]# echo -n "my.cluster.com yqN0UeJpqvryHOPMSyljAoJtUEDrP6CMq4LzJPVE5PQCW4fsmrLC4AqD55+QvhN/tOO4mV+Lyh0K31MxP9dD188XgWS4246MAE/YVcXZT3omLmpdNYOzI30YW1RYbG3nYcuLpFimI5Cu116ySg9AFvp6suBe0iT+2YHpS/4szB+OPbkBuZy/njz818U/qplhy51S7J07axiJioYYqSNNlwM21FxgDYOCleUPncyKNwfGGaqgCItaLgfaKzxz/Qrkh/2gtLEy38YJ7Wg=" | base64
+
+把下面這串貼到CONTAINER_TICKET:
+================================================================================================
+bXkuY2x1c3Rlci5jb20geXFOMFVlSnBxdnJ5SE9QTVN5bGpBb0p0VUVEclA2Q01xNEx6SlBWRTVQ
+UUNXNGZzbXJMQzRBcUQ1NStRdmhOL3RPTzRtVitMeWgwSzMxTXhQOWREMTg4WGdXUzQyNDZNQUUv
+WVZjWFpUM29tTG1wZE5ZT3pJMzBZVzFSWWJHM25ZY3VMcEZpbUk1Q3UxMTZ5U2c5QUZ2cDZzdUJl
+MGlUKzJZSHBTLzRzekIrT1Bia0J1Wnkvbmp6ODE4VS9xcGxoeTUxUzdKMDdheGlKaW9ZWXFTTk5s
+d00yMUZ4Z0RZT0NsZVVQbmN5S053ZkdHYXFnQ0l0YUxnZmFLenh6L1Fya2gvMmd0TEV5MzhZSjdX
+Zz0=
+================================================================================================
+```
+### 取得MapR Username and Password base64的值
+
+```
+echo -n "mapr" | base64
+bWFwcg==
+```
+
+```
+MAPR_CLUSTER_USER: bWFwcg==
+MAPR_CLUSTER_PASSWORD: bWFwcg==
+```
+
+
+## 新增Dynamic Volume
+
+記得修改`yaml`中的`restServers, cldbHosts, cluster`
+
+```shell=
+kubectl create -f mapr-dynamic.yaml
+```
+
+> mapr-dynamic.yaml
 ```
 apiVersion: v1
 kind: Namespace
@@ -408,7 +453,7 @@ type: Opaque
 data:
   MAPR_CLUSTER_USER: bWFwcg==
   MAPR_CLUSTER_PASSWORD: bWFwcg==
-  CONTAINER_TICKET: bXkuY2x1c3Rlci5jb20gTDBBS1hkWHNITlBFbG81QlM1R2NWY0xLVlFNY0ZxRlRkSUQzWnpOSnBwYlZLaTQ2Y2cva3AxVmR6SEp5YVdMTzNQQ2hQSUxESGJlSVh4VXdYYlBxNi9VZWsvYWZEQ0FjRFB4Mk4yNmo2cm5ZT242akFyczRCc1VYRDZxak05aUxWS2FhYldHRG5PRHlEZkw0VHg0ZElod1M0dnloNGZlaXRuVFQvcVRlSU56VWdCeXVtMkw2Zk5yUVFhOGd2M2JnUm9ZOFZZdmEvc29NakNZWDdmUit6MUFpY3lCOEJYZHpVSnczL3ZSSk5BSSs5NHJvWnJPVENNc2E2VnMvcGxGY1hMenQxTzVaVzJQOHNtMXRnQjNIaHQ0c1gvYUhkcjQ9
+  CONTAINER_TICKET: bXkuY2x1c3Rlci5jb20geXFOMFVlSnBxdnJ5SE9QTVN5bGpBb0p0VUVEclA2Q01xNEx6SlBWRTVQUUNXNGZzbXJMQzRBcUQ1NStRdmhOL3RPTzRtVitMeWgwSzMxTXhQOWREMTg4WGdXUzQyNDZNQUUvWVZjWFpUM29tTG1wZE5ZT3pJMzBZVzFSWWJHM25ZY3VMcEZpbUk1Q3UxMTZ5U2c5QUZ2cDZzdUJlMGlUKzJZSHBTLzRzekIrT1Bia0J1Wnkvbmp6ODE4VS9xcGxoeTUxUzdKMDdheGlKaW9ZWXFTTk5sd00yMUZ4Z0RZT0NsZVVQbmN5S053ZkdHYXFnQ0l0YUxnZmFLenh6L1Fya2gvMmd0TEV5MzhZSjdXZz0=
 
 ---
   apiVersion: storage.k8s.io/v1
@@ -471,6 +516,11 @@ data:
         persistentVolumeClaim:
           claimName: test-dynamic-pvc
 ```
+記得修改`yaml`中的`restServers, cldbHosts, cluster`
+
+```shell=
+kubectl create -f mapr-static.yaml
+```
 
 ```
 apiVersion: v1
@@ -490,7 +540,7 @@ type: Opaque
 data:
   MAPR_CLUSTER_USER: bWFwcg==
   MAPR_CLUSTER_PASSWORD: bWFwcg==
-  CONTAINER_TICKET: bXkuY2x1c3Rlci5jb20gTDBBS1hkWHNITlBFbG81QlM1R2NWY0xLVlFNY0ZxRlRkSUQzWnpOSnBwYlZLaTQ2Y2cva3AxVmR6SEp5YVdMTzNQQ2hQSUxESGJlSVh4VXdYYlBxNi9VZWsvYWZEQ0FjRFB4Mk4yNmo2cm5ZT242akFyczRCc1VYRDZxak05aUxWS2FhYldHRG5PRHlEZkw0VHg0ZElod1M0dnloNGZlaXRuVFQvcVRlSU56VWdCeXVtMkw2Zk5yUVFhOGd2M2JnUm9ZOFZZdmEvc29NakNZWDdmUit6MUFpY3lCOEJYZHpVSnczL3ZSSk5BSSs5NHJvWnJPVENNc2E2VnMvcGxGY1hMenQxTzVaVzJQOHNtMXRnQjNIaHQ0c1gvYUhkcjQ9
+  CONTAINER_TICKET: bXkuY2x1c3Rlci5jb20geXFOMFVlSnBxdnJ5SE9QTVN5bGpBb0p0VUVEclA2Q01xNEx6SlBWRTVQUUNXNGZzbXJMQzRBcUQ1NStRdmhOL3RPTzRtVitMeWgwSzMxTXhQOWREMTg4WGdXUzQyNDZNQUUvWVZjWFpUM29tTG1wZE5ZT3pJMzBZVzFSWWJHM25ZY3VMcEZpbUk1Q3UxMTZ5U2c5QUZ2cDZzdUJlMGlUKzJZSHBTLzRzekIrT1Bia0J1Wnkvbmp6ODE4VS9xcGxoeTUxUzdKMDdheGlKaW9ZWXFTTk5sd00yMUZ4Z0RZT0NsZVVQbmN5S053ZkdHYXFnQ0l0YUxnZmFLenh6L1Fya2gvMmd0TEV5MzhZSjdXZz0=
 
 ---
 kind: StorageClass
@@ -565,3 +615,4 @@ spec:
       persistentVolumeClaim:
         claimName: test-static-pvc
 ```
+
