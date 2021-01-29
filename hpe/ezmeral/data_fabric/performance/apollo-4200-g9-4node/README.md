@@ -314,7 +314,9 @@ Run status group 0 (all jobs):
 ```
 
 ### SSD write psync, iodepth 8, 8k
+
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 8 -thread -rw=randwrite -ioengine=psync -bs=8K -size=1T -numjobs=100 -runtime=60 -group_reporting -name=mytest
+
 
 ```
 mytest: (groupid=0, jobs=100): err= 0: pid=4165344: Thu Jan 28 14:29:51 2021
@@ -343,7 +345,9 @@ Run status group 0 (all jobs):
 ```
 
 ### SSD write psync, iodepth 8, 8k
+
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 8 -thread -rw=randread -ioengine=psync -bs=8K -size=1T -numjobs=100 -runtime=60 -group_reporting -name=mytest
+
 ```
 mytest: (g=0): rw=randread, bs=(R) 8192B-8192B, (W) 8192B-8192B, (T) 8192B-8192B, ioengine=psync, iodepth=8
 ...
@@ -472,6 +476,7 @@ Run status group 0 (all jobs):
 ## Test IOPS by performing random writes, using an I/O block size of 4 KB and an I/O depth of at least 64
 
 ### hdd write IOPS
+
 > fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=randwrite -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
 
 ```
@@ -502,6 +507,7 @@ Run status group 0 (all jobs):
 ```
 
 ### ssd write IOPS
+
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=randwrite -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
 
 ```
@@ -532,6 +538,7 @@ Run status group 0 (all jobs):
 ```
 
 ### hdd read IOPS
+
 > fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=randread -ioengine=libaio -bs=4K -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
 
 ```
@@ -597,6 +604,7 @@ Run status group 0 (all jobs):
 ## Test throughput by performing sequential writes with multiple parallel streams (8+), using an I/O block size of 1 MB and an I/O depth of at least 64
 
 ### hdd write throughput
+
 > fio -filename=/mapr/my.cluster.com/hdd/h1 -direct=1 -iodepth 64 -thread -rw=write -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
 
 ```
@@ -627,6 +635,7 @@ Run status group 0 (all jobs):
 ```
 
 ### ssd write throughput
+
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=write -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
 
 ```
@@ -658,6 +667,7 @@ Run status group 0 (all jobs):
 ```
 
 ### ssd read throughput
+
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 64 -thread -rw=read -ioengine=libaio -bs=1M -size=1T -numjobs=8 -runtime=60 -group_reporting -name=mytest
 
 ```
@@ -751,6 +761,7 @@ mytest: (groupid=0, jobs=100): err= 0: pid=1560194: Tue Jan 26 21:41:54 2021
 Run status group 0 (all jobs):
   WRITE: bw=33.1MiB/s (34.7MB/s), 33.1MiB/s-33.1MiB/s (34.7MB/s-34.7MB/s), io=32.3GiB (34.7GB), run=1000707-1000707msec
 ```
+
 ### 4node ssd write Block=>8k nfs-client=>1
 
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
@@ -877,6 +888,7 @@ mytest: (groupid=0, jobs=100): err= 5 (file:filesetup.c:223, func=write, error=I
 Run status group 0 (all jobs):
    READ: bw=132MiB/s (139MB/s), 132MiB/s-132MiB/s (139MB/s-139MB/s), io=129GiB (139GB), run=1000023-1000023msec```
 ```
+
 ### 4node ssd read Block=>8k nfs-client=>1
 
 > fio -filename=/mapr/my.cluster.com/ssd/s1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=8k -size=1T -numjobs=100 -runtime=1000 -group_reporting -name=mytest
@@ -971,7 +983,6 @@ mytest: (groupid=0, jobs=100): err= 0: pid=1461320: Wed Jan 27 13:02:53 2021
 Run status group 0 (all jobs):
    READ: bw=1681MiB/s (1763MB/s), 1681MiB/s-1681MiB/s (1763MB/s-1763MB/s), io=1642GiB (1763GB), run=1000015-1000015msec
 ```
-
 
 ---
 
