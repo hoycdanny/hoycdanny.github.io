@@ -65,7 +65,7 @@ https://www.storagepartsdirect.com/hpe-mb6000jvyzd-sc-6tb-7200rpm-3-5in-ds-sas-1
 
 |    Type|   Block|  Direct|   iodepth|  ioengine|      size|   numjobs|        rw|      Read|Read/IOPS|      Write|Write/IOPS|
 |:------:|-------:|-------:|---------:|:--------:|---------:|---------:|:--------:|---------:|--------:|----------:|---------:|
-|     HDD|      8k|       1|         1|     psync|       1TB|       100|    Random| 46.9MiB/s|     6004|   101MiB/s|      12.9|
+|     HDD|      8k|       1|         1|     psync|       1TB|       100|    Random|  101MiB/s|     12.9|  46.9MiB/s|      6004|
 |     HDD|    256k|       1|         1|     psync|       1TB|       100|    Random|  844MiB/s|     3376|   771MiB/s|      3085|
 
 
