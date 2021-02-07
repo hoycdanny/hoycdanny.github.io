@@ -27,3 +27,44 @@ HPE Data Fabric中的Auditing功能為企業提供可追朔的用戶行為。在
 * 哪個數據最不常用，因此價值低，可以清除？
 * 哪些數據應該更多地使用，因此未被充分利用並且需要更好的廣告發布？
 * 哪些管理操作最常執行，因此是自動化的候選對象？
+
+### 如何取用Auditing數據?
+
+在`NFS Service` 、 `HDFS` 與 `CSI` 中都可以直接取用Log,路徑如下.
+
+`<MapR Root>` / `<MapR Cluster Name>` /var/mapr/local/ `<Node Name> datafabric01.hpe-taiwan-cic.net` /audit/5560
+
+```shell=
+root@maprclient 5660]# ls
+DBAudit.log-2021-02-03-001.json          TableMetricsAudit.log-2021-02-06-001.pb
+DBAudit.log-2021-02-03-002.json          TableMetricsAudit.log-2021-02-07-001.pb
+ExpandAudit.log-2021-02-03-001.json      Vollist_DBAudit.log-2021-02-03-001
+ExpandAudit.log-2021-02-03-002.json      Vollist_DBAudit.log-2021-02-03-002
+ExpandAudit.log-2021-02-06-001.json      Vollist_FSAudit.log-2021-02-03-001
+ExpandAudit.log-2021-02-07-001.json      Vollist_FSAudit.log-2021-02-03-002
+FSAudit.log-2021-02-03-001.json          Vollist_FSAudit.log-2021-02-06-001
+FSAudit.log-2021-02-03-002.json          Vollist_FSAudit.log-2021-02-07-001
+FSAudit.log-2021-02-06-001.json          Vollist_Metrics.log-2021-02-03-001
+FSAudit.log-2021-02-07-001.json          Vollist_Metrics.log-2021-02-03-002
+Metrics.log-2021-02-03-001.json          Vollist_TableMetricsAudit.log-2021-02-03-001
+Metrics.log-2021-02-03-002.json          Vollist_TableMetricsAudit.log-2021-02-03-002
+TableMetricsAudit.log-2021-02-03-001.pb  Vollist_TableMetricsAudit.log-2021-02-04-001
+TableMetricsAudit.log-2021-02-03-002.pb  Vollist_TableMetricsAudit.log-2021-02-05-001
+TableMetricsAudit.log-2021-02-04-001.pb  Vollist_TableMetricsAudit.log-2021-02-06-001
+TableMetricsAudit.log-2021-02-05-001.pb  Vollist_TableMetricsAudit.log-2021-02-07-001
+```
+
+### Audit Log分為七大類
+
+* DBAudit
+* ExpandAudit
+* FSAudit
+* Metrics
+* TableMetricsAudit
+* Vollist_DBAudit
+* Vollist_TableMetricsAudit
+
+#### DBAudit Demo
+
+
+
