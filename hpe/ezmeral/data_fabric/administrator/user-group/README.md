@@ -52,7 +52,7 @@ docker run -d \
     osixia/phpldapadmin:0.7.1
 ```
 
-連入Docker LDAP 設定
+### 連入 [ Docker LDAP Server] 
 
 ```shell=
 docker exec -ti openldap-server /bin/bash
