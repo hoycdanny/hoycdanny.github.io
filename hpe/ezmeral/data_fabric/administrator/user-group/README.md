@@ -18,7 +18,7 @@ useradd danny --uid 5678 --gid 1234
 
 ## 設定LDAP整合
 
-## 使用 Docker 模擬LDAP Server
+### 使用 Docker 模擬LDAP Server
 ```shell=
 setenforce 0
 sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
@@ -52,13 +52,13 @@ docker run -d \
     osixia/phpldapadmin:0.7.1
 ```
 
-### 連入 [ Docker LDAP Server] 
+#### 連入 [ Docker LDAP Server] 
 
 ```shell=
 docker exec -ti openldap-server /bin/bash
 ```
 
-### [ Docker LDAP Server] ldap.conf
+#### [ Docker LDAP Server] ldap.conf
 
 vim /etc/openldap/ldap.conf
 ```shell=
@@ -69,7 +69,7 @@ URI ldap://20.6.0.61/
 BASE dc=hpe-taiwan-cic,dc=net
 ```
 
-### [Docker LDAP Server] Enable LADP Config 
+#### [Docker LDAP Server] Enable LADP Config 
 
 ```shell=
 authconfig \
@@ -84,7 +84,7 @@ authconfig \
 --update
 ```
 
-### [Docker LDAP Server] Edit nslcd.conf 
+#### [Docker LDAP Server] Edit nslcd.conf 
 
 ```shell=
 vim /etc/nslcd.conf
