@@ -16,6 +16,52 @@ useradd danny --uid 5678 --gid 1234
 
 > 如果要部署大型Cluster，則應考慮將所有節點配置為使用LDAP或其他用戶管理系統。
 
+
+## 設定 `SMTP` 提醒
+
+```shell=
+maprcli config save -values '{"mapr.smtp.provider":"gmail",
+               "mapr.smtp.server":"smtp.gmail.com",
+               "mapr.smtp.sslrequired":"true",
+               "mapr.smtp.port":"465",
+               "mapr.smtp.sender.fullname":"Ab  Cd",
+               "mapr.smtp.sender.email":"xxx@gmail.com",
+               "mapr.smtp.sender.username":"xxx@gmail.com",
+               "mapr.smtp.sender.password":"abc"}'
+```
+
+https://docs.datafabric.hpe.com/61/AdministratorGuide/t_setting_up_SMTP.html
+
+
+## 利用CLI賦予 ACL 權限
+
+> 使用用戶 `mapr`
+
+### 設置ACL
+```shell=
+maprcli acl set
+    [ -cluster <cluster name> ]
+    [ -group <group> ]
+    [ -name <name> ]
+    -type cluster|volume
+    [ -user <user> ]
+```
+
+### 編輯ACL
+
+```shell=
+maprcli acl edit -type cluster -user <user>:fc
+```
+
+### 黑名單使用者
+
+```shell=
+maprcli blacklistuser -user <user name> 
+```
+
+https://docs.datafabric.hpe.com/61/AdministratorGuide/SettingUserPermissions-AddingClusterPermissions.html
+
+
 ## 設定LDAP整合
 
 ### 使用 Docker 模擬LDAP Server
