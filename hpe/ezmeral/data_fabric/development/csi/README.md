@@ -161,7 +161,7 @@ roleRef:
 
 ---
 kind: DaemonSet
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 metadata:
   name: csi-nodeplugin-kdf
   namespace: mapr-csi
@@ -280,13 +280,16 @@ spec:
 
 ---
 kind: StatefulSet
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 metadata:
   name: csi-controller-kdf
   namespace: mapr-csi
 spec:
   serviceName: "kdf-provisioner-svc"
   replicas: 1
+  selector:
+      matchLabels:
+        app: csi-controller-kdf
   template:
     metadata:
       labels:
@@ -392,7 +395,6 @@ spec:
         - name: timezone
           hostPath:
             path: /etc/localtime
-
 ```
 
 
