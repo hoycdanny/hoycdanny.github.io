@@ -94,9 +94,9 @@ Admin > Clusters Settings > Balancer
 
 #### 參數說明：
 
-##### Enabled：關閉與開啟 `Disk Balancer`
+Enabled：關閉與開啟 `Disk Balancer`
 
-##### Disk Balancer Preset：
+Disk Balancer Preset：
 
 ```
 Disk Balancer Preset:
@@ -112,51 +112,51 @@ Disk Balancer Preset:
 ```
 
 
-##### Threshold：當 `SP`  使用率大於70%(預設值)開始搬移資料。
+Threshold：當 `SP`  使用率大於70%(預設值)開始搬移資料。
 
-##### Concurrent Disk Rebalancer： 為了維持Cluster的效能與服務品質，因此僅會使用Cluster 10% 的 Node 數量資源來搬移資料。
+Concurrent Disk Rebalancer： 為了維持Cluster的效能與服務品質，因此僅會使用Cluster 10% 的 Node 數量資源來搬移資料。
 
 
 
 #### MapR CLI：
 
-#####  開啟與關閉 Disk Balancer 
+開啟與關閉 Disk Balancer 
 
 ```shell=
 maprcli config save -values {cldb.disk.balancer.enable:"1"}
 ```
 
-##### 將 `Container` 移出`SP` 的閾值
+將 `Container` 移出`SP` 的閾值
 
 ```shell=
 maprcli config save -values {cldb.balancer.disk.threshold.percentage:"70"}
 ```
 
-##### 限制 `Container` 搬移的次數最少會有 `1`
+限制 `Container` 搬移的次數最少會有 `1`
 
 ```shell=
 maprcli config save -values {cldb.balancer.disk.max.switches.in.nodes.percentage:"10"}
 ```
 
-##### 等待平衡時間 預設1800秒
+等待平衡時間 預設1800秒
 
 ```shell=
 maprcli config save {"cldb.balancer.startup.interval.sec":"3600"} 
 ```
 
-##### 每次運行平衡後可配置停止時間 預設120秒
+每次運行平衡後可配置停止時間 預設120秒
 
 ```shell=
 maprcli config save {"cldb.balancer.disk.sleep.interval.sec":"300"}
 ```
 
-##### 防止`Volume` 不平衡，例如該Volume檔案存放不多，可能僅只存在一個 `SP` 造成不平衡。
+防止`Volume` 不平衡，例如該Volume檔案存放不多，可能僅只存在一個 `SP` 造成不平衡。
 
 ```shell=
 maprcli config save -values {"prevent.volume.skew.by.diskbalancer":"true"}
 ```
 
-##### 調整`Bin` 大小
+調整`Bin` 大小
 
 ![](https://docs.datafabric.hpe.com/62/ClusterAdministration/images/DSBalancerSampleBins.png)
 
@@ -168,19 +168,19 @@ dbal.overused.bin.size
 maprcli config save -values {"dbal.below.avg.bin.size":"10"}
 ```
 
-##### 設定Overused Threshold
+設定Overused Threshold
 
 ```shell=
 maprcli config save -values {"cldb.balancer.disk.overused.threshold":"95"}
 ```
 
-##### 設定'Below Average' 與 'Average' 的Storage Pool 平衡時間
+設定'Below Average' 與 'Average' 的Storage Pool 平衡時間
 
 ```shell=
 maprcli config save -values {"dbal.below.avg.bins.balancing.frequency":"360"}
 ```
 
-##### 讀取 `Balancer` 狀態
+讀取 `Balancer` 狀態
 
 ```shell=
 # maprcli dump balancerinfo
@@ -204,7 +204,7 @@ usedMB  fsid                 spid                              percentage  outTr
         }
 ```
 
-##### 查看移動數量與大小
+查看移動數量與大小
 
 ```shell=
 # maprcli dump balancermetrics -json
@@ -222,7 +222,7 @@ usedMB  fsid                 spid                              percentage  outTr
 }
 ```
 
-##### Balancer中可調整參數
+Balancer中可調整參數
 
 ```shell=
 [root@datafabric01 ~]# maprcli config load -json | grep balancer
