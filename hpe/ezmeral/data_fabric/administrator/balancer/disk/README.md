@@ -1,28 +1,5 @@
 # Balancer
 
-Balancer中可調整參數
-
-```shell=
-[root@datafabric01 ~]# maprcli config load -json | grep balancer
-			"cldb.balancer.disk.deltaToRepopulateStoragePoolsBins":"5",
-			"cldb.balancer.disk.deltatorepopulatestoragepoolsbins":"5",
-			"cldb.balancer.disk.max.switches.in.nodes.percentage":"10",
-			"cldb.balancer.disk.overused.threshold":"90",
-			"cldb.balancer.disk.sleep.interval.sec":"120",
-			"cldb.balancer.disk.threshold.percentage":"70",
-			"cldb.balancer.role.max.switches.in.nodes.percentage":"10",
-			"cldb.balancer.role.paused":"1",
-			"cldb.balancer.role.skip.container.active.sec":"600",
-			"cldb.balancer.role.sleep.interval.sec":"900",
-			"cldb.balancer.startup.interval.sec":"1800",
-			"cldb.disk.balancer.enable":"0",
-			"cldb.role.balancer.logging.on":"0",
-			"cldb.role.balancer.replicascount.tolerance":"1",
-			"cldb.role.balancer.replicassize.tolerance":"15",
-			"cldb.role.balancer.strategy":"BySize",
-			"prevent.volume.skew.by.diskbalancer":"0",
-```
-
 ## Disk Space Balancer
 
 Disk Space Balancer是以Container為最小單位移動到各個Storage Pool(SP)達到平衡Cluster Disk 使用空間，因此在規劃叢集時Storage Pool 建議保持平衡。Disk Space Balancer在預設的情況下會每兩分鐘檢查一次，並根據每個Storage Pool使用率分配到不同的Bin中，在Bin分為儲存率較低與儲存率較高。
@@ -111,6 +88,9 @@ Storage Pool 1,2,3 平衡
 #### 使用 `MCS` 配置 `Disk Balancer`
 
 Admin > Clusters Settings > Balancer
+
+![](https://github.com/hoycdanny/hoycdanny.github.io/blob/master/hpe/ezmeral/data_fabric/administrator/balancer/disk/img/disk-balancer-mcs-gui.png?raw=true)
+
 
 #### 參數說明：
 
@@ -239,4 +219,25 @@ usedMB  fsid                 spid                              percentage  outTr
 }
 ```
 
+##### Balancer中可調整參數
 
+```shell=
+[root@datafabric01 ~]# maprcli config load -json | grep balancer
+			"cldb.balancer.disk.deltaToRepopulateStoragePoolsBins":"5",
+			"cldb.balancer.disk.deltatorepopulatestoragepoolsbins":"5",
+			"cldb.balancer.disk.max.switches.in.nodes.percentage":"10",
+			"cldb.balancer.disk.overused.threshold":"90",
+			"cldb.balancer.disk.sleep.interval.sec":"120",
+			"cldb.balancer.disk.threshold.percentage":"70",
+			"cldb.balancer.role.max.switches.in.nodes.percentage":"10",
+			"cldb.balancer.role.paused":"1",
+			"cldb.balancer.role.skip.container.active.sec":"600",
+			"cldb.balancer.role.sleep.interval.sec":"900",
+			"cldb.balancer.startup.interval.sec":"1800",
+			"cldb.disk.balancer.enable":"0",
+			"cldb.role.balancer.logging.on":"0",
+			"cldb.role.balancer.replicascount.tolerance":"1",
+			"cldb.role.balancer.replicassize.tolerance":"15",
+			"cldb.role.balancer.strategy":"BySize",
+			"prevent.volume.skew.by.diskbalancer":"0",
+```
