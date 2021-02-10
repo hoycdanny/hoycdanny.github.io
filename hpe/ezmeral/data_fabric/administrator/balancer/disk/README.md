@@ -170,7 +170,7 @@ maprcli config save {"cldb.balancer.startup.interval.sec":"3600"}
 maprcli config save {"cldb.balancer.disk.sleep.interval.sec":"300"}
 ```
 
-##### 防止`Volume` 不平衡，在Table的應用中，可能一個SP只包含幾格大Container，造成不平衡。
+##### 防止`Volume` 不平衡，例如該Volume檔案存放不多，可能僅只存在一個 `SP` 造成不平衡。
 
 ```
 maprcli config save -values {"prevent.volume.skew.by.diskbalancer":"true"}
