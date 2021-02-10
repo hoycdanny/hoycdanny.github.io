@@ -122,44 +122,45 @@ Disk Balancer Preset:
 
 #####  開啟與關閉 Disk Balancer 
 
-```
+```shell=
 maprcli config save -values {cldb.disk.balancer.enable:"1"}
 ```
 
 ##### 將 `Container` 移出`SP` 的閾值
 
-```
+```shell=
 maprcli config save -values {cldb.balancer.disk.threshold.percentage:"70"}
 ```
 
 ##### 限制 `Container` 搬移的次數最少會有 `1`
 
-```
+```shell=
 maprcli config save -values {cldb.balancer.disk.max.switches.in.nodes.percentage:"10"}
 ```
 
 ##### 等待平衡時間 預設1800秒
 
-```
+```shell=
 maprcli config save {"cldb.balancer.startup.interval.sec":"3600"} 
 ```
 
 ##### 每次運行平衡後可配置停止時間 預設120秒
 
-```
+```shell=
 maprcli config save {"cldb.balancer.disk.sleep.interval.sec":"300"}
 ```
 
 ##### 防止`Volume` 不平衡，例如該Volume檔案存放不多，可能僅只存在一個 `SP` 造成不平衡。
 
-```
+```shell=
 maprcli config save -values {"prevent.volume.skew.by.diskbalancer":"true"}
 ```
 
 ##### 調整`Bin` 大小
 
 ![](https://docs.datafabric.hpe.com/62/ClusterAdministration/images/DSBalancerSampleBins.png)
-```
+
+```shell=
 dbal.above.avg.bin.size
 dbal.avg.bin.size
 dbal.below.avg.bin.size
@@ -169,13 +170,15 @@ maprcli config save -values {"dbal.below.avg.bin.size":"10"}
 
 ##### 設定Overused Threshold
 
-```
+```shell=
 maprcli config save -values {"cldb.balancer.disk.overused.threshold":"95"}
 ```
 
 ##### 設定'Below Average' 與 'Average' 的Storage Pool 平衡時間
 
+```shell=
 maprcli config save -values {"dbal.below.avg.bins.balancing.frequency":"360"}
+```
 
 ##### 讀取 `Balancer` 狀態
 
