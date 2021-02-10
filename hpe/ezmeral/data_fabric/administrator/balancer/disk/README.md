@@ -27,19 +27,19 @@ Balancer中可調整參數
 
 Disk Space Balancer是以Container為最小單位移動到各個Storage Pool(SP)達到平衡Cluster Disk 使用空間，因此在規劃叢集時Storage Pool 建議保持平衡。Disk Space Balancer在預設的情況下會每兩分鐘檢查一次，並根據每個Storage Pool使用率分配到不同的Bin中，在Bin分為儲存率較低與儲存率較高。
 
-Disk Space Balancer會根據以下這兩個參數來作為資料搬移的依據。
+### Disk Space Balancer會根據以下這兩個參數來作為資料搬移的依據。
 
-Utilization Level of a SP (單個Storage Pool利用率)= (SP 已使用空間 / SP 總空間)
-Cluster Average  (Cluster平均) = (所有SP 已使用空間 / 所有 SP 總空間)
+* Utilization Level of a SP (單個Storage Pool利用率)= (SP 已使用空間 / SP 總空間)
+* Cluster Average  (Cluster平均) = (所有SP 已使用空間 / 所有 SP 總空間)
 
-Bin分組依據
+### Bin分組依據
 
-Below Average => Utilization Level of a SP 0~60%
-Average       => Utilization Level of a SP 61~70%
-Above Average => Utilization Level of a SP 71~90%
-Overused      => Utilization Level of a SP 91~100%
+* Below Average => Utilization Level of a SP 0~60%
+* Average       => Utilization Level of a SP 61~70%
+* Above Average => Utilization Level of a SP 71~90%
+* Overused      => Utilization Level of a SP 91~100%
 
-搬移Container時選擇SP依據與限制。
+### 搬移Container時選擇SP依據與限制。
 
 * 兩個 `SP` 需來自相同的 `Topology` 
 * 單一 `SP` 當時搬移的 `Container` 數量需小於等於2
@@ -51,9 +51,7 @@ Overused      => Utilization Level of a SP 91~100%
 * 該 `SP` 忙碌中 總資料量的2％正在傳出
 
 
-
-
-範例：
+### 範例：
 
 ```
 
