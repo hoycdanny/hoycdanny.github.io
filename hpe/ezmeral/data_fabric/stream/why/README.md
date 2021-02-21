@@ -24,7 +24,7 @@
 * produceperm
 * topicperm
 
-[Access Control Expression (ACE)](https://docs.datafabric.hpe.com/61/MapR_Streams/images/stream_policies_security_2.png)
+![Access Control Expression (ACE)](https://docs.datafabric.hpe.com/61/MapR_Streams/images/stream_policies_security_2.png)
 
 
 
@@ -46,6 +46,6 @@
 
 ## 效能測試
 
-[kafka vs Mapr-ES](https://developer.hpe.com/blog/vyvg31gkBKH6DoBPk6Ov/kafka-vs-mapr-event-store-why-mapr0
+[kafka vs Mapr-ES](https://developer.hpe.com/blog/vyvg31gkBKH6DoBPk6Ov/kafka-vs-mapr-event-store-why-mapr0)
 
 
