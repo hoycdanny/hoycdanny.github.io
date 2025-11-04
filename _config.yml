@@ -1,4 +1,26 @@
 theme: jekyll-theme-hacker
+
+# 排除不需要建置的檔案和目錄
+exclude:
+  - node_modules/
+  - vendor/
+  - .git/
+  - .gitignore
+  - Dockerfile
+  - docker-entrypoint.sh
+  - "*.sh"
+  - "*.cfg"
+  - "*.json"
+  - "*.yml"
+  - "*.yaml"
+  - "*.proto"
+  - "*.js"
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CONTRIBUTING.md
 title: 技術筆記 Blog
 description: 大數據、容器化、虛擬化、AI 與系統管理技術筆記
 show_downloads: false
