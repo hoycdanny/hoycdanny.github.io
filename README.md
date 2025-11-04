@@ -15,12 +15,17 @@
 ├── devops/               # DevOps 自動化
 │   ├── ansible-ssh/      # Ansible 自動化
 │   ├── jenkins/          # CI/CD
-│   └── oneview/          # HPE OneView
+│   ├── oneview/          # HPE OneView
+│   ├── pxe/              # PXE 網路啟動
+│   ├── openstack/        # OpenStack 腳本
+│   └── ku8install.sh     # Kubernetes 安裝
 ├── iot/                  # 物聯網與訊息佇列
 │   ├── mqtt/             # EMQTT Kubernetes
 │   ├── emqttd/           # EMQTT Docker
 │   ├── mosquito-build/   # Mosquitto
-│   └── opendds/          # OpenDDS DDS
+│   ├── opendds/          # OpenDDS DDS
+│   ├── lora/             # LoRa 長距離通訊
+│   └── machan/           # MaChan 錯誤訊息
 ├── web/                  # 網頁伺服器
 │   ├── nginx-reverse-proxy/
 │   ├── nginx-reverse-proxy-tomcat-ssl/
@@ -34,7 +39,8 @@
 ├── virtualization/       # 虛擬化
 │   └── kvm/              # KVM
 ├── rhel/                 # Red Hat Linux
-│   └── upgrade/          # 系統升級
+│   ├── upgrade/          # 系統升級
+│   └── rhelrepo.md       # Repository 配置
 └── programming/          # 程式語言
     └── go/              # Go 語言
 ```
@@ -56,12 +62,17 @@
 - [Ansible SSH](devops/ansible-ssh/) - 自動化配置管理
 - [Jenkins](devops/jenkins/) - CI/CD 伺服器
 - [HPE OneView](devops/oneview/) - 伺服器自動化管理
+- [PXE 網路啟動](devops/pxe/) - 網路啟動伺服器
+- [OpenStack 腳本](devops/openstack/) - OpenStack 實例初始化腳本
+- [Kubernetes 安裝](devops/ku8install.sh) - Kubernetes 安裝腳本
 
 ### 📡 [IoT 物聯網](iot/)
 - [EMQTT Kubernetes](iot/mqtt/) - MQTT Broker 自動擴展
 - [EMQTT Docker](iot/emqttd/) - MQTT Broker 容器
 - [Mosquitto](iot/mosquito-build/) - 輕量級 MQTT
 - [OpenDDS](iot/opendds/) - DDS 分散式通訊
+- [LoRa](iot/lora/) - 長距離低功耗通訊
+- [MaChan](iot/machan/) - MaChan 錯誤訊息定義
 
 ### 🌐 [Web 網頁伺服器](web/)
 - [Nginx 反向代理](web/nginx-reverse-proxy/) - 負載平衡與反向代理
@@ -73,6 +84,7 @@
 
 ### 🐳 [Container 容器](container/)
 - [HPE Nimble Storage](container/storage/nimble/) - Kubernetes 儲存整合
+- [Docker 安裝範例](container/examples/) - CentOS Docker 安裝腳本
 
 ### 🏢 [HPE 產品](hpe/)
 - [Ezmeral Data Fabric](hpe/ezmeral/data_fabric/) - 企業級資料平台
@@ -82,6 +94,7 @@
 
 ### 🔧 [系統管理](rhel/)
 - [RHEL 升級](rhel/upgrade/) - RHEL 7.9 to 8.2
+- [RHEL Repository](rhel/rhelrepo.md) - 本地 Repository 配置
 
 ### � [程式語言](programming/)
 - [Go 語言](programming/go/) - Go 開發環境
