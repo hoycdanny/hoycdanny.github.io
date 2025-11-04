@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: ciao_container_base_stub.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : ccm_svnt, avoids_corba_e_micro {
+  after += CIAO_Container_Base_stub
+  libs += CIAO_Container_Base_stub
+}

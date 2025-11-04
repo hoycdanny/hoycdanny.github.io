@@ -1,0 +1,5 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This program tests the various forward and forward-permanent
+combinations possible in applications.  The tests operates directly on
+Objects and TAO_Stub interfaces.

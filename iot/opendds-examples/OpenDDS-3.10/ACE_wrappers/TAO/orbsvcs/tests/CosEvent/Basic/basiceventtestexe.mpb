@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: basiceventtestexe.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : orbsvcsexe, messaging, taoserver, event_serv, naming, svc_utils, iortable {
+  after    += CosEvent_Test_Lib
+  libs     += CECTests
+  libpaths += ../lib
+  includes += ../lib
+}

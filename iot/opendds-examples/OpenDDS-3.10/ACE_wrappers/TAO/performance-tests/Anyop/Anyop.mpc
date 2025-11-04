@@ -1,0 +1,8 @@
+// $Id: Anyop.mpc 14 2007-02-01 15:49:12Z mitza $
+project: taoexe, anytypecode {
+  avoids += ace_for_tao
+  Source_Files {
+    testC.cpp
+    anyop.cpp
+  }
+}

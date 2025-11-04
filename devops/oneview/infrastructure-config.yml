@@ -1,0 +1,30 @@
+storage_cfg:                                      
+  controllers:                                    
+  - deviceSlot: "Embedded"                      
+    importConfiguration: false                  
+    initialize: true
+    driveWriteCache: "Unmanaged"    
+    mode: "Mixed"                                
+    logicalDrives:
+    - bootable: true
+      driveNumber: 1
+      name: "os"
+      numPhysicalDrives: 2
+      raidLevel: "RAID1"
+
+
+bios_settings:                                    
+- id: "CustomPostMessage"                         
+  value: "!! automate the planet !!"              
+- id: "MinProcIdlePkgState"                       
+  value: "NoState"                                
+- id: "EnergyPerfBias"                            
+  value: "MaxPerf"                                
+- id: "PowerProfile"                              
+  value: "MaxPerf"                                
+- id: "IntelQpiPowerManagement"                   
+  value: "Disabled"                               
+- id: "PowerRegulator"                            
+  value: "StaticHighPerf"                         
+- id: "MinProcIdlePower"                          
+  value: "NoCStates"                              

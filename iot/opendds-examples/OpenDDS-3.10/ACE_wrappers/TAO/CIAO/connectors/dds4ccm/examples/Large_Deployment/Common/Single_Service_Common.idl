@@ -1,0 +1,13 @@
+// $Id: Single_Service_Common.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+#ifndef SINGLE_SERVICE_COMMON_IDL_
+#define SINGLE_SERVICE_COMMON_IDL_
+
+#pragma ciao lem "Common/Single_Service_CommonE.idl"
+
+interface Simple_Service
+{
+  oneway void ping ();
+};
+
+#endif /* SINGLE_SERVICE_COMMON_IDL_ */

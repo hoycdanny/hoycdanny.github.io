@@ -1,0 +1,4 @@
+// $Id: test.idl 2613 2015-08-10 14:57:14Z mesnierp $
+interface test {
+  long get();
+};

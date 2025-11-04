@@ -1,0 +1,7 @@
+// -*- MPC -*-
+//$Id: csd_framework.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project : taolib, portableserver, pi, codecfactory, avoids_corba_e_micro {
+  after += CSD_Framework
+  libs += TAO_CSD_Framework
+}

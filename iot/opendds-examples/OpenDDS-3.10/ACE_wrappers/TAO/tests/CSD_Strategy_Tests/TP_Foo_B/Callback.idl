@@ -1,0 +1,11 @@
+// $Id: Callback.idl 1861 2011-08-31 16:18:08Z mesnierp $
+#ifndef CALLBACK_IDL
+#define CALLBACK_IDL
+
+interface Callback
+{
+  void test_method();
+};
+
+
+#endif

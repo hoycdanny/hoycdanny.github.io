@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: ft_naming_serv.mpb 2820 2016-01-21 22:43:48Z mitza $
+
+project: orbsvcslib, naming_skel, portablegroup, ftnaming, ftnaming_replication, naming_serv, loadbalancing, iortable, messaging_optional, svc_utils {
+  after     += FT_Naming_Serv
+  libs      += TAO_FT_Naming_Serv
+}

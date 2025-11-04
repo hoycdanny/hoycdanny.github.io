@@ -1,0 +1,6 @@
+//  -*- MPC -*-
+// $Id: EDF.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project: kokyu {
+  exename = EDF
+}

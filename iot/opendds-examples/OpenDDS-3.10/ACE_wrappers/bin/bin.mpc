@@ -1,0 +1,13 @@
+//  -*- MPC -*-
+// $Id: bin.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(bin) : aceexe, script {
+  exename = envinfo
+  Source_Files {
+    envinfo.cpp
+  }
+  Script_Files {
+    auto_run_tests.pl
+    ace_tests.lst
+  }
+}

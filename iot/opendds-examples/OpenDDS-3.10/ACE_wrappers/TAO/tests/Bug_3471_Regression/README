@@ -1,0 +1,9 @@
+/**
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This test checks that you can pass a nil object as part of a sequence. It's
+a very minor mod of hello world.
+
+If it ever fails there's something vaery badly awry.
+
+*/

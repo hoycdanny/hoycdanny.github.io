@@ -1,0 +1,21 @@
+// $Id: VTopics_Sender.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+/**
+ * @author Marijke Hengstmengel (mhengstmengel@remedy.nl)
+ */
+
+#ifndef DDS_VTOPICS_SENDER_IDL
+#define DDS_VTOPICS_SENDER_IDL
+
+#include "Connector/VTopics_Connector.idl"
+
+module VTopics
+{
+  component Sender
+  {
+    port TestTopicConnector::DDS_Update info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+  };
+};
+
+#endif

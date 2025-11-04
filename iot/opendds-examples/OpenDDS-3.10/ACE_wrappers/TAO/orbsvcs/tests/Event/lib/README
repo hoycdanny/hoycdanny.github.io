@@ -1,0 +1,5 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This directory contains a small framework to write tests for the
+real-time event service.  Check the Basic or Performance directories
+for examples of its use.

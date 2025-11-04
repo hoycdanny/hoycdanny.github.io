@@ -1,0 +1,4 @@
+// $Id: ace_zlib.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+feature(zlib): zlib {
+}

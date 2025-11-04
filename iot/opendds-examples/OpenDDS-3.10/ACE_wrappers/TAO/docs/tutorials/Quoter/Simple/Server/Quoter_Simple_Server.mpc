@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: Quoter_Simple_Server.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : taoserver {
+  libs += Quoter_Idl_Lib
+  after += Quoter_Idl_Lib
+  includes += ../../idl
+  libpaths += ../../idl
+}

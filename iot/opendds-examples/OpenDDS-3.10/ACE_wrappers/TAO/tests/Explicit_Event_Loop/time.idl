@@ -1,0 +1,13 @@
+
+// $Id: time.idl 14 2007-02-01 15:49:12Z mitza $
+
+struct TimeOfDay {
+    short   hour;       // 0 - 23
+    short   minute;     // 0 - 59
+    short   second;     // 0 - 59
+};
+
+interface Time {
+    TimeOfDay   get_gmt();
+};
+

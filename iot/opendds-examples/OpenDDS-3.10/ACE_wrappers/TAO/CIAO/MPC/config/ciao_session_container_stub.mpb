@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: ciao_session_container_stub.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : ciao_container_base_stub, ccm_direct_collocation {
+  libs += CIAO_Session_Container_stub
+  after += CIAO_Session_Container_stub
+}

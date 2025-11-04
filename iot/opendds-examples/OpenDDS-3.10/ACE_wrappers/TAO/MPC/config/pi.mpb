@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: pi.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : taolib, codecfactory {
+  after   += PI
+  libs    += TAO_PI
+}

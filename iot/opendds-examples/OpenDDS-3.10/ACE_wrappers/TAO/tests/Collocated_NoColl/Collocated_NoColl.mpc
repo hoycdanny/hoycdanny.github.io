@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: Collocated_NoColl.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+// Thru_Pu is default enabled
+project(Collocated_NoColl): taoserver {
+  exename = Collocated_NoColl
+
+}

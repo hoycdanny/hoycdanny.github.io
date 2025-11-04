@@ -1,0 +1,13 @@
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+
+valuetype Base
+{
+      public long l;
+};
+
+typedef sequence<Base> BaseSeq;
+
+valuetype Value : Base
+{
+      public string s;
+};

@@ -1,0 +1,20 @@
+// $Id: corbaname.idl 1861 2011-08-31 16:18:08Z mesnierp $
+
+module corbaname
+{
+
+  interface Status
+  {
+    // = TITLE
+    //     A simple interface to check the status of
+    //     connection between the client and the server.
+    //
+    // = DESCRIPTION
+    //     Prints out the status.
+
+    boolean print_status ();
+    // Return <true> if the server received the
+    // request from the client.
+
+  };
+};

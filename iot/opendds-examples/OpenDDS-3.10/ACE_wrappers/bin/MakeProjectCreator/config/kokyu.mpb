@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: kokyu.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : acelib {
+  after    += Kokyu
+  libs     += Kokyu
+  includes += $(ACE_ROOT)/Kokyu
+}

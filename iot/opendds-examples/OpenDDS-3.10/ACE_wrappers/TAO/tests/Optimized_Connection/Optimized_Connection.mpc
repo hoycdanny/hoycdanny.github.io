@@ -1,0 +1,19 @@
+// -*- MPC -*-
+// $Id: Optimized_Connection.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*idl): taoidldefaults {
+  IDL_Files {
+    Test.idl
+  }
+  custom_only = 1
+}
+
+project(*Client): taoclient, strategies {
+  after += *idl
+  Source_Files {
+    TestC.cpp
+    oc_client.cpp
+  }
+  IDL_Files {
+  }
+}

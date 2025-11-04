@@ -1,0 +1,14 @@
+// -*- MPC -*-
+// $Id: IDL2XMI_Test.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project(*IDL2XMI_Test) : taoexe, ace_xml_utils {
+  exename = xmlvalidator
+
+  Source_Files {
+    XML_Helper.cpp
+    xmlvalidator.cpp
+  }
+
+  IDL_Files {
+  }
+}

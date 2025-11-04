@@ -1,0 +1,72 @@
+Fri Jan 13 15:33:47 UTC 2017  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * CIAO version 1.2a_p11 released.
+
+Thu Sep 29 17:28:34 UTC 2016  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * CIAO version 1.2a_p10 released.
+
+Mon Sep 26 17:24:41 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ciao/Deployment/Handlers/CIAO_State.cpp:
+        * connectors/dds4ccm/impl/DomainParticipantManager.cpp:
+
+          Fix explicit template instantiation problem.
+
+Wed Mar  2 16:27:04 UTC 2016  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * CIAO version 1.2a_p9 released.
+
+Fri Dec 18 13:36:52 UTC 2015  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * CIAO version 1.2a_p8 released.
+
+Fri Aug 28 17:11:09 UTC 2015  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * CIAO version 1.2a_p7 released.
+
+Wed Feb 25 16:14:06 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a_p6 released.
+
+Fri Jan 30 20:53:46 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a_p5 released.
+
+Mon Nov 10 17:48:59 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a_p4 released.
+
+Mon Aug 11 18:46:22 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a_p3 released.
+
+Tue May  6 18:28:36 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a_p2 released.
+
+Tue Feb 25 15:08:41 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a_p1 released.
+
+Mon Jun 10 20:27:39 UTC 2013  Phil  <mesnier_p@ociweb.com>
+
+        * CIAO version 1.2a released.
+
+Fri Jun  7 21:09:28 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * OCIChangeLog:
+        * PROBLEM-REPORT-FORM:
+        * VERSION:
+
+        * ciao/Version.h:
+
+        * rules.ciao.GNU:
+
+          Updated version identifier to be consistent with OCI builds.
+
+Local Variables:
+mode: change-log
+add-log-time-format: (lambda () (progn (setq tz (getenv "TZ")) (set-time-zone-rule "UTC") (setq time (format-time-string "%a %b %e %H:%M:%S %Z %Y" (current-time))) (set-time-zone-rule tz) time))
+indent-tabs-mode: nil
+End:

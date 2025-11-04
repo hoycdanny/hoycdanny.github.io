@@ -1,0 +1,9 @@
+// $Id: SharedIntf.idl 2287 2014-04-07 17:21:50Z mesnierp $
+
+module Test_Idl {
+  interface SharedIntf {
+    void do_upcall ();
+    void ping();
+    oneway void farewell();
+  };
+};

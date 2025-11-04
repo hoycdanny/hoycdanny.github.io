@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: rtscheduling.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : rtcorba, portableserver, pi, pi_server, avoids_corba_e_micro {
+  after   += RTScheduler
+  libs    += TAO_RTScheduler
+}

@@ -1,0 +1,13 @@
+//
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+//
+
+module Test
+{
+  /// An interface to send oneway messages
+  interface Oneway_Receiver
+  {
+    /// Return a simple string
+    oneway void receive_oneway ();
+  };
+};

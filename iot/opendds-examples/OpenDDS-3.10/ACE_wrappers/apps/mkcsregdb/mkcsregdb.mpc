@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: mkcsregdb.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project: aceexe {
+  exename = mkcsregdb
+  avoids += uses_wchar
+}

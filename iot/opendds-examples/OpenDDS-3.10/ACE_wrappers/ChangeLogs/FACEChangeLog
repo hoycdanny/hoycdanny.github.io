@@ -1,0 +1,1673 @@
+Wed Aug 12 16:51:43 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Message_Queue_T.cpp:
+        * ace/String_Base.h:
+
+          Reverted changes made for old LynxOS compiler.
+
+Tue Aug 11 21:07:59 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * OCIChangeLog:
+        * ace/Abstract_Timer_Queue.h:
+        * ace/CDR_Base.cpp:
+        * ace/Configuration.cpp:
+        * ace/Connector.cpp:
+        * ace/Dev_Poll_Reactor.cpp:
+        * ace/Event_Handler.h:
+        * ace/Get_Opt.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/MMAP_Memory_Pool.cpp:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_time.inl:
+        * ace/OS_NS_unistd.inl:
+        * ace/SOCK_Dgram_Bcast.cpp:
+        * ace/SSL/SSL_Context.cpp:
+        * ace/Select_Reactor_Base.cpp:
+        * ace/Service_Gestalt.cpp:
+        * ace/Sock_Connect.cpp:
+        * ace/TP_Reactor.cpp:
+        * ace/Thread_Manager.cpp:
+        * ace/WFMO_Reactor.cpp:
+        * ace/config-macosx-yosemite.h:
+        * ace/config-vxworks.h:
+        * ace/config-vxworks7.0.h:
+        * ace/config-win32-msvc-11.h:
+        * ace/config-win32-msvc-12.h:
+        * ace/config-win32-msvc-14.h:
+        * ace/config-win32-msvc.h:
+        * ace/os_include/sys/os_types.h:
+        * ace/pre.h:
+        * apps/JAWS/clients/WebSTONE/src/nsapi-includes/base/buffer.h:
+        * apps/JAWS/clients/WebSTONE/src/nsapi-includes/base/daemon.h:
+        * bin/fuzz.pl:
+        * examples/Reactor/Proactor/test_udp_proactor.cpp:
+        * include/makeinclude/platform_linux.GNU:
+        * include/makeinclude/platform_macosx_yosemite.GNU:
+        * include/makeinclude/platform_vxworks.GNU:
+        * include/makeinclude/platform_vxworks7.0.GNU:
+        * include/makeinclude/rules.lib.GNU:
+        * tests:
+        * tests/Bug_2820_Regression_Test.cpp:
+
+          Merged r2533 through r2615 from branch tao-2_2_0.
+
+Fri Jul 17 21:59:14 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * tests/Based_Pointer_Test.cpp:
+
+          Replaced a sprintf with snprintf.
+
+Fri Jul 17 19:05:46 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.cpp:
+        * ace/config-face-safety.h:
+
+          Updated the TSS emulation change from yesterday to allow safe
+          cleanup of TSS data in safety profile (pthread_key_delete disallowed).
+
+Thu Jul 16 22:14:48 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.cpp:
+        * ace/config-face-conftest.h:
+        * ace/config-face-safety.h:
+
+          Enable ACE_HAS_TSS_EMULATION for face safety base profile.
+          This is needed so that the emulated joins (see ACE_LACKS_PTHREAD_JOIN)
+          don't release a waiting thread before TSS cleanup has completed
+          on the target thread.
+
+Wed Jul 15 21:40:41 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Message_Queue_Vx.cpp:
+        * ace/OS_NS_sys_utsname.cpp:
+        * ace/Parse_Node.cpp:
+        * ace/Pipe.cpp:
+
+          Fixes for building safety-profile enabled ACE for VxWorks.
+
+Thu Jul  9 18:08:39 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * bin/PerlACE/ProcessAndroid.pm:
+        * bin/PerlACE/ProcessVX_Unix.pm:
+        * bin/PerlACE/Process_Unix.pm:
+        * bin/PerlACE/Run_Test.pm:
+        * bin/PerlACE/TestTarget.pm:
+        * bin/PerlACE/TestTarget_Android.pm:
+
+          Imported PerlACE (scripts for testing) changes from upstream DOC repo.
+
+Thu Jul  9 14:58:40 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.cpp:
+        * ace/config-macros.h:
+
+          Revisions to the ACE_OS::event_*() changes based on code review.
+
+Tue Jul  7 19:03:25 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+
+          Updated ACE_OS::event_*() functions on POSIX-like platforms to not
+          require process-shared mutex/condvar support in order to use
+          mutex/condvar as the implementation of Events that are not shared
+          between processes.  Refactored the code while preserving the algorithm
+          of emulating NT Events on top of POSIX APIs.  Attempted to reduce
+          unneeded code duplication and violations of ACE guidelines.
+
+Thu Jul  2 20:45:39 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Task.h:
+        * ace/Task.cpp:
+        * ace/Thread_Manager.h:
+        * ace/Thread_Manager.cpp:
+
+          Moved support for emulating thread joins (when ACE_LACKS_PTHREAD_JOIN)
+          from Task to Thread_Manager, since Task uses Thread Manager for these
+          operations anyway.  This allows ACE tests that use Thread Manager
+          directly to work with emulated joins.
+
+        * tests/Handle_Set_Test.cpp:
+        * tests/Logging_Strategy_Test.cpp:
+        * tests/MEM_Stream_Test.cpp:
+        * tests/Max_Default_Port_Test.cpp:
+        * tests/Message_Block_Test.cpp:
+        * tests/Multicast_Test.cpp:
+        * tests/Process_Strategy_Test.cpp:
+        * tests/Recursive_Mutex_Test.cpp:
+        * tests/SOCK_Dgram_Bcast_Test.cpp:
+        * tests/Sendfile_Test.cpp:
+        * tests/Thread_Mutex_Test.cpp:
+        * tests/Thread_Pool_Reactor_Resume_Test.cpp:
+        * tests/Thread_Pool_Reactor_Test.cpp:
+
+          Adapted more tests to work with ACE_FACE_SAFETY_BASE.
+
+Wed Jul  1 17:00:27 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          No epoll/devpoll in safety profile.
+
+        * tests/Bug_2609_Regression_Test.cpp:
+        * tests/Bug_3943_Regression_Test.cpp:
+        * tests/Conn_Test.cpp:
+        * tests/MT_Reference_Counted_Event_Handler_Test.cpp:
+        * tests/MT_SOCK_Test.cpp:
+        * tests/Priority_Reactor_Test.cpp:
+        * tests/Reactor_Performance_Test.cpp:
+        * tests/SOCK_Send_Recv_Test.cpp:
+        * tests/SOCK_Test.cpp:
+        * tests/TP_Reactor_Test.cpp:
+
+          Tests that depend on Acceptor need to check ACE_LACKS_ACCEPT.
+
+Wed Jul  1 16:06:41 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Category.inl:
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+
+          Adapted the non-varargs logging mechanism to be compatible
+          with the latest logging features in this version ACE+TAO.
+
+Tue Jun 30 16:51:47 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/INET_Addr.cpp:
+        * ace/config-face-safety.h:
+        * ace/config-linux.h:
+        * tests/Env_Value_Test.cpp:
+        * tests/Handle_Set_Test.cpp:
+        * tests/Log_Msg_Test.cpp:
+        * tests/Log_Thread_Inheritance_Test.cpp:
+        * tests/Naming_Test.cpp:
+        * tests/Network_Adapters_Test.h:
+        * tests/Network_Adapters_Test.cpp:
+        * tests/OS_Test.cpp:
+        * tests/Pipe_Test.cpp:
+        * tests/Process_Manager_Test.cpp:
+        * tests/Process_Mutex_Test.cpp:
+        * tests/RW_Process_Mutex_Test.cpp:
+
+          Updated ACE and its tests to make tests work with FACE safety
+          profile on Linux.  This the first of a few iterations.
+
+Tue Jun 30 16:41:05 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/CDR_Base.cpp:
+
+          Fixed bugs caused by changes to normalize.
+
+Mon Jun 29 15:53:00 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Configuration_Import_Export.cpp:
+
+          Adapted for compatibility with safety profile (no sprintf, fputs).
+
+Fri Jun 26 22:04:42 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_netdb.inl:
+
+          If the *_r functions are not supported, use h_errnop to report this
+          fact back to the caller (who won't be depending on errno being set).
+
+        * ace/ace_wchar.inl:
+
+          Fixed a signed/unsigned comparison when ACE_LACKS_WCSLEN.
+
+        * ace/config-face-safety.h:
+
+          Use 127.0.0.1 as ACE_LOCALHOST since name resolution isn't available.
+
+        * tests/Thread_Creation_Threshold_Test.cpp:
+
+          Scale down in safety profile since memory isn't freed back to heap.
+
+        * ACE.mwc:
+
+          Removed this file.  ACE.mwc is not included in the OCITAO distro.
+
+Thu Jun 25 19:46:05 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * tests/Pipe_Test.cpp:
+        * tests/Process_Manager_Test.cpp:
+        * tests/Process_Mutex_Test.cpp:
+        * tests/Process_Strategy_Test.cpp:
+        * tests/RW_Process_Mutex_Test.cpp:
+        * tests/Test_Output.cpp:
+
+          Fixed warnings in tests directory on LynxOS-178 2.3.2.
+
+Thu Jun 25 19:05:04 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_stdlib.cpp:
+        * ace/Object_Manager_Base.cpp:
+
+          Fixed compiler warnings on LynxOS-178 2.3.2.
+
+Thu Jun 25 15:45:16 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.inl:
+        * ace/README:
+        * ace/config-lynxos-178.h:
+        * tests/OS_Test.cpp:
+
+          Porting to LynxOS-178 2.3.2.
+
+Wed Jun 24 21:43:12 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-lynxos-178.h:
+
+          Porting to LynxOS-178 2.3.2.
+
+Wed Jun 24 19:02:11 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Free_List.cpp:
+
+          Added missing include.
+
+Fri Jun 19 21:00:45 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Log_Category.h:
+        * ace/Log_Category.inl:
+
+          Dispatch to logger.
+
+        * ace/Singleton.cpp:
+
+          Statically allocate singleton locks in ACE_FACE_SAFETY_BASE.
+
+Fri Jun 19 18:16:24 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Array_Map.h:
+
+          Added missing include.
+
+        * ace/Log_Category.h:
+        * ace/Log_Category.inl:
+
+          Applied Adam's comma operator fix.
+
+        * ace/OS_NS_Thread.inl:
+
+          Handle opaque pthread_t.
+
+        * ace/config-face-conftest.h:
+
+          Various updates.
+
+Fri Jun 19 16:44:08 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.cpp:
+
+          Standardize use of ACE_HAS_VASPRINTF and ACE_HAS_VASWPRINTF to
+          match non-FACE branch.
+
+Fri Jun 19 16:43:30 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/ace.mpc:
+
+          Removed FACE_Safety_Allocator.
+
+        * ace/FACE_Safety_Allocator.h:
+        * ace/FACE_Safety_Allocator.inl:
+        * ace/FACE_Safety_Allocator.cpp:
+        * ace/Use_FACE_Allocator.h:
+
+          Removed these files.
+
+Thu Jun 18 21:28:09 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/Log_Record.cpp:
+
+          Add missing argument in call to format_msg().
+
+Thu Jun 18 19:37:48 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Task.cpp:
+
+          Delay signaling for pthread_join replacement.
+
+Wed Jun 17 18:16:27 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Dev_Poll_Reactor.h:
+        * ace/Dev_Poll_Reactor.cpp:
+
+          Use ACE_ALLOC_HOOKS.
+
+Wed Jun 17 18:01:05 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/ACE.cpp:
+        * ace/ARGV.cpp:
+        * ace/Cleanup.cpp:
+        * ace/Configuration.cpp:
+        * ace/Dirent_Selector.cpp:
+        * ace/Filecache.cpp:
+        * ace/INET_Addr.cpp:
+        * ace/Lib_Find.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/Mutex.inl:
+        * ace/Name_Space.cpp:
+        * ace/Naming_Context.cpp:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_dirent.cpp:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_stdlib.cpp:
+        * ace/OS_NS_string.cpp:
+        * ace/OS_NS_unistd.cpp:
+        * ace/SString.inl:
+        * ace/Sock_Connect.cpp:
+        * ace/Stack_Trace.cpp:
+
+          Remove calls to malloc/calloc/realloc/free.
+
+Tue Jun 16 21:34:58 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          Define ACE_LACKS_STD_WSTRING to prevent build errors.
+
+Tue Jun 16 21:21:42 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+        * ace/Malloc_Allocator.cpp:
+        * ace/OS_NS_stdlib.cpp:
+
+          Fix compiler warnings.
+
+Tue Jun 16 19:32:13 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+
+          Fix compiler warning.
+
+Tue Jun 16 17:36:23 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Array_Map.h:
+
+          Added Alloc template parameter to comparison functions.
+
+Tue Jun 16 16:53:09 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Log_Record.inl:
+
+          Added missing include.
+
+Tue Jun 16 15:54:17 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Auto_Ptr.inl:
+
+          Added missing include.
+
+Tue Jun 16 15:43:52 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+
+          Protect putc macro.
+
+Mon Jun 15 19:12:47 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Null_Mutex.cpp:
+
+          Added missing file.
+
+Mon Jun 15 19:06:06 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/ACE.inl:
+        * ace/ACE.cpp:
+        * ace/ARGV.cpp:
+        * ace/Array_Map.h:
+        * ace/Array_Map.inl:
+        * ace/Array_Map.cpp:
+        * ace/Auto_Ptr.inl:
+        * ace/Based_Pointer_Repository.cpp:
+        * ace/CDR_Stream.inl:
+        * ace/CDR_Stream.cpp:
+        * ace/Capabilities.h:
+        * ace/Capabilities.cpp:
+        * ace/Cleanup.h:
+        * ace/Cleanup.cpp:
+        * ace/Codecs.cpp:
+        * ace/Codeset_Registry.cpp:
+        * ace/Configuration.h:
+        * ace/Configuration.cpp:
+        * ace/Configuration_Import_Export.cpp:
+        * ace/DLL.cpp:
+        * ace/DLL_Manager.h:
+        * ace/DLL_Manager.cpp:
+        * ace/Dump.h:
+        * ace/Dump.cpp:
+        * ace/Dynamic.h:
+        * ace/Dynamic.cpp:
+        * ace/FILE_IO.cpp:
+        * ace/Filecache.h:
+        * ace/Filecache.cpp:
+        * ace/Framework_Component.cpp:
+        * ace/Framework_Component_T.h:
+        * ace/Framework_Component_T.cpp:
+        * ace/Get_Opt.h:
+        * ace/Get_Opt.cpp:
+        * ace/Lib_Find.cpp:
+        * ace/Local_Memory_Pool.cpp:
+        * ace/Local_Name_Space.cpp:
+        * ace/Local_Name_Space_T.h:
+        * ace/Local_Name_Space_T.cpp:
+        * ace/Log_Category.h:
+        * ace/Log_Category.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/Log_Msg_IPC.h:
+        * ace/Log_Msg_IPC.cpp:
+        * ace/Log_Record.inl:
+        * ace/Log_Record.cpp:
+        * ace/Logging_Strategy.cpp:
+        * ace/MEM_Acceptor.cpp:
+        * ace/Malloc_Base.h:
+        * ace/Malloc_T.h:
+        * ace/Malloc_T.cpp:
+        * ace/Managed_Object.cpp:
+        * ace/Monitor_Base.cpp:
+        * ace/Monitor_Control_Types.h:
+        * ace/Naming_Context.h:
+        * ace/Naming_Context.cpp:
+        * ace/Notification_Queue.h:
+        * ace/Notification_Queue.cpp:
+        * ace/Null_Mutex.h:
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_stropts.inl:
+        * ace/OS_NS_unistd.cpp:
+        * ace/OS_Thread_Adapter.h:
+        * ace/OS_Thread_Adapter.cpp:
+        * ace/Object_Manager.h:
+        * ace/Object_Manager.cpp:
+        * ace/Object_Manager_Base.h:
+        * ace/Object_Manager_Base.cpp:
+        * ace/Parse_Node.cpp:
+        * ace/Priority_Reactor.cpp:
+        * ace/Process.h:
+        * ace/Process.cpp:
+        * ace/Process_Manager.h:
+        * ace/Process_Manager.cpp:
+        * ace/Remote_Name_Space.h:
+        * ace/Remote_Name_Space.cpp:
+        * ace/SOCK_Dgram.cpp:
+        * ace/SOCK_Dgram_Bcast.h:
+        * ace/SOCK_Dgram_Bcast.cpp:
+        * ace/SOCK_Dgram_Mcast.cpp:
+        * ace/SOCK_IO.cpp:
+        * ace/SOCK_SEQPACK_Acceptor.cpp:
+        * ace/SOCK_SEQPACK_Association.cpp:
+        * ace/SOCK_SEQPACK_Connector.cpp:
+        * ace/SString.cpp:
+        * ace/Sample_History.cpp:
+        * ace/Service_Gestalt.h:
+        * ace/Service_Gestalt.cpp:
+        * ace/Service_Object.cpp:
+        * ace/Service_Repository.h:
+        * ace/Service_Types.cpp:
+        * ace/Sig_Adapter.h:
+        * ace/Sig_Adapter.cpp:
+        * ace/String_Base.cpp:
+        * ace/Svc_Conf_Lexer.cpp:
+        * ace/TSS_Adapter.h:
+        * ace/TSS_Adapter.cpp:
+        * ace/Thread_Adapter.h:
+        * ace/Thread_Adapter.cpp:
+        * ace/Thread_Exit.h:
+        * ace/Thread_Exit.cpp:
+        * ace/Thread_Manager.h:
+        * ace/Thread_Manager.cpp:
+        * ace/UUID.h:
+        * ace/UUID.cpp:
+        * ace/ace.mpc:
+        * ace/ace_for_tao.mpc:
+        * ace/config-face-safety.h:
+
+          Remove calls to new.
+
+Wed Jun 10 21:17:16 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/CDR_Base.cpp:
+        * tests/CDR_Fixed_Test.cpp:
+
+          Rewrote normalize to fix off-by-one error.  Fixed bug in
+          division and added test.
+
+Tue Jun  9 20:49:52 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Arg_Shifter.cpp:
+
+          Applied failed patch.
+
+Tue Jun  9 19:48:32 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Arg_Shifter.cpp:
+
+          Pull in subsequent changes.
+
+     Fri Jun  5 21:17:57 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/Malloc_Allocator.cpp:
+
+             free does nothing.
+
+     Fri Jun  5 16:42:41 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/Task.cpp:
+
+             Move expected join count to activation to avoid race.
+
+     Wed Jun  3 19:39:50 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/Task.cpp:
+
+             Fixed guards.
+
+     Wed Jun  3 19:31:46 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/Task.h:
+             * ace/Task.cpp:
+             * ace/config-face-safety.h:
+
+             Support for lack of pthread_join.
+
+     Thu May 28 17:00:53 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/config-face-conftest.h:
+
+             Added macro for new throw specs.
+
+     Tue May 26 20:11:34 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/config-face-safety.h:
+
+             Enable thread join to prevent test failure.
+
+     Tue May 19 20:47:43 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+             * ace/Arg_Shifter.cpp
+             * ace/Free_List.cpp
+             * ace/Free_List.h
+             * ace/Malloc_T.h
+             * ace/Malloc_T.inl
+             * ace/Timer_Heap_T.cpp
+             * ace/config-macros.h
+
+             Remove calls to global operator new and delete.
+
+Mon Jun  8 21:17:36 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Arg_Shifter.cpp:
+        * ace/Auto_Event.cpp:
+        * ace/Auto_IncDec_T.cpp:
+        * ace/Event.cpp:
+        * ace/Event_Base.cpp:
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+        * ace/Manual_Event.cpp:
+        * ace/Module.cpp:
+        * ace/Service_Object.cpp:
+        * ace/Task_Ex_T.cpp:
+        * ace/config-macros.h:
+          Catching the missing headers in templates.
+
+        * tests/Service_Config_Stream_Test.cpp:
+        * tests/UUID_Test.cpp:
+          Updated these tests to be Safety Base compatible.
+
+Mon Jun  8 15:39:50 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Object_Manager.cpp:
+        * tests/Config_Test.cpp:
+          Reverted FACE Safety Allocator integration.
+
+Fri Jun  5 23:38:53 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Addr.cpp:
+        * ace/Condition_T.cpp:
+        * ace/DEV_Addr.cpp:
+        * ace/DEV_Connector.cpp:
+        * ace/DEV_IO.cpp:
+        * ace/Dev_Poll_Reactor.cpp:
+        * ace/FIFO.cpp:
+        * ace/FIFO_Recv.cpp:
+        * ace/FIFO_Recv_Msg.cpp:
+        * ace/FIFO_Send.cpp:
+        * ace/FIFO_Send_Msg.cpp:
+        * ace/FILE_Connector.cpp:
+        * ace/FILE_IO.cpp:
+        * ace/File_Lock.cpp:
+        * ace/Handle_Set.cpp:
+        * ace/ICMP_Socket.cpp:
+        * ace/INET_Addr.cpp:
+        * ace/IO_SAP.cpp:
+        * ace/IPC_SAP.cpp:
+        * ace/LSOCK.cpp:
+        * ace/LSOCK_Acceptor.cpp:
+        * ace/LSOCK_CODgram.cpp:
+        * ace/LSOCK_Connector.cpp:
+        * ace/LSOCK_Dgram.cpp:
+        * ace/LSOCK_Stream.cpp:
+        * ace/Log_Msg.h:
+        * ace/MEM_Addr.cpp:
+        * ace/Mem_Map.cpp:
+        * ace/Message_Queue_T.cpp:
+        * ace/Module.cpp:
+        * ace/Mutex.cpp:
+        * ace/Obchunk.cpp:
+        * ace/Ping_Socket.cpp:
+        * ace/Pipe.cpp:
+        * ace/Process_Semaphore.cpp:
+        * ace/Profile_Timer.cpp:
+        * ace/Recursive_Thread_Mutex.cpp:
+        * ace/SOCK.cpp:
+        * ace/SOCK_Acceptor.cpp:
+        * ace/SOCK_CODgram.cpp:
+        * ace/SOCK_Connector.cpp:
+        * ace/SOCK_Dgram.cpp:
+        * ace/SOCK_Dgram_Bcast.cpp:
+        * ace/SOCK_Dgram_Mcast.cpp:
+        * ace/SOCK_Netlink.cpp:
+        * ace/SPIPE_Acceptor.cpp:
+        * ace/SPIPE_Connector.cpp:
+        * ace/SV_Message_Queue.cpp:
+        * ace/SV_Semaphore_Complex.cpp:
+        * ace/SV_Semaphore_Simple.cpp:
+        * ace/SV_Shared_Memory.cpp:
+        * ace/Semaphore.cpp:
+        * ace/Stream.cpp:
+        * ace/Stream_Modules.cpp:
+        * ace/TSS_T.cpp:
+        * ace/Timer_Heap_T.cpp:
+        * ace/Trace.cpp:
+        * ace/UNIX_Addr.cpp:
+        * ace/config-macros.h:
+          Got the library to compile for Linux target.
+
+Fri Jun  5 13:45:54 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE.mwc:
+
+        * ACEXML/common/HttpCharStream.cpp:
+        * ACEXML/common/Mem_Map_Stream.cpp:
+
+        * FACEChangeLog:
+        * ace:
+
+        * ace/ACE.h:
+        * ace/ACE.cpp:
+        * ace/ARGV.cpp:
+        * ace/Acceptor.cpp:
+        * ace/Activation_Queue.cpp:
+        * ace/Active_Map_Manager_T.cpp:
+        * ace/Arg_Shifter.cpp:
+        * ace/Assert.cpp:
+        * ace/Atomic_Op_T.h:
+        * ace/Atomic_Op_T.cpp:
+        * ace/Auto_IncDec_T.h:
+        * ace/Auto_IncDec_T.cpp:
+        * ace/Auto_Ptr.cpp:
+        * ace/Barrier.cpp:
+        * ace/Based_Pointer_T.cpp:
+        * ace/Bound_Ptr.h:
+        * ace/Bound_Ptr.inl:
+        * ace/Bound_Ptr.cpp:
+        * ace/Cache_Map_Manager_T.h:
+        * ace/Cache_Map_Manager_T.cpp:
+        * ace/Cached_Connect_Strategy_T.h:
+        * ace/Cached_Connect_Strategy_T.cpp:
+        * ace/Caching_Strategies_T.h:
+        * ace/Caching_Strategies_T.cpp:
+        * ace/Condition_T.h:
+        * ace/Condition_T.cpp:
+        * ace/Connector.h:
+        * ace/Connector.cpp:
+        * ace/Containers.cpp:
+        * ace/Containers_T.h:
+        * ace/Containers_T.cpp:
+        * ace/DEV.cpp:
+        * ace/DEV_IO.cpp:
+        * ace/Dev_Poll_Reactor.cpp:
+        * ace/ETCL:
+
+        * ace/ETCL/ETCL_Constraint.cpp:
+        * ace/ETCL/ETCL_Interpreter.cpp:
+
+        * ace/Event_Handler.h:
+        * ace/Event_Handler_Handle_Timeout_Upcall.h:
+        * ace/Event_Handler_Handle_Timeout_Upcall.cpp:
+        * ace/FACE_Safety_Allocator.h:
+        * ace/FACE_Safety_Allocator.inl:
+        * ace/FACE_Safety_Allocator.cpp:
+        * ace/FILE.cpp:
+        * ace/FILE_Addr.cpp:
+        * ace/FILE_IO.cpp:
+        * ace/Flag_Manip.cpp:
+        * ace/Functor_T.h:
+        * ace/Functor_T.cpp:
+        * ace/Future.cpp:
+        * ace/Future_Set.cpp:
+        * ace/Guard_T.h:
+        * ace/Handle_Set.cpp:
+        * ace/Hash_Cache_Map_Manager_T.h:
+        * ace/Hash_Cache_Map_Manager_T.cpp:
+        * ace/Hash_Map_Manager_T.h:
+        * ace/Hash_Map_Manager_T.inl:
+        * ace/Hash_Map_Manager_T.cpp:
+        * ace/Hash_Multi_Map_Manager_T.h:
+        * ace/Hash_Multi_Map_Manager_T.inl:
+        * ace/Hash_Multi_Map_Manager_T.cpp:
+        * ace/High_Res_Timer.h:
+        * ace/High_Res_Timer.cpp:
+        * ace/INET_Addr.cpp:
+        * ace/Intrusive_Auto_Ptr.cpp:
+        * ace/LSOCK.cpp:
+        * ace/LSOCK_Stream.cpp:
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+        * ace/Log_Msg_UNIX_Syslog.cpp:
+        * ace/Log_Record.h:
+        * ace/Log_Record.cpp:
+        * ace/MEM_SAP.cpp:
+        * ace/MMAP_Memory_Pool.h:
+        * ace/MMAP_Memory_Pool.cpp:
+        * ace/Malloc_Allocator.cpp:
+        * ace/Malloc_T.cpp:
+        * ace/Map_Manager.cpp:
+        * ace/Message_Queue.h:
+        * ace/Message_Queue_T.cpp:
+        * ace/Module.cpp:
+        * ace/Monitor_Base.cpp:
+        * ace/Monitor_Control:
+
+        * ace/Monitor_Control/CPU_Load_Monitor.cpp:
+        * ace/Monitor_Control/Constraint_Visitor.cpp:
+        * ace/Monitor_Control/Num_Threads_Monitor.cpp:
+
+        * ace/Monitor_Point_Registry.cpp:
+        * ace/Multihomed_INET_Addr.h:
+        * ace/Naming_Context.cpp:
+        * ace/Netlink_Addr.cpp:
+        * ace/Node.h:
+        * ace/Node.cpp:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_arpa_inet.inl:
+        * ace/OS_NS_ctype.inl:
+        * ace/OS_NS_devctl.h:
+        * ace/OS_NS_devctl.inl:
+        * ace/OS_NS_devctl.cpp:
+        * ace/OS_NS_netdb.cpp:
+        * ace/OS_NS_signal.inl:
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_stdio.cpp:
+        * ace/OS_NS_stdlib.h:
+        * ace/OS_NS_stdlib.inl:
+        * ace/OS_NS_stdlib.cpp:
+        * ace/OS_NS_string.h:
+        * ace/OS_NS_string.inl:
+        * ace/OS_NS_string.cpp:
+        * ace/OS_NS_stropts.inl:
+        * ace/OS_NS_sys_mman.inl:
+        * ace/OS_NS_sys_socket.inl:
+        * ace/OS_NS_sys_socket.cpp:
+        * ace/OS_NS_sys_time.h:
+        * ace/OS_NS_sys_time.inl:
+        * ace/OS_NS_sys_uio.cpp:
+        * ace/OS_NS_sys_utsname.cpp:
+        * ace/OS_NS_time.inl:
+        * ace/OS_NS_unistd.inl:
+        * ace/OS_NS_unistd.cpp:
+        * ace/Object_Manager.cpp:
+        * ace/Object_Manager_Base.cpp:
+        * ace/Obstack_T.cpp:
+        * ace/Pipe.h:
+        * ace/Pipe.cpp:
+        * ace/Process.h:
+        * ace/Process.cpp:
+        * ace/Process_Semaphore.cpp:
+        * ace/RB_Tree.h:
+        * ace/RB_Tree.cpp:
+        * ace/RW_Thread_Mutex.cpp:
+        * ace/Reactor_Impl.cpp:
+        * ace/Reactor_Token_T.cpp:
+        * ace/Refcounted_Auto_Ptr.cpp:
+        * ace/SOCK_Dgram.cpp:
+        * ace/SOCK_Dgram_Bcast.cpp:
+        * ace/SOCK_IO.h:
+        * ace/SOCK_IO.cpp:
+        * ace/SOCK_Stream.cpp:
+        * ace/SPIPE.cpp:
+        * ace/SPIPE_Stream.h:
+        * ace/SPIPE_Stream.cpp:
+        * ace/SSL:
+        * ace/SV_Message.cpp:
+        * ace/SV_Semaphore_Complex.cpp:
+        * ace/SV_Semaphore_Simple.h:
+        * ace/SV_Semaphore_Simple.inl:
+        * ace/SV_Semaphore_Simple.cpp:
+        * ace/Select_Reactor_Base.cpp:
+        * ace/Select_Reactor_T.cpp:
+        * ace/Service_Config.cpp:
+        * ace/Service_Manager.h:
+        * ace/Service_Object.h:
+        * ace/Service_Object.cpp:
+        * ace/Shared_Memory_MM.cpp:
+        * ace/Shared_Memory_Pool.cpp:
+        * ace/Shared_Memory_SV.cpp:
+        * ace/Signal.cpp:
+        * ace/Singleton.h:
+        * ace/Singleton.cpp:
+        * ace/Sock_Connect.cpp:
+        * ace/Stats.h:
+        * ace/Strategies_T.cpp:
+        * ace/Stream.cpp:
+        * ace/Stream_Modules.cpp:
+        * ace/String_Base.h:
+        * ace/String_Base.cpp:
+        * ace/Svc_Conf_Lexer.cpp:
+        * ace/Svc_Conf_y.cpp:
+        * ace/Synch_Options.cpp:
+        * ace/TSS_T.h:
+        * ace/TSS_T.cpp:
+        * ace/Task.cpp:
+        * ace/Task_Ex_T.cpp:
+        * ace/Task_T.inl:
+        * ace/Task_T.cpp:
+        * ace/Thread_Semaphore.cpp:
+        * ace/Time_Value.h:
+        * ace/Time_Value.cpp:
+        * ace/Timer_Heap_T.h:
+        * ace/Timer_Heap_T.cpp:
+        * ace/Timer_Queue_Iterator.h:
+        * ace/Timer_Queue_Iterator.cpp:
+        * ace/Trace.h:
+        * ace/UUID.h:
+        * ace/UUID.inl:
+        * ace/UUID.cpp:
+        * ace/Unbounded_Queue.cpp:
+        * ace/Unbounded_Set_Ex.cpp:
+        * ace/Use_FACE_Allocator.h:
+        * ace/Vector_T.h:
+        * ace/Vector_T.cpp:
+        * ace/ace.mpc:
+        * ace/ace_wchar.inl:
+        * ace/config-face-conftest.h:
+        * ace/config-face-safety.h:
+        * ace/config-lynxos-178.h:
+        * ace/config-lynxos.h:
+        * ace/config-macros.h:
+
+        * ace/os_include/net/os_if.h:
+
+        * ace/os_include/netinet/os_in.h:
+
+        * ace/os_include/os_errno.h:
+        * ace/os_include/os_pthread.h:
+        * ace/os_include/os_stdint.h:
+        * ace/os_include/os_stdlib.h:
+        * ace/os_include/os_stropts.h:
+
+        * ace/os_include/sys/os_sem.h:
+
+        * bin/MakeProjectCreator/config:
+
+        * include/makeinclude/platform_lynxos.GNU:
+
+        * tests:
+
+        * tests/Bound_Ptr_Test.cpp:
+        * tests/Bug_2980_Regression_Test.cpp:
+        * tests/Collection_Test.cpp:
+        * tests/Config_Test.cpp:
+        * tests/Log_Msg_Test.cpp:
+        * tests/MM_Shared_Memory_Test.cpp:
+        * tests/Naming_Test.cpp:
+        * tests/Pipe_Test.cpp:
+        * tests/Process_Manager_Test.cpp:
+        * tests/Process_Mutex_Test.cpp:
+        * tests/Process_Strategy_Test.cpp:
+        * tests/Process_Test.cpp:
+        * tests/RW_Process_Mutex_Test.cpp:
+        * tests/SOCK_Send_Recv_Test.cpp:
+        * tests/Sendfile_Test.cpp:
+        * tests/Sigset_Ops_Test.cpp:
+        * tests/Time_Service_Test.cpp:
+        * tests/UUID_Test.cpp:
+          Initial integration into ACE 6.2 derived branch.
+
+Wed May 13 16:45:32 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_arpa_inet.inl:
+        * ace/config-lynxos-178.h:
+
+          LynxOS-178 has no inet_ntop.
+
+Tue May 12 20:22:06 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_arpa_inet.inl:
+
+          If ACE_LACKS_VA_FUNCTIONS, use the platform's inet_ntop
+          instead of trying to emulate it with sprintf.
+
+Tue May 12 16:06:45 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Arg_Shifter.cpp:
+        * ace/Singleton.h:
+        * ace/Singleton.cpp:
+        * ace/Timer_Heap_T.h:
+        * ace/Timer_Heap_T.cpp:
+        * ace/Timer_Queue_T.h:
+        * ace/Timer_Queue_T.cpp:
+          Add allocator hooks to override the global new/delete.
+
+Mon May 11 15:00:10 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-face-conftest.h:
+        * ace/config-face-safety.h:
+
+          Moved previous change to config-face-conftest.h
+          to avoid clashing with platform headers.
+
+Mon May 11 14:04:53 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          Updated handling of ACE_LACKS_{STDIN,STDOUT,STDERR}
+          for compatibility with TAO headers.
+
+Fri May  8 19:27:17 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * tests/Pipe_Test.cpp:
+        * tests/Process_Manager_Test.cpp:
+        * tests/Process_Mutex_Test.cpp:
+        * tests/Process_Strategy_Test.cpp:
+        * tests/Process_Test.cpp:
+        * tests/RW_Process_Mutex_Test.cpp:
+        * tests/SOCK_Send_Recv_Test.cpp:
+        * tests/Sendfile_Test.cpp:
+        * tests/Time_Service_Test.cpp:
+        * tests/UUID_Test.cpp:
+
+          Updated tests to build with latest changes to FACE safety config.
+
+Fri May  8 15:24:46 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/INET_Addr.cpp:
+        * ace/OS_NS_arpa_inet.inl:
+        * ace/config-lynxos-178.h:
+
+          LynxOS-178 has no inet_pton, fall back on inet_addr.
+
+Thu May  7 18:31:57 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/ACE.cpp:
+        * ace/INET_Addr.cpp:
+        * ace/OS_NS_arpa_inet.inl:
+
+          Adapt to the previous round of changes to fix runtime problems.
+          Need to call inet_pton even for IPv4 when we have no inet_aton.
+          Avoid relying on sysconf for ACE::max_handles when ACE_LACKS_SYSCONF.
+
+        * ace/Log_Msg.cpp:
+
+          Allow logging to stderr in safety profile if ACE_FACE_DEV is enabled.
+
+Wed May  6 22:18:14 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+
+          Even with ACE_LACKS_GETC, need to check if getc is a macro to avoid
+          clobbering use of getc inside ACE_OS namespace.
+
+Wed May  6 22:01:09 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          Updates for compatibility with LynxOS-178 headers.
+
+Wed May  6 18:49:42 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ACEXML/common/HttpCharStream.cpp:
+        * ACEXML/common/Mem_Map_Stream.cpp:
+        * ace/DEV_IO.cpp:
+        * ace/ETCL/ETCL_Constraint.cpp:
+        * ace/ETCL/ETCL_Interpreter.cpp:
+        * ace/Event_Handler.h:
+        * ace/FACE_Safety_Allocator.cpp:
+        * ace/FILE_IO.cpp:
+        * ace/Handle_Set.cpp:
+        * ace/INET_Addr.cpp:
+        * ace/LSOCK.cpp:
+        * ace/LSOCK_Stream.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/Log_Record.h:
+        * ace/Monitor_Base.cpp:
+        * ace/Monitor_Control/CPU_Load_Monitor.cpp:
+        * ace/Monitor_Control/Constraint_Visitor.cpp:
+        * ace/Monitor_Control/Num_Threads_Monitor.cpp:
+        * ace/Monitor_Point_Registry.cpp:
+        * ace/Naming_Context.cpp:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_devctl.inl:
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_stdlib.inl:
+        * ace/OS_NS_stdlib.cpp:
+        * ace/OS_NS_string.cpp:
+        * ace/OS_NS_time.inl:
+        * ace/Object_Manager_Base.cpp:
+        * ace/Process.h:
+        * ace/Process.cpp:
+        * ace/README:
+        * ace/SOCK_Dgram.cpp:
+        * ace/SOCK_Dgram_Bcast.cpp:
+        * ace/SOCK_IO.h:
+        * ace/SOCK_IO.cpp:
+        * ace/SPIPE_Stream.h:
+        * ace/SPIPE_Stream.cpp:
+        * ace/SV_Semaphore_Complex.cpp:
+        * ace/SV_Semaphore_Simple.h:
+        * ace/SV_Semaphore_Simple.inl:
+        * ace/SV_Semaphore_Simple.cpp:
+        * ace/Service_Config.cpp:
+        * ace/Service_Object.cpp:
+        * ace/Shared_Memory_Pool.cpp:
+        * ace/Sock_Connect.cpp:
+        * ace/Stats.h:
+        * ace/Svc_Conf_Lexer.cpp:
+        * ace/Svc_Conf_y.cpp:
+        * ace/Task.cpp:
+        * ace/UUID.h:
+        * ace/UUID.inl:
+        * ace/UUID.cpp:
+        * ace/config-cray.h:
+        * ace/config-cygwin32.h:
+        * ace/config-face-conftest.h:
+        * ace/config-face-safety.h:
+        * ace/config-hpux-11.00.h:
+        * ace/config-netbsd.h:
+        * ace/config-rtems.h:
+        * ace/os_include/netinet/os_in.h:
+        * ace/os_include/os_errno.h:
+        * ace/os_include/os_pthread.h:
+        * ace/os_include/os_stdint.h:
+        * ace/os_include/os_stdlib.h:
+        * ace/os_include/os_string.h:
+        * ace/os_include/os_stropts.h:
+        * ace/os_include/sys/os_sem.h:
+        * ace/os_include/sys/os_types.h:
+
+          Updates to build ACE on top of the FACE Conformance Test Suite's
+          libc and libstdc++ headers using ace/config-face-conftest.h.
+
+Thu Apr 30 19:41:53 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Reverse_Lock_T.h:
+        * ace/Task.h:
+
+          Removed LynxOS-178 compiler workarounds for the old toolchain.
+
+Wed Apr 29 20:23:18 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * bin/MakeProjectCreator/modules/GNUACEWorkspaceCreator.pm:
+
+          Merged from OCITAO 1.6a:
+          Fri Mar 20 20:50:20 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+          Prevent running depgen twice during "make depend".
+
+Tue Apr 28 21:23:42 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/FACE_Safety_Allocator.h:
+        * ace/FACE_Safety_Allocator.cpp:
+        * ace/Object_Manager.cpp:
+        * ace/Use_FACE_Allocator.h:
+          Added an enabler for the FACE Safety Allocator. Building with the
+          safety base profiler initializes the allocator as before but now if
+          an application wants to use the allocator, the main cpp must include
+          ace/Use_FACE_Allocator.h and call the configure method if necessary.
+
+        * tests/Config_Test.cpp:
+          Use the new header file.
+
+Fri Apr 24 19:23:29 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/svcconf.mpb:
+        * ace/svcconfgen.mpc:
+        * bin/MakeProjectCreator/config/global.features:
+
+          Merged from OCITAO 1.6a:
+          Fri Feb 27 14:41:41 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+          The makefile rules for running yacc/bison to generate a parser for
+          svc.conf files are broken and will cause builds to fail if the
+          timestamps on the files involved are incorrect.
+
+          Imported change from DOC Group repository:
+
+          Thu Feb 25 07:38:54 UTC 2010  Johnny Willemsen  <jwillemsen@remedy.nl>
+          Moved regeneration support to its own file that is disabled by
+          defeault. Thanks to Joseph Sarbak <Joseph dot Sarbak at rbccm dot com>
+          for reporting this.
+          Set ace_svcconf_gen to 0, when this is set to 1 we enable svcconf
+          regeneration.
+
+Mon Apr 20 16:25:21 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/SString.cpp:
+        * ace/config-lynxos-178.h:
+        * include/makeinclude/platform_lynxos.GNU:
+
+          Updated for LynxOS-178 toolchain version 2.3.2.
+
+Fri Apr 17 20:56:07 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Object_Manager.cpp:
+          Temporarily disable allocator integration.
+
+Wed Apr 15 17:35:16 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/FACE_Safety_Allocator.h:
+        * ace/FACE_Safety_Allocator.inl:
+        * ace/FACE_Safety_Allocator.cpp:
+        * ace/Object_Manager.cpp:
+          Add a new allocator for use with safety base profile.
+
+        * tests/Config_Test.cpp:
+          Extended test to illustrate using new allocator.
+
+Fri Apr  3 13:57:08 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-macros.h:
+          Ignore null deletes.
+
+Mon Mar 16 21:31:25 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Atomic_Op_T.cpp:
+        * ace/Auto_Ptr.cpp:
+        * ace/Barrier.cpp:
+        * ace/DEV.cpp:
+        * ace/FILE.cpp:
+        * ace/Functor_T.cpp:
+        * ace/Malloc_Allocator.cpp:
+        * ace/Netlink_Addr.cpp:
+        * ace/Node.cpp:
+        * ace/RW_Thread_Mutex.cpp:
+        * ace/SOCK_IO.cpp:
+        * ace/SOCK_Stream.cpp:
+        * ace/SPIPE.cpp:
+        * ace/SPIPE_Stream.cpp:
+        * ace/SV_Message.cpp:
+        * ace/Shared_Memory_MM.cpp:
+        * ace/Shared_Memory_SV.cpp:
+        * ace/Signal.cpp:
+        * ace/Synch_Options.cpp:
+        * ace/Thread_Semaphore.cpp:
+        * ace/Time_Value.cpp:
+        * ace/config-macros.h:
+          update the custom new & delete operators to defer to the default
+          ACE_Allocator instance. Add includes as necessary.
+
+Mon Mar 16 15:20:01 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Alloc_Hook_Impl.h:
+        * ace/Alloc_Hook_Impl.cpp:
+        * ace/ARGV.cpp:
+        * ace/Acceptor.cpp:
+        * ace/Activation_Queue.cpp:
+        * ace/Active_Map_Manager_T.cpp:
+        * ace/Atomic_Op_T.h:
+        * ace/Atomic_Op_T.cpp:
+        * ace/Auto_IncDec_T.h:
+        * ace/Auto_IncDec_T.cpp:
+        * ace/Auto_Ptr.cpp:
+        * ace/Based_Pointer_T.cpp:
+        * ace/Bound_Ptr.h:
+        * ace/Bound_Ptr.inl:
+        * ace/Bound_Ptr.cpp:
+        * ace/Cache_Map_Manager_T.h:
+        * ace/Cache_Map_Manager_T.cpp:
+        * ace/Cached_Connect_Strategy_T.h:
+        * ace/Cached_Connect_Strategy_T.cpp:
+        * ace/Caching_Strategies_T.h:
+        * ace/Caching_Strategies_T.cpp:
+        * ace/Condition_T.h:
+        * ace/Condition_T.cpp:
+        * ace/Connector.h:
+        * ace/Connector.cpp:
+        * ace/Containers.cpp:
+        * ace/Containers_T.h:
+        * ace/Containers_T.cpp:
+        * ace/Dev_Poll_Reactor.cpp:
+        * ace/FILE_Addr.cpp:
+        * ace/Functor_T.h:
+        * ace/Functor_T.cpp:
+        * ace/Future.cpp:
+        * ace/Future_Set.cpp:
+        * ace/Guard_T.h:
+        * ace/Hash_Cache_Map_Manager_T.h:
+        * ace/Hash_Cache_Map_Manager_T.cpp:
+        * ace/Hash_Map_Manager_T.h:
+        * ace/Hash_Map_Manager_T.inl:
+        * ace/Hash_Map_Manager_T.cpp:
+        * ace/Hash_Multi_Map_Manager_T.h:
+        * ace/Hash_Multi_Map_Manager_T.inl:
+        * ace/Hash_Multi_Map_Manager_T.cpp:
+        * ace/Intrusive_Auto_Ptr.cpp:
+        * ace/MEM_SAP.cpp:
+        * ace/MMAP_Memory_Pool.h:
+        * ace/MMAP_Memory_Pool.cpp:
+        * ace/Malloc_T.cpp:
+        * ace/Map_Manager.cpp:
+        * ace/Message_Queue.h:
+        * ace/Message_Queue_T.cpp:
+        * ace/Module.cpp:
+        * ace/Multihomed_INET_Addr.h:
+        * ace/Node.h:
+        * ace/Node.cpp:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_stdlib.h:
+        * ace/OS_NS_stdlib.inl:
+        * ace/OS_NS_stdlib.cpp:
+        * ace/Obstack_T.cpp:
+        * ace/Process_Semaphore.cpp:
+        * ace/RB_Tree.h:
+        * ace/RB_Tree.cpp:
+        * ace/Reactor_Impl.cpp:
+        * ace/Reactor_Token_T.cpp:
+        * ace/Refcounted_Auto_Ptr.cpp:
+        * ace/Select_Reactor_Base.cpp:
+        * ace/Select_Reactor_T.cpp:
+        * ace/Service_Manager.h:
+        * ace/Service_Object.h:
+        * ace/Strategies_T.cpp:
+        * ace/Stream.cpp:
+        * ace/Stream_Modules.cpp:
+        * ace/String_Base.cpp:
+        * ace/TSS_T.h:
+        * ace/TSS_T.cpp:
+        * ace/Task_Ex_T.cpp:
+        * ace/Task_T.cpp:
+        * ace/Thread_Semaphore.cpp:
+        * ace/Time_Value.h:
+        * ace/Trace.h:
+        * ace/Unbounded_Queue.cpp:
+        * ace/Unbounded_Set_Ex.cpp:
+        * ace/Vector_T.h:
+        * ace/Vector_T.cpp:
+        * ace/ace.mpc:
+        * ace/config-macros.h:
+
+        * tests/Bound_Ptr_Test.cpp:
+        * tests/MM_Shared_Memory_Test.cpp:
+        * tests/Naming_Test.cpp:
+          Enable support for ACE_HAS_ALLOC_HOOKS inside ACE classes.
+          The bulk of the changes are adding DEFINE macros for various
+          template signatures.
+          Also brought over a fix to silence warnings about mktemp.
+
+Thu Feb 12 21:50:09 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Select_Reactor_Base.cpp:
+
+          If reactor notification queue is enabled and we are using
+          datagram sockets for the pipe, enable nonblocking writes.
+          It is safe to ignore the EWOULDBLOCK because the notification
+          data is in the queue.  The pipe is just used to wake up the
+          reactor thread from select.
+
+Tue Feb 10 22:57:40 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          Enable ACE_HAS_REACTOR_NOTIFICATION_QUEUE in the safety base
+          profile builds to avoid filling up the notification pipe.
+
+Fri Feb  6 20:31:03 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * tests/Collection_Test.cpp:
+
+          Fixed compilation error on LynxOS-178.
+
+Fri Feb  6 20:03:31 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+
+          Adapt the previous change to work on platforms where
+          ACE_UINT64 is a typedef of long.
+
+Fri Feb  6 19:53:35 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+
+          Added long and ulong overloads to avoid ambiguity when
+          inserting a LynxOS pid_t (long) or ACE_Reactor_Mask (ulong)
+          into a log message.
+          Technically logging a long needs to use %Ld or similar.
+          ACE translates the L modifier to l and std::sprintf() requires
+          that modifier for a long.  On many systems long is 32-bit so
+          it will work with %d (or similar).
+
+Fri Feb  6 18:48:35 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+        * ace/config-face-safety.h:
+
+          With the latest changes to ACE_Log_Msg,
+          logging can be enabled even without ACE_FACE_DEV.
+
+Fri Jan 23 14:56:55 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Assert.cpp:
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+        * tests/Collection_Test.cpp:
+        * tests/Log_Msg_Test.cpp:
+        * tests/Sigset_Ops_Test.cpp:
+
+          Added support for logging without varargs.
+          This is enabled when ACE_LACKS_VA_FUNCTIONS.
+          See comments in Log_Msg.h for notes on how
+          this implementation differs from the usual one.
+
+Mon Jan 19 19:38:09 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * include/makeinclude/platform_lynxos.GNU:
+
+          static_libs_only needs to be checked so we don't have -ldl for static.
+
+Mon Jan 19 16:27:51 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.cpp:
+        * ace/Pipe.cpp:
+        * ace/config-lynxos-178.h:
+
+          Updated support for ACE_OS::snprintf on platforms that have
+          no ::snprintf (LynxOS-178).  With ACE_FACE_DEV enabled, we
+          currently use ::vsprintf to implement ACE_OS::snprintf.
+          This will eventually be changed to avoid using varargs.
+
+Fri Jan 16 23:27:45 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+        * ace/Pipe.cpp:
+
+          Updated previous commit to use global namespace for <cstdio>
+          functions because LynxOS-178 doesn't use the std namespace.
+
+Fri Jan 16 17:09:26 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/ACE.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/Log_Record.cpp:
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.cpp:
+        * ace/Pipe.cpp:
+        * ace/config-face-safety.h:
+
+          Revised approach to supporting printf(), fprintf(), snprintf()
+          with the safety profile enabled.  Will need more work for LynxOS.
+
+Thu Jan 15 17:16:43 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdlib.inl:
+        * ace/config-face-safety.h:
+
+          Updated configs for getenv()/setenv().
+          getenv() is not allowed in safety base, but ACE_FACE_DEV allows it.
+
+Mon Jan 12 19:56:58 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_unistd.inl:
+
+          Enable ACE_OS::sleep(u_int) for safety base profile.
+          ACE_OS::sleep(ACE_Time_Value) already worked.
+
+Fri Jan  9 21:33:37 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_netdb.cpp:
+
+          Provide an alternative implementation for getting the MAC address
+          on Linux with saftey profile enabled (no ioctl).
+
+Thu Jan  8 21:52:15 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+        * ace/Pipe.cpp:
+        * tests/Bug_2980_Regression_Test.cpp:
+
+          Updates to make the latest changes compile on LynxOS-178.
+
+Thu Jan  8 20:09:19 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-linux-common.h:
+        * ace/OS_NS_string.h:
+        * ace/OS_NS_string.cpp:
+
+          strerror() is not allowed in the safety profile,
+          wrap strerror_r() if the platform supports it.
+
+        * ace/OS_NS_sys_time.inl:
+
+          ACE_OS::gettimeofday() now calls clock_gettime()
+          if gettimeofday() is not available.
+
+        * ace/ACE.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/Log_Record.h:
+        * ace/Log_Record.cpp:
+        * tests/Log_Msg_Test.cpp:
+
+          With the safety profile enabled, use std::snprintf instead of
+          ACE_OS::snprintf.  This allows ACE logging to work when ACE_FACE_DEV.
+
+Wed Jan  7 21:05:52 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Flag_Manip.cpp:
+        * ace/OS_NS_devctl.h:
+        * ace/OS_NS_devctl.inl:
+        * ace/OS_NS_devctl.cpp:
+        * ace/Pipe.cpp:
+        * ace/ace.mpc:
+        * ace/config-face-safety.h:
+        * ace/config-macros.h:
+
+          Open an ACE_Pipe (used by Select_Reactor_Base) in a way that's
+          conformant with FACE Safety Base Profile.  Since there is no pipe()
+          and no socketpair(), create a pair of local (Unix domain) datagram
+          sockets and connect one to the other.
+          Non-blocking reads on this socket requires ACE::set_flags() to be
+          conformant with the profile.  Instead of ioctl/fcntl, the posix_devctl
+          function from IEEE Std 1003.26 is used.  However, this is not
+          currently implemented by any target OS platform.  Therefore ACE has a
+          way to forward the call to ioctl: ACE_EMULATE_POSIX_DEVCTL_USING_IOCTL
+
+Tue Jan  6 22:42:36 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_sys_uio.cpp:
+        * ace/config-face-safety.h:
+        * ace/config-lynxos-178.h:
+          Added macros to exclude functions not supported by lynxOS 178
+          when VMOS_DEV is not defined. Most of these were also excluded
+          by the safety spec, and the ones that are not are either not
+          used or have emulations supplied.
+
+Tue Jan  6 19:40:26 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.inl:
+        * ace/Object_Manager_Base.cpp:
+
+          thread_mutex_destroy() is not supported on safety base.
+
+        * ace/config-face-safety.h:
+
+          Updated for safety base build on Linux: no wchar, no aio.
+
+        * tests/Bug_2980_Regression_Test.cpp:
+
+          #include required C stdlib header.
+
+Wed Dec 31 18:59:10 UTC 2014  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          Undefine ACE_HAS_RECURSIVE_MUTEXES when
+          ACE_LACKS_PTHREAD_MUTEXATTR_SETTYPE is set
+
+Mon Dec 22 17:37:46 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SString.cpp:
+          Add a compile guard to avoid lynxos 178 specific change.
+
+        * ace/config-lynxos.h:
+        * ace/config-lynxos-178.h:
+          Refactor config to make clear what is 178 specific.
+
+Thu Dec 18 17:51:04 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+          Override the VA arg function restriction to allow logging when
+          ACE_FACE_DEV is defined.
+
+        * ace/config-face-safety.h:
+          Add an override of the ACE_NDEBUG and ACE_NLOGGING flags when
+          using the new ACE_FACE_DEV flag. Also added
+          ACE_LACKS_IOSTREAM_TOTALLY to the safety extended profile.
+
+Wed Dec 17 23:44:40 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Atomic_Op_T.inl:
+          Reinclude algorithms to fix linux compile errors.
+
+        * ace/OS_NS_sys_time.h:
+        * ace/OS_NS_sys_time.inl:
+          Add gettimeofday_ to satisfy a seemingly compiler generated
+          reference.
+
+        * ace/SString.cpp:
+          Added explicit template static member instances.
+
+        * ace/config-lynxos-178.h:
+          Added new ACE_LACKS macro to get around singleton symbol
+          error.
+
+        * include/makeinclude/platform_lynxos.GNU:
+          Took out -lnsl for cross compile.
+
+Mon Dec 15 22:13:18 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Reverse_Lock_T.h:
+        * ace/Task.h:
+        * ace/Task_T.h:
+        * ace/Task_T.inl:
+          Replace namespace with class to work around broken compiler.
+          Reverted earlier hack to work around same issue.
+
+Fri Dec 12 20:17:40 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Atomic_Op_T.inl:
+        * ace/Message_Queue_T.cpp:
+        * ace/OS_NS_signal.inl:
+        * ace/OS_NS_sys_utsname.cpp:
+        * ace/String_Base.h:
+        * ace/Task_T.h:
+        * ace/Task_T.inl:
+        * ace/config-face-safety.h:
+        * ace/config-lynxos-178.h:
+        * ace/os_include/net/os_if.h:
+
+          Fix compilation errors in the cross compile environment.
+
+        * include/makeinclude/platform_lynxos.GNU:
+
+          Force the default cross compile version to be 2.3.0. This should
+          be moved to platform_macros.GNU at some point.
+
+Fri Dec  5 20:42:20 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_signal.inl:
+        * ace/config-face-safety.h:
+        * ace/config-lynxos-178.h:
+          Add lynxos-178 definitions and initial build support enhancements.
+
+Fri Dec  5 16:55:02 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/OS_NS_stdlib.inl:
+          Overlooked this syntax error.
+
+Thu Dec  4 23:07:35 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/ACE.h:
+        * ace/ACE.cpp:
+        * ace/High_Res_Timer.h:
+        * ace/High_Res_Timer.cpp:
+        * ace/Log_Msg.cpp:
+        * ace/Log_Msg_UNIX_Syslog.cpp:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_arpa_inet.inl:
+        * ace/OS_NS_ctype.inl:
+        * ace/OS_NS_signal.inl:
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_stdio.cpp:
+        * ace/OS_NS_stdlib.inl:
+        * ace/OS_NS_string.inl:
+        * ace/OS_NS_string.cpp:
+        * ace/OS_NS_stropts.inl:
+        * ace/OS_NS_sys_mman.inl:
+        * ace/OS_NS_sys_socket.inl:
+        * ace/OS_NS_sys_socket.cpp:
+        * ace/OS_NS_sys_time.inl:
+        * ace/OS_NS_sys_utsname.cpp:
+        * ace/OS_NS_unistd.inl:
+        * ace/OS_NS_unistd.cpp:
+        * ace/Object_Manager_Base.cpp:
+        * ace/Pipe.h:
+        * ace/Pipe.cpp:
+        * ace/Shared_Memory_Pool.cpp:
+        * ace/Sock_Connect.cpp:
+        * ace/TSS_T.cpp:
+        * ace/ace_wchar.inl:
+        * ace/config-face-safety.h:
+          insert wrappers to implement FACE Safety base and extended profiles.
+
+Wed Dec  3 22:55:15 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-face-safety.h:
+          refine the SIGSET restriction.
+
+Wed Dec  3 22:13:31 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-face-safety.h:
+        * ace/config-macros.h:
+          Added new config mix-in file for imposing restrictions required by the FACE
+          Safety base and extended profiles. Enable by defining either
+          ACE_FACE_SAFETY_BASE or ACE_FACE_SAFETY_EXTENDED macros.
+
+        * ACE.mwc:
+          Reintroduced this previously eliminated workspace definition.
+
+
+Local Variables:
+mode: change-log
+add-log-time-format: (lambda () (progn (setq tz (getenv "TZ")) (set-time-zone-rule "UTC") (setq time (format-time-string "%a %b %e %H:%M:%S %Z %Y" (current-time))) (set-time-zone-rule tz) time))
+indent-tabs-mode: nil
+End:

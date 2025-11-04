@@ -1,0 +1,8 @@
+# $Id: svc.conf.dynamic 943 2008-12-12 15:11:28Z mitza $
+#
+# Please see $TAO_ROOT/docs/Options.html for details on these options.
+#
+
+dynamic Resource_Factory Service_Object * TAO:_make_TAO_Default_Resource_Factory() "-ORBResources global -ORBReactorlock null -ORBInputCDRAllocator null"
+dynamic Client_Strategy_Factory Service_Object * TAO:_make_TAO_Default_Client_Strategy_Factory() "-ORBProfileLock null -ORBClientConnectionHandler RW -ORBConnectorLock null"
+dynamic Server_Strategy_Factory Service_Object * TAO:_make_TAO_Default_Server_Strategy_Factory() "-ORBConcurrency thread-per-connection -ORBPOALock null -ORBAllowReactivationofSystemIds 0"

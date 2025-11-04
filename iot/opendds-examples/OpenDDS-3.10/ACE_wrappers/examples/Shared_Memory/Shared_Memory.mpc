@@ -1,0 +1,15 @@
+// -*- MPC -*-
+// $Id: Shared_Memory.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*MM) : aceexe, avoids_ace_for_tao {
+  exename = testmm
+  Source_Files {
+    test_MM.cpp
+  }
+}
+project(*SV) : aceexe, avoids_ace_for_tao {
+  exename = testsv
+  Source_Files {
+    test_SV.cpp
+  }
+}

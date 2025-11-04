@@ -1,0 +1,8 @@
+// $Id: Test.idl 2231 2013-12-12 18:09:35Z mesnierp $
+
+interface Test
+{
+
+  short get_server_num ();
+
+};

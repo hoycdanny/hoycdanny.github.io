@@ -1,0 +1,5 @@
+// -*- MPC -*-
+// $Id: install.mpb 1861 2011-08-31 16:18:08Z mesnierp $
+
+project : install_bin, install_lib, install_headers, install_data {
+}

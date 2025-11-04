@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: acelib.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project: acedefaults, acenosubsets, ace_for_tao, versioned_namespace, pkgconfig {
+
+}
+

@@ -1,0 +1,11 @@
+// -*- MPC -*-
+// $Id: Bug_2377_Regression.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project(*Test) : orbsvcsexe, portablegroup, portableserver {
+  exename = uipmc_test
+
+  Source_Files {
+    Hello_Impl.cpp
+    uipmc_test.cpp
+  }
+}

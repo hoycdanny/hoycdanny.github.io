@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: rtportableserver.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : pi, portableserver, rtcorba, avoids_corba_e_micro {
+  after   += RTPortableServer
+  libs    += TAO_RTPortableServer
+}

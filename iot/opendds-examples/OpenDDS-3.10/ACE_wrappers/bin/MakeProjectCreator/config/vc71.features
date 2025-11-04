@@ -1,0 +1,6 @@
+// $Id: vc71.features 1861 2011-08-31 16:18:08Z mesnierp $
+
+ssl=0
+qos=1
+rwho=0
+sctp=0

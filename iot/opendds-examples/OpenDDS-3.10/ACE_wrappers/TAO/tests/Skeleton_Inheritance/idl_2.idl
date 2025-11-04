@@ -1,0 +1,15 @@
+//
+// $Id: idl_2.idl 2179 2013-05-28 22:16:51Z mesnierp $
+//
+
+#include "idl_1.idl"
+
+module Skeleton_Inheritance
+{
+  interface Interface_2 : Interface_1
+  {
+    string operation_2 ();
+
+    readonly attribute string attribute_2;
+  };
+};

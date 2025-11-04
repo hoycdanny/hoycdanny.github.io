@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: ziop.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : taolib, compression, pi, avoids_corba_e_micro {
+  after   += ZIOP
+  libs    += TAO_ZIOP
+}

@@ -1,0 +1,7 @@
+// $Id: Airplane.idl 14 2007-02-01 15:49:12Z mitza $
+
+interface Paper_Airplane_Server
+{
+  string get_plane ();
+  // Returns the plane of the moment.
+};

@@ -1,0 +1,17 @@
+// $Id: test.idl 2378 2014-10-10 15:56:52Z mesnierp $
+module taoimrtest
+{
+  module reconnectserver
+  {
+    interface Dummy
+    {
+      string getMessage ();
+    };
+
+    interface TimeSrv
+    {
+      long current_time ();
+      oneway void shutdown ();
+    };
+  };
+};

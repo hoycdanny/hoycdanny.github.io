@@ -1,0 +1,7 @@
+project: dcpsexe, dcps_transports_for_test {
+  exename = ReadConditionTest
+  idlflags += -SS
+  TypeSupport_Files {
+    Messenger.idl
+  }
+}

@@ -1,0 +1,20 @@
+//
+// $Id: struct.idl 14 2007-02-01 15:49:12Z mitza $
+//
+module StructTest {
+
+  struct MyStruct {
+    octet MyOctet;
+    unsigned long MyLong;
+  };
+
+  typedef MyStruct MyStructAlias;
+
+  union MyUnion switch (boolean) {
+  case TRUE :
+    unsigned short MyShort;
+  };
+
+  typedef MyUnion MyUnionAlias;
+
+};

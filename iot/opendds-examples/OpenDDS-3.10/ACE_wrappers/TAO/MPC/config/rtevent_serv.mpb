@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: rtevent_serv.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, rtevent_skel  {
+  avoids    += ace_for_tao  // Requires ACE_crc32
+  after     += RTEvent_Serv
+  libs      += TAO_RTEvent_Serv
+}

@@ -1,0 +1,16 @@
+// $Id: Country.idl.for_ifr 943 2008-12-12 15:11:28Z mitza $
+
+//IDL
+
+#ifndef TAO_COUNTRY_IDL
+#define TAO_COUNTRY_IDL
+
+//#include "orbsvcs/CosEventComm.idl"
+
+interface Country //: ::CosTypedEventComm::TypedPushConsumer 
+{
+  void update_population (in string country,
+                          in long population);
+};
+
+#endif /* TAO_COUNTRY_IDL */

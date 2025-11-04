@@ -1,0 +1,7 @@
+// $Id: subscriber.idl 935 2008-12-10 21:47:27Z mitza $
+
+interface Subscriber
+{
+  oneway void onData(in double value);
+  boolean isAlive();
+};

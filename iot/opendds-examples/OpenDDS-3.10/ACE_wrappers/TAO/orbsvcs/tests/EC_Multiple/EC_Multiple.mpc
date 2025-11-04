@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: EC_Multiple.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(EC_Multiple): rteventexe, rtevent_serv, rtschedevent, naming, iortable, messaging {
+  exename  = EC_Multiple
+}

@@ -1,0 +1,5 @@
+// $Id: Messenger.idl 14 2007-02-01 15:49:12Z mitza $
+interface Messenger {
+  boolean send_message (in string user_name, in string subject,
+                        inout string message);
+};

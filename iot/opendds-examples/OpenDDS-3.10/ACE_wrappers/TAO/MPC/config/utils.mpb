@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: utils.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project : portableserver, pi {
+  after += TAO_Utils
+  libs  += TAO_Utils
+}

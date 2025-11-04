@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: ccm_direct_collocation.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+feature (ccm_direct_collocation) : taobaseidldefaults {
+  macros += CCM_DIRECTCOLL
+  idlflags += -DCCM_DIRECTCOLL -Gd
+}

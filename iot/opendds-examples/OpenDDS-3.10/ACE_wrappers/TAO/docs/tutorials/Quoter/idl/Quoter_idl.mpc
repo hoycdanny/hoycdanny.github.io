@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: Quoter_idl.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Lib) : taoexe, portableserver {
+  dynamicflags += QUOTER_COMMON_BUILD_DLL
+  idlflags     += -Wb,export_macro=QUOTER_COMMON_Export -Wb,export_include=quoter_common_export.h -GT
+}

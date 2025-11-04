@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// $Id: Synch_Benchmarks.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project : aceexe {
+  exename   = synch_driver
+  after    += Synch_Lib
+  libs     += Synch_Lib
+  libpaths += Synch_Lib
+  source_files {
+    synch_driver.cpp
+  }
+}

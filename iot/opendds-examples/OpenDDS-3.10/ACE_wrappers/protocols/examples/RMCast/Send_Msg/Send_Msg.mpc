@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: Send_Msg.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*Sender) : aceexe, rmcast {
+  avoids = ace_for_tao
+  exename = sender
+  Source_Files {
+    Sender.cpp
+  }
+}
+project(*Receiver) : aceexe, rmcast {
+  avoids = ace_for_tao
+  exename = receiver
+  Source_Files {
+    Receiver.cpp
+  }
+}

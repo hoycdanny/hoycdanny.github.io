@@ -1,0 +1,11 @@
+//
+// $Id: test.idl 14 2007-02-01 15:49:12Z mitza $
+//
+
+interface test
+{
+  long method (in long client_id,
+               in long iteration);
+
+  oneway void shutdown ();
+};

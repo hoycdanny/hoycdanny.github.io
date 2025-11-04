@@ -1,0 +1,22 @@
+// $Id: NonRecursive.idl 14 2007-02-01 15:49:12Z mitza $
+//
+// Non-recursive types for compile-time testing.
+
+module Foo
+{
+  struct Nested
+  {
+    boolean z;
+  };
+};
+
+module Bar
+{
+  typedef Foo::Nested Nested;
+
+  struct Baz
+  {
+    Nested one;
+    Nested two;
+  };
+};

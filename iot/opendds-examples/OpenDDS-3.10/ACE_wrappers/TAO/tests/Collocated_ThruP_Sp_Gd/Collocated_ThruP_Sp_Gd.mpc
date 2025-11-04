@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: Collocated_ThruP_Sp_Gd.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+// Disable THRU_POA Collocation, enable Direct Collocation
+
+project(Coll_ThruP_Sp-Gd): taoserver {
+  exename = Coll_ThruP_Sp_Gd
+  idlflags += -Sp -Gd
+}

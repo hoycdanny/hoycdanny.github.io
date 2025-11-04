@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: dynamicany.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : taolib, anytypecode, valuetype {
+  after   += DynamicAny
+  libs    += TAO_DynamicAny
+}

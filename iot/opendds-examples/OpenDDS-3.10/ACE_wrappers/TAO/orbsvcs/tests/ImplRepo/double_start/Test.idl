@@ -1,0 +1,12 @@
+// $Id: Test.idl 2337 2014-08-01 19:55:55Z mesnierp $
+
+interface Test
+{
+
+  // for testing the crash recovery scenario
+  void arm ();
+
+  void trigger ();
+
+};
+

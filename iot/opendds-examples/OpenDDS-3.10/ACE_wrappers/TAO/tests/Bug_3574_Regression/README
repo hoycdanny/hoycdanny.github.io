@@ -1,0 +1,7 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+Description:
+- sequence of 100 elements, means buffer allocation of 100 elements
+- shrink to 99, means reinitialize 1 element to zap the old value
+- extend to 100, means no allocation
+

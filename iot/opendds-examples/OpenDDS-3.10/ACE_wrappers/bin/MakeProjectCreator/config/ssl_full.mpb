@@ -1,0 +1,12 @@
+// -*- MPC -*-
+//
+// $Id: ssl_full.mpb 14 2007-02-01 15:49:12Z mitza $
+
+feature(!ace_for_tao) {
+
+// Includes ACE_SSL asynch stream support.
+
+  after      += SSL
+  libs       += ACE_SSL
+
+}

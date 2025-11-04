@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: UDP.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project : aceexe {
+  avoids += ace_for_tao
+  exename = udp_test
+  verbatim(gnuace, local) {
+    LDLIBS += $(MATHLIB)
+  }
+}

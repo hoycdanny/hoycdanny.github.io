@@ -1,0 +1,17 @@
+
+//=============================================================================
+/**
+ *  $Id: Child.idl 14 2007-02-01 15:49:12Z mitza $
+ */
+//=============================================================================
+
+#pragma prefix "child.pragma.prefix"
+
+#include "Parent.idl"
+
+interface ChildInterface : ParentInterface {};
+
+module ChildModule
+  {
+    interface ChildInterface : ParentModule::ParentInterface {};
+  };

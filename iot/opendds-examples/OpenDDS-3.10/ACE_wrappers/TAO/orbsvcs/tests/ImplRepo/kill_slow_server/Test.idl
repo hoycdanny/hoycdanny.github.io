@@ -1,0 +1,9 @@
+// $Id: Test.idl 2244 2014-02-04 16:43:12Z mesnierp $
+
+interface Test
+{
+
+  short get_server_num ();
+  oneway void terminate ();
+
+};

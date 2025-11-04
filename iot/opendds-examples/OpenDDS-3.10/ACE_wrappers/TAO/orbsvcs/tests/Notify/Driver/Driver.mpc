@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: Driver.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project (Notify_Test_Driver): notifytest {
+  exename  = Notify_Tests_Driver
+
+  Source_Files {
+  main.cpp     
+  }
+}

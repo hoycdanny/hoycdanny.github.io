@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: FaultTolerance_IOGRManipulation.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(IOGRTest): taoserver, orbsvcsexe, iormanip, ftorb, messaging {
+  exename  = IOGRTest
+}

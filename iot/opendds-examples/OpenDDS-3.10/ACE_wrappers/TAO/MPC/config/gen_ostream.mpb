@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: gen_ostream.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+feature(gen_ostream) : taobaseidldefaults {
+  requires += gen_ostream
+  macros += GEN_OSTREAM_OPS
+  idlflags += -Gos
+}

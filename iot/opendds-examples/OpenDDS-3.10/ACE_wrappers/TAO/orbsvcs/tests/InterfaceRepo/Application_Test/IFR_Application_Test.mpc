@@ -1,0 +1,21 @@
+// -*- MPC -*-
+// $Id: IFR_Application_Test.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*server): taoexe, portableserver, ifr_client, avoids_minimum_corba, avoids_corba_e_compact, avoids_corba_e_micro, svc_utils {
+  exename = server
+  Source_Files {
+    test_i.cpp
+    server.cpp
+  }
+}
+
+project(*client): taoexe, portableserver, ifr_client, dynamicinterface, avoids_minimum_corba, avoids_corba_e_compact, avoids_corba_e_micro {
+  exename = client
+  IDL_Files {
+  }
+
+  Source_Files {
+    ifr_dii_client.cpp
+    client.cpp
+  }
+}

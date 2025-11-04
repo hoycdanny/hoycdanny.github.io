@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: example_base.mpb 1861 2011-08-31 16:18:08Z mesnierp $
+
+// Anything specific to examples could be added here. 
+// examples.mwc uses the implicit keyword to cause this 
+// project to be used as the base for all examples,
+project : aceexe {
+}

@@ -1,0 +1,4 @@
+# $Id: svc.conf.dynamic 1861 2011-08-31 16:18:08Z mesnierp $
+
+dynamic HA_Status_Dynamic_Service Service_Object *
+HA_Status:_make_HA_Status() "-f status.ini"

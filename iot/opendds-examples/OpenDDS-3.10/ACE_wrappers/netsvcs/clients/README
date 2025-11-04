@@ -1,0 +1,10 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This directory contains a number of test programs that illustrate how
+to write clients for the various ACE network services.
+
+  . Logger -- client programs that illustrate the ACE logging service.
+
+  . Naming -- client programs that illustrate the ACE name service.
+
+  . Tokens -- client programs that illustrate the ACE token service.

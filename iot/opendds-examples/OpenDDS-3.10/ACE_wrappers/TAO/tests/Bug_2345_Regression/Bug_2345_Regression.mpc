@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: Bug_2345_Regression.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Server) : taoserver, imr_client, avoids_corba_e_micro {
+  Source_Files {
+    server.cpp
+  }
+}

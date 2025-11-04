@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<!-- Converted from svc.conf by svcconf-convert.pl -->
+<ACE_Svc_Conf>
+ <!--  -->
+ <!--  $Id: svc.conf.xml 2179 2013-05-28 22:16:51Z mesnierp $ -->
+ <!--  -->
+ <static RT_ORB_Loader "-RTORBDynamicThreadIdleTimeout 100000">
+</ACE_Svc_Conf>

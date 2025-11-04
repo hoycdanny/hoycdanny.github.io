@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: Bug_2241_Regression.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project(Bug_2241_Regression): taoserver {
+  exename = Bug_2241_Regression
+}

@@ -1,0 +1,20 @@
+// -*- MPC -*-
+// $Id: AVS_Simple_Two_Stage.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*send): avstreamsexe {
+  exename  = sender
+
+  Source_Files {
+    sender.cpp
+  }
+}
+
+project(*recv): avstreamsexe {
+  exename  = receiver
+
+  Source_Files {
+    Receiver_Stats.cpp
+    receiver.cpp 
+  }
+}
+

@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: rteventlogadmin.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, dslogadmin, rtevent {
+  after     += RTEventLogAdmin
+  libs      += TAO_RTEventLogAdmin
+  tagchecks += RTEventLog
+}

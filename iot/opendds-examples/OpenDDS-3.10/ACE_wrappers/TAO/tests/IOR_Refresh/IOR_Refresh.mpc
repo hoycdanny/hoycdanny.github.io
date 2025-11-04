@@ -1,0 +1,37 @@
+// -*- MPC -*-
+// $Id: IOR_Refresh.mpc 2646 2015-08-28 00:38:05Z mesnierp $
+
+project(*_idl): taoidldefaults {
+  idlflags += -Sp
+  IDL_Files {
+    simple_test.idl
+  }
+  custom_only = 1
+}
+
+project(*_Server): taoserver, iortable {
+  after += *_idl
+  Source_Files {
+    simple_test_i.cpp
+    server.cpp
+  }
+  Source_Files {
+    simple_testS.cpp
+    simple_testC.cpp
+  }
+  IDL_Files {
+  }
+}
+
+project(*_Client): taoclient {
+  after += *_idl
+  exename = client
+  Source_Files {
+    client.cpp
+  }
+  Source_Files {
+    simple_testC.cpp
+  }
+  IDL_Files {
+  }
+}

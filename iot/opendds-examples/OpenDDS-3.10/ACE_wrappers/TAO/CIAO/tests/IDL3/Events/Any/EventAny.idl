@@ -1,0 +1,16 @@
+// $Id: EventAny.idl 14 2007-02-01 15:49:12Z mitza $
+/**
+ * @file EventAny.idl
+ * @author Jeff Parsons <j.parsons@vanderbilt.edu>
+ *
+ * Tests Any insertion/extraction of event types,
+ * and (de)marshaling of such Anys.
+ */
+
+#include <Components.idl>
+
+eventtype StringMsg
+{
+  public string str_msg;
+};
+

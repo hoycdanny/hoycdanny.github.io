@@ -1,0 +1,17 @@
+//$Id: Minimum_Base.idl 14 2007-02-01 15:49:12Z mitza $:
+
+#ifndef CIAO_MINIMUM_IDL
+#define CIAO_MINIMUM_IDL
+
+#include <Components.idl>
+
+module Minimum
+{
+  interface ReadMessage
+  {
+    void foo ();
+  };
+
+};
+
+#endif /* CIAO_MINIMUM_IDL */

@@ -1,0 +1,19 @@
+// $Id: Bug_2619_Regression.idl 14 2007-02-01 15:49:12Z mitza $
+
+// Test Bug 2619
+
+struct Type_T
+{
+   string  id;
+};
+
+valuetype T_Data_T
+{
+   public Type_T type;
+};
+
+interface Test
+{
+   typedef Type_T Group;
+   Group getGroup();
+};

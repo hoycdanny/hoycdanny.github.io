@@ -1,0 +1,16 @@
+// -*- MPC -*-
+// $Id: Log_RTEvent.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Consumer) : orbsvcsexe, rtevent_skel, naming, rteventlogadmin {
+  exename = RTEvent_Consumer
+  source_files {
+    RTEvent_Consumer.cpp
+  }
+}
+
+project(*Supplier) : orbsvcsexe, rtevent_skel, naming, rteventlogadmin {
+  exename = RTEvent_Supplier
+  source_files {
+    RTEvent_Supplier.cpp
+  }
+}

@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: ec_use_typed_events.mpb 14 2007-02-01 15:49:12Z mitza $
+
+feature(ec_typed_events) {
+  macros  += TAO_HAS_TYPED_EVENT_CHANNEL
+}

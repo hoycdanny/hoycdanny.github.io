@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: Registry.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*iterator) : aceexe, winregistry {
+  exename = iterator
+
+  Source_Files {
+    test_registry_iterator.cpp
+  }
+}
+project(*update) : aceexe, winregistry {
+  exename = update
+
+  Source_Files {
+    test_registry_update.cpp
+  }
+}

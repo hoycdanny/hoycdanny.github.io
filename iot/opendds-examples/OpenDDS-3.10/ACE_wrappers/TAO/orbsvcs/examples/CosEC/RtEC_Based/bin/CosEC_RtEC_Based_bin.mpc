@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: CosEC_RtEC_Based_bin.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : orbsvcsexe, rtevent_serv, event_skel, naming {
+  after   += CosEC_RtEC_Based_lib
+  exename  = RtEC_Based_CosEC
+  libs    += CosEC_RtEC_Based
+  includes += ../lib
+  libpaths += ../lib
+}

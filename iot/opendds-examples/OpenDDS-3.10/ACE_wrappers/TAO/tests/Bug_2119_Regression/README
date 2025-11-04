@@ -1,0 +1,5 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This test checks that the code generated from IDL defining a valuetype with a private anonymous sequence type field can be compiled.
+
+See the ticket for details. If it builds it's worked.

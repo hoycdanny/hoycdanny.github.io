@@ -1,0 +1,5 @@
+// -*- MPC -*-
+// $Id: kokyu_dsrt_scheduler_server.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project: taoserver, kokyu_dsrt_schedulers {
+}

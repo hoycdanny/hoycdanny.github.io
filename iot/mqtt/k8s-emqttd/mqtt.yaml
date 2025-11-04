@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: emqtt
+  namespace: emqtt
+  labels:
+    app: emqtt
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 1883
+      name: mqtt
+    - port: 8883
+      name: mqttssl
+    - port: 8083
+      name: mgmt
+    - port: 18083
+      name: dashboard
+  selector:
+    app: emqtt
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: emqtt-scaler
+  namespace: emqtt
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: emqtt
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 50
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: emqtt
+  namespace: emqtt
+  labels:
+    app: emqtt
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: emqtt
+    spec:
+      containers:
+      - name: emqtt
+        image: yellowiscool/emqttd-cluster
+        resources:
+          requests:
+            cpu: 20m
+            memory: 64Mi
+        env:
+          - name: MASTER_NODES
+            value: "10.32.0.4"
+        ports:
+        - containerPort: 1883
+        - containerPort: 8883
+        - containerPort: 8083
+        - containerPort: 18083
+        - containerPort: 4369
+        - containerPort: 6000
+        - containerPort: 6001
+        - containerPort: 6002
+        - containerPort: 6003
+        - containerPort: 6004
+        - containerPort: 6005
+        - containerPort: 6006
+        - containerPort: 6007
+        - containerPort: 6008
+        - containerPort: 6009
+        - containerPort: 6010
+        readinessProbe:
+          tcpSocket:
+            port: 1883
+          initialDelaySeconds: 5
+          periodSeconds: 10

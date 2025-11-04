@@ -1,0 +1,19 @@
+//
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+//
+
+module Test
+{
+  typedef sequence<octet> Payload;
+
+  interface Receiver {
+    /// Receive a big payload
+    void receive_data (in Payload the_payload);
+
+    /// Return the number of messages received so far
+    long get_event_count ();
+
+    /// A method to shutdown the ORB
+    oneway void shutdown ();
+  };
+};

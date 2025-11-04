@@ -1,0 +1,16 @@
+//  -*- MPC -*-
+// $Id: TMCast.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project : acelib, ace_output, install, threads {
+  avoids = ace_for_tao
+  sharedname    = ACE_TMCast
+  dynamicflags += TMCAST_BUILD_DLL
+
+  specific {
+    install_dir = ace/TMCast
+  }
+
+  Pkgconfig_Files {
+    ACE_TMCast.pc.in
+  }
+}

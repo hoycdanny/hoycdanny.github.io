@@ -1,0 +1,6 @@
+// $Id: TestCase.idl 14 2007-02-01 15:49:12Z mitza $
+
+#include "TestType.idl"
+
+typedef Array_Typedef Typedef_Of_Imported_Array_Typedef;
+

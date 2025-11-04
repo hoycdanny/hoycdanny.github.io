@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// $Id: Manage_Object_Group.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project(*server): orbsvcsexe, portablegroup, loadbalancing, naming, svc_utils {
+  exename = server
+  Source_Files {
+	server.cpp
+	LB_server.cpp
+	Basic.cpp
+	Simple.cpp
+  }
+}

@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: loadbalancing.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : messaging, naming, portablegroup, pi, pi_server, iorinterceptor {
+  libs      += TAO_CosLoadBalancing
+  after     += CosLoadBalancing
+  tagchecks += CosLoadBalancing
+  requires  += ami
+}

@@ -1,0 +1,13 @@
+// $Id: Basic_Logging_Service.mpc 2832 2016-02-23 23:14:42Z mitza $
+
+project: namingexe, iortable, install, dslogadmin_serv, valuetype {
+  exename   = tao_tls_basic
+
+  specific {
+    install_dir = tao/docs/basic_logging
+  }
+
+  InstallData_Files {
+    README
+  }
+}

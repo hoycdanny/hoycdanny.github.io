@@ -1,0 +1,15 @@
+// -*- MPC -*-
+// $Id: Trading_Service.mpc 2832 2016-02-23 23:14:42Z mitza $
+
+project : orbsvcsexe, utils, install, naming, trading_serv {
+  exename  = tao_costrading
+
+  specific {
+    install_dir = tao/docs/trading
+  }
+
+  InstallData_Files {
+    README
+  }
+}
+

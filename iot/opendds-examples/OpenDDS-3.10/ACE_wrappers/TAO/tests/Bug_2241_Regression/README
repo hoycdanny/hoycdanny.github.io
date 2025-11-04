@@ -1,0 +1,6 @@
+// $Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This test is build without  idlflag -Gd,  so Direct collocation isn't enabled.
+Running this test with -ORBCollocationStrategy 'direct' should result in an Exception.
+
+

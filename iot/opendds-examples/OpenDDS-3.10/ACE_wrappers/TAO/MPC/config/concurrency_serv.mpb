@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: concurrency_serv.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, concurrency_skel, avoids_corba_e_micro {
+  after     += CosConcurrency_Serv
+  libs      += TAO_CosConcurrency_Serv
+}

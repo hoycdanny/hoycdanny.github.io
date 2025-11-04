@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: tmcast.mpb 1861 2011-08-31 16:18:08Z mesnierp $
+
+project: acelib, threads {
+  avoids   += ace_for_tao
+  after    += TMCast
+  libs     += ACE_TMCast
+  includes += $(ACE_ROOT)/protocols
+}

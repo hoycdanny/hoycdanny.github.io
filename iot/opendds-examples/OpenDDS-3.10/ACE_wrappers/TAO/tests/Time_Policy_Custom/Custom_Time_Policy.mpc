@@ -1,0 +1,22 @@
+// -*- MPC -*-
+// $Id: Custom_Time_Policy.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project(*Lib): taolib {
+  sharedname = CustomTimePolicy
+  dynamicflags  = TPTEST_BUILD_DLL
+  Source_Files {
+    Custom_Time_Policy_Strategy.cpp
+  }
+}
+
+project(*Exe): taoserver {
+  after += *Lib
+  libs += CustomTimePolicy
+  exename = test
+  Source_Files {
+    main.cpp
+  }
+  IDL_Files {
+  }
+}
+

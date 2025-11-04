@@ -1,0 +1,3 @@
+# $Id: svc.conf.static 1861 2011-08-31 16:18:08Z mesnierp $
+
+static HA_Status_Static_Service "-f status.ini"

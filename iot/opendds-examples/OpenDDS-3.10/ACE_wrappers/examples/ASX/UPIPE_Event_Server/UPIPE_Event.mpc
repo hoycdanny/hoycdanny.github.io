@@ -1,0 +1,14 @@
+// -*- MPC -*-
+// $Id: UPIPE_Event.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*Server) : aceexe, avoids_ace_for_tao {
+  exename = UPIPE_Event_Server
+  Source_Files {
+    Consumer_Router.cpp
+    Event_Analyzer.cpp
+    Options.cpp
+    Peer_Router.cpp
+    Supplier_Router.cpp
+    event_server.cpp
+  }
+}

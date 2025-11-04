@@ -1,0 +1,42 @@
+Summary of changes to the TAO 2.2a Developer's Guide in the Patch 4 revision
+--------------
+Section 17.13.32 added ORBIIOPClientPortBase option description.
+Section 17.13.33 added ORBIIOPClientPortSpan option description.
+
+Section 22.9.1, added -l command line parameter description to table.
+Section 22.9.3, added paragraph explaining the -l parameter.
+Section 22.9.7, updated text of various examples to show "random" as a supported strategy along with round-robin.
+
+Section 28.2, provide an overview of new ImR capabilities.
+Section 28.3, clarify startup behavior description.
+Section 28.5, added text noting the ping interval and timeout values are configurable.
+Section 28.12.1, added new command line options for ping timeout and lockout.
+
+Summary of changes to the TAO 2.2a Developer's Guide in the Patch 3 revision
+--------------
+-none-
+
+Summary of changes to the TAO 2.2a Developer's Guide in the Patch 2 revision
+--------------
+-none-
+
+Summary of changes to the TAO 2.2a Developer's Guide in the Patch 1 revision
+--------------
+Section 15.3, dynamic thread pool added to the list of ORB threading strategies.
+Sections 15.3.7, 15.3.10, refactored the discussion of dynamic thread pool usage to include a discussion of applying thread pools to ORBs as well as POAs.
+
+Section 17.12 add link to ORBId option
+Section 17.13.14, add description of ORBDynamicThreadPoolName option.
+Section 17.13.17, add description of ORBForwardDelay option.
+Sections 17.13.18 - 17.13.27, make the section names consistent, fix example
+Section 17.13.30, add description of ORBId option.
+Section 17.13.5, clarified the description and added more examples.
+
+Section 20.2.3, update table to include ORBDefaultSyncScope option.
+Section 20.3.3, add description of ORBDefaultSyncScope strategy setting.
+
+Section 28.2, provide an overview of new ImR capabilities.
+Section 28.11.1, update command table.
+Section 28.11.1.4, add detailed description of kill command
+Section 28.11.1.5, add detailed description of link command
+Section 28.11.1.6, expand description of list command

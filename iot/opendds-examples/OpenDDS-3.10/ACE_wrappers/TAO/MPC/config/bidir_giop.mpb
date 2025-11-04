@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: bidir_giop.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project : taolib, pi, avoids_corba_e_micro {
+  after   += BiDir_GIOP
+  libs    += TAO_BiDirGIOP
+}

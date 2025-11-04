@@ -1,0 +1,4 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+Simple ORB destruction test to make sure that it's possible to destroy
+the ORB correctly.

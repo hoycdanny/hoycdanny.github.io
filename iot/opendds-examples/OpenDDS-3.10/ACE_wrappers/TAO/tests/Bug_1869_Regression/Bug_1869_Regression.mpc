@@ -1,0 +1,31 @@
+// -*- MPC -*-
+// $Id: Bug_1869_Regression.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project(*idl): taoidldefaults, ami {
+  IDL_Files {
+    AMI.idl
+  }
+  custom_only = 1
+}
+
+project(*Server): taoserver, iortable, ami {
+  after += *idl
+  Source_Files {
+    server.cpp
+    AMIC.cpp
+    AMIS.cpp
+  }
+  IDL_Files {
+  }
+}
+
+project(*Client): taoclient, ami {
+  after += *idl
+  Source_Files {
+    client.cpp
+    AMIC.cpp
+    AMIS.cpp
+  }
+  IDL_Files {
+  }
+}

@@ -1,0 +1,11 @@
+//
+// $Id: Receiver.idl 14 2007-02-01 15:49:12Z mitza $
+//
+
+interface Receiver
+{
+  typedef sequence<octet> Payload;
+
+  /// A simple remote call
+  void receive_payload (in Receiver::Payload pay);
+};

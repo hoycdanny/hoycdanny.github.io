@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: notification_serv.mpb 1861 2011-08-31 16:18:08Z mesnierp $
+
+project : orbsvcslib, svc_utils, notification_skel, etcl, dynamicany, messaging {
+  after     += CosNotification_Serv
+  libs      += TAO_CosNotification_Serv
+}

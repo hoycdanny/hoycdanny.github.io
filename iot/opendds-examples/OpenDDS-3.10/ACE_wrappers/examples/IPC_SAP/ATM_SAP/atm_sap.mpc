@@ -1,0 +1,16 @@
+// -*- MPC -*-
+// $Id: atm_sap.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*client) : aceexe {
+  exename = client
+  Source_Files {
+    CPP-client.cpp
+  }
+}
+
+project(*server) : aceexe {
+  exename = server
+  Source_Files {
+    CPP-server.cpp
+  }
+}

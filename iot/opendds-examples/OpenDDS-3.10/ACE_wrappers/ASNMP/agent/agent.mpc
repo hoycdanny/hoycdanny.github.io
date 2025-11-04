@@ -1,0 +1,13 @@
+// $Id: agent.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project (asnmp_agent) : aceexe {
+  exename = agent
+  after += asnmp_lib
+  libs  += asnmp
+  includes += $(ACE_ROOT)/ASNMP
+  source_files {
+    agent_impl.cpp
+    main.cpp
+    snmp_agent.cpp
+  }
+}

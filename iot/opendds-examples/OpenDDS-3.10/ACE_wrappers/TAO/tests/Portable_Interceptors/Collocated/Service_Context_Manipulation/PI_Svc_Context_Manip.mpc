@@ -1,0 +1,16 @@
+// -*- MPC -*-
+// $Id: PI_Svc_Context_Manip.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Collocated): taoserver, pi, pi_server, interceptors {
+  exename = collocated
+  Source_Files {
+    testC.cpp
+    testS.cpp
+    test_i.cpp
+    Collocated_ORBInitializer.cpp
+    interceptors.cpp
+    Client_Task.cpp
+    Server_Task.cpp
+    Collocated_Test.cpp
+  }
+}

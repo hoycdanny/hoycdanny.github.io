@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: dsnotifylogadmin_serv.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, dsnotifylogadmin_skel, dslogadmin_serv, notification_serv {
+  after      += DsNotifyLogAdmin_Serv
+  libs       += TAO_DsNotifyLogAdmin_Serv
+}

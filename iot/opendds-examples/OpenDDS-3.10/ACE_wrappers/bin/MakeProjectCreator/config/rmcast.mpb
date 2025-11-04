@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: rmcast.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : acelib, threads {
+  avoids   += ace_for_tao
+  after    += RMCast
+  libs     += ACE_RMCast
+  includes += $(ACE_ROOT)/protocols
+}

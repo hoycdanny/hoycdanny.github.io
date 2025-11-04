@@ -1,0 +1,9 @@
+//$Id: Manager.idl 14 2007-02-01 15:49:12Z mitza $
+interface Manager
+{
+  long registerServer();
+
+  void startRetry(in long count);
+
+  long endRetry(); // returns unused attempts
+};

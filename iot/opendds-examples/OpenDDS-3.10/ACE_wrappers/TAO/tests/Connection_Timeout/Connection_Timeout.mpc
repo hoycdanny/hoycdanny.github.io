@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// $Id: Connection_Timeout.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*client): taoserver, messaging {
+  exename = client
+  avoids += ace_for_tao
+  Source_Files {
+    TestC.cpp
+    client.cpp
+  }
+}
+

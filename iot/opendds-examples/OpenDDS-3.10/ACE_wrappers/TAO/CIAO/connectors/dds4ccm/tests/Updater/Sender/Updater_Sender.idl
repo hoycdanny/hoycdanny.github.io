@@ -1,0 +1,21 @@
+// $Id: Updater_Sender.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+/**
+ * @author Marijke Hengstmengel (mhengstmengel@remedy.nl)
+ */
+
+#ifndef DDS_UPDATER_SENDER_IDL
+#define DDS_UPDATER_SENDER_IDL
+
+#include "Connector/Updater_Connector.idl"
+
+module Updater
+{
+  component Sender
+  {
+    port UpdaterConnector::DDS_Update test_topic_update;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+  };
+};
+
+#endif

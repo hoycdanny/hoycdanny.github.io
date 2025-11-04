@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: TAO_Service.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : taoexe, install, svc_utils {
+  exename = tao_service
+}

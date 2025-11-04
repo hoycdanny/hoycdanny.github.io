@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: dslogadmin_skel.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, dslogadmin, portableserver {
+  after      += DsLogAdmin_Skel
+  libs       += TAO_DsLogAdmin_Skel
+}

@@ -1,0 +1,1351 @@
+Fri Jan 13 15:33:47 UTC 2017  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * ACE version 6.2a_p11 released.
+
+Tue Jan 10 23:16:09 UTC 2017  Adam Mitz  <mitza@ociweb.com>
+
+        * include/makeinclude/platform_vxworks7.0.GNU:
+
+          More updates for VxWorks 7, especially kernel mode.
+
+Mon Jan  9 22:27:08 UTC 2017  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Atomic_Op.cpp:
+
+          VxWorks kernel mode defines the macro PPC even when the target
+          architecture is not PowerPC.  Use a different preprocessor macro
+          to detect the target architecture.
+
+Fri Jan  6 21:16:58 UTC 2017  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * include/makeinclude/platform_vxworks7.0.GNU:
+
+          Fixed linking shared libraries in VxWorks 7.0
+
+Fri Jan  6 19:44:18 UTC 2017  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_netdb.cpp:
+        * include/makeinclude/platform_vxworks.GNU:
+
+          Initial changes to work with recent updates of VxWorks 7.
+
+Tue Dec 27 23:35:19 UTC 2016  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-macosx-leopard.h:
+        * ace/config-macosx.h:
+
+          Updates to get ioctl(SIOCGIFCONF) to work on modern MacOSX/x86_64.
+
+Thu Sep 29 17:28:34 UTC 2016  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * ACE version 6.2a_p10 released.
+
+Tue Sep 27 21:41:31 UTC 2016  Adam Mitz  <mitza@ociweb.com>
+
+        * include/makeinclude/platform_g++_common.GNU:
+
+          Adjusted compiler flags to avoid auto_ptr deprecation
+          warning on newer GCC versions.
+
+Tue Sep 27 15:47:36 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/Based_Pointer_Repository.h:
+
+          Fix wrong macro name
+
+Tue Sep 27 14:03:07 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/Based_Pointer_Repository.h:
+        * ace/Based_Pointer_Repository.cpp:
+        * ace/Dynamic.cpp:
+        * ace/Lib_Find.cpp:
+
+          More fixes explicit template instantiation.
+
+Mon Sep 26 16:30:15 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/Compression/rle/RLECompressor.cpp:
+
+          Added missing explicit template instantiation statement.
+
+Fri Sep 23 18:27:57 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/Obstack.cpp:
+        * ace/ace.mpc:
+        * ace/ace_for_tao.mpc:
+
+          Added missing file.
+
+Fri Sep 23 13:50:19 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/config-g++-common.h:
+        * ace/config-macros.h:
+        * apps/JAWS3/jaws3/Templates.cpp:
+        * bin/auto_run_tests.pl:
+        * examples/Export/dll.cpp:
+        * examples/Web_Crawler/Command_Processor.cpp:
+
+          Merge changes from DOC Group Repository commits 121ae1d4eeb87d6b6920ec7ff7f8eef87b8fda6a,
+          7771149a115f4225b32990e97b5dc01766058ca4 for Android/Rasberry Pi support and explicit
+          template intantiation fixes.
+
+Wed Sep 21 20:28:29 UTC 2016  huangh@ociweb.com  <huangh@ociweb.com>
+
+        * ace/config-macosx-jaguar.h:
+        * ace/config-macosx.h:
+        * include/makeinclude/platform_macosx.GNU:
+        * include/makeinclude/platform_macosx_jaguar.GNU:
+        * ace/config-macosx-all.h:
+        * include/makeinclude/platform_macosx_all.GNU:
+
+          Rename ace/config-macosx.h => ace/config-macosx-jaguar.h
+                 ace/config-macosx-all.h => ace/config-macosx.h
+                 include/makeinclude/platform_macosx.GNU => include/makeinclude/platform_macosx_jaguar.GNU
+                 include/makeinclude/platform_macosx_all.GNU: => include/makeinclude/platform_macosx.GNU
+
+Tue Sep 20 14:32:45 UTC 2016  huangh@ociweb.com  <huangh@ociweb.com>
+
+        * ace/config-macosx-all.h:
+
+          Fixed the problem where __MAC_OS_X_VERSION_MAX_ALLOWED is undefined
+          before any system header being included
+
+Mon Sep 19 18:34:28 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/config-macosx-all.h:
+        * ace/config-macosx-leopard.h:
+
+          Manully expand __MAC_10_xx macro because it may be undefined
+          in older versions of Mac SDK
+
+Fri Sep 16 20:42:14 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/config-macosx-all.h:
+        * ace/config-macosx-leopard.h:
+
+        * include/makeinclude/platform_macosx_all.GNU:
+        * include/makeinclude/platform_macosx_elcapitan.GNU:
+        * include/makeinclude/wrapper_macros.GNU:
+
+          Support MacOSX10.12.sdk
+
+Tue Sep 13 23:19:11 UTC 2016  Adam Mitz  <mitza@ociweb.com>
+
+        * include/makeinclude/platform_macosx_elcapitan.GNU:
+
+          Extended Mac OS X rpath settings to shared libs (instead of just
+          applying to executables) so that it works with dlopen'd libs.
+
+Mon Sep 12 14:11:00 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/config-macosx-all.h:
+        * include/makeinclude/platform_macosx_all.GNU:
+
+          Added for auto-detecting MacOSX version.
+
+Fri Sep  9 16:42:37 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * include/makeinclude/platform_macosx_lion.GNU:
+
+          Disable openssl for Mac OS by default
+
+Fri Sep  9 00:13:09 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * include/makeinclude/wrapper_macros.GNU:
+
+          Added missing file for previous commit.
+
+Thu Sep  8 21:38:24 UTC 2016  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/config-macosx-elcapitan.h:
+        * bin/MakeProjectCreator/templates/gnu.mpd:
+        * include/makeinclude/platform_macosx_elcapitan.GNU:
+
+          Add Mac OS X El Capitan support without the need to
+          disable the default System Integrity Protection mode.
+
+
+Wed Aug 24 18:45:48 UTC 2016  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Based_Pointer_Repository.h:
+        * ace/Based_Pointer_Repository.cpp:
+        * ace/UUID.h:
+        * ace/UUID.cpp:
+
+          ACE_SINGLETON_DECLARE needs to appear in .cpp files, not .h.
+          This prevents multiple definition of typeinfo symbols during linking,
+          only seen on arm-linux-gnueabihf-g++ but the code is invalid C++ on
+          all platforms.
+
+Tue Aug  9 22:19:02 UTC 2016  Peter Oschwald <oschwaldp@ociweb.com>
+
+        * Fix issues when using generate_compile_stats.sh for non-ACE/TAO/
+          CIAO/DAnCE builds.
+
+Wed Mar  2 16:27:04 UTC 2016  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * ACE version 6.2a_p9 released.
+
+Tue Feb 23 20:14:42 UTC 2016  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-linux.h:
+          Define a new macro to support using mtab or fstab info regarding
+          file systems.
+
+Mon Feb 22 23:30:36 UTC 2016 Phil Mesnier <mesnierp@ociweb.com>
+
+        * bin/PerlACE/Run_Test.pm:
+          Don't prepend CWD to paths that are already absolute.
+
+Thu Feb  4 18:04:21 UTC 2016  Adam Mitz  <mitza@ociweb.com>
+
+        * include/makeinclude/platform_freebsd.GNU:
+
+          Added support for FreeBSD 10.2 with clang.
+
+Wed Jan  6 16:31:32 UTC 2016  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+        * ace/config-vxworks6.4.h:
+        * include/makeinclude/platform_vxworks6.3.GNU:
+
+          Updated recent changes to build on VxWorks 6 and 7.
+
+        * ace/OS_NS_netdb.cpp:
+        * tests/Bug_3744_Regression_Test.cpp:
+
+          VxWorks: implemented ACE_OS::getmacaddress in terms of a sysctl.
+
+        * protocols/protocols.mwc:
+
+          This workspace excludes tests and examples subdirs,
+          they have separate workspaces.
+
+Fri Dec 18 13:36:52 UTC 2015  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * ACE version 6.2a_p8 released.
+
+Fri Dec 11 13:08:20 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/OS_NS_devctl.inl:
+
+          Restore && ACE_EMULATE_POSIX_DEVCTL in guard.  It is implemented
+          as a numeric value 0 or 1
+
+Thu Dec 10 20:26:16 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/OS_NS_devctl.inl:
+
+          Eliminate double checking of ACE_EMULATE_POSIX_DEVCTL.  Within
+          guard of ACE_LACKS_POSIX_DEVCTL, so don't need to check that in
+          this case either.
+          Also added #endif comments to clarify
+
+Tue Dec  1 17:45:23 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_netdb.cpp:
+
+          Fixed bugs in ACE_OS::getaddrinfo_emulation.
+
+Tue Dec  1 14:54:19 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+
+          Fix for platforms with ACE_LACKS_WCSRTOMBS defined.
+
+Mon Nov 30 22:52:32 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Array_Map.h:
+        * ace/INET_Addr.cpp:
+        * ace/LSOCK_Stream.cpp:
+        * ace/MEM_Acceptor.cpp:
+        * ace/Message_Queue_T.cpp:
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_stdio.cpp:
+        * ace/Sock_Connect.cpp:
+        * ace/config-android.h:
+        * ace/config-sunos5.10.h:
+        * ace/config-sunos5.9.h:
+        * tests/OS_Test.cpp:
+        * tests/Sendfile_Test.cpp:
+        * tests/Sigset_Ops_Test.cpp:
+
+          After changes developed for FACE safety profiles were merged to
+          the DOC Group repository, further changes were made for compatibility
+          with a wider variety of platforms.  This revision merges those changes
+          back to this branch:
+          7272ad8a6bdcc60c540c786b3b9d414eb8fa5432
+          f371934843144c0d374bb08ebb261a5db29d59fe
+          d25e42f5fe65078a497d58cd9b1889d65c7cb55b
+          7937dcbd45abadeff47a8bef65a5eeccf51e343c
+          8e76aa4e2af079127718bb2a80cc49bc3993ac92
+          ff86a86d8d764eedce8292539b57f214e1567775
+          f2c23532a66ef1deeaeb70c8afc06e38dd083cb2
+          984fcc6833d78d6ab53be30d00618786c4c348de
+          b3ba2bc3a64285af31e37655d5589c00729b2c3f
+          38b9b82393e2944cb783c7fd2b2d62f8d3c63bce
+          b0fef1babb63beb2dfd784d3d7bc73ac5f8773f1
+          cd6ca119a66ee97d0314a6bfb7e972ca72a5d76c
+          b46349941bf532c2004fd25c53198e1489da19cb
+          d024dcdc9784645f4db3ecd49a8edccc087b6510
+
+        * bin/DependencyGenerator/GNUIDLObjectGenerator.pm:
+        * include/makeinclude/wrapper_macros.GNU:
+
+          S.inl is no longer generated by tao_idl.
+
+Mon Nov 30 18:12:54 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * bin/PerlACE/Process_Unix.pm:
+
+          Don't print out PID error message at spawn.  File not found is
+          acceptable, and not an error.
+
+Tue Nov 24 17:54:01 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * include/makeinclude/wrapper_macros.GNU:
+          Restore the IDL_GEN_FILES_DIR value initialization that was removed
+          without explanation when the 2.2a release was originally forked.
+
+Mon Nov 23 21:51:03 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * bin/MakeProjectCreator/config/global.features:
+          Default enable ace_idl_dependencies feature to cause depgen to
+          consider changes to IDL files as part of dependency generation.
+
+Fri Nov 20 15:46:36 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/Pipe.cpp:
+
+          Include Malloc_Base, appears to be needed when ACE_HAS_ALLOC_HOOKS
+          in a static libs only build.
+
+        * bin/PerlACE/README:
+
+          Updates for PerlACE configuration.
+
+Thu Nov 19 21:06:45 UTC 2015  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * tests/Multicast_Test_IPV6.cpp:
+
+          Change the multicast address for testing from interface-local
+          address to site-local address. For newer linux kernels,
+          interface-local address needs to be appended with an extra link
+          interface name after the address like "ff01::1:1%eth0".
+
+Thu Nov 19 15:04:42 UTC 2015  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * tests/INET_Addr_Test_IPV6.cpp:
+
+          Avoid hardcoded eth0 interface name which breaks in certain Linux
+          distributions.
+
+Wed Nov 18 17:38:07 UTC 2015  Huang-Ming Huang  <huangh@ociweb.com>
+
+        * ace/MEM_Addr.cpp:
+
+          Add additional check for loopback adresss for ACE_MEM_Addr::same_host().
+
+Thu Nov 12 22:18:33 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_sys_sendfile.cpp:
+
+          Add required #include.
+
+Thu Nov 12 21:50:12 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_sys_sendfile.cpp:
+
+          In sendfile_emulation(), fall back on read() if the
+          descriptor is for a file that can't be used with mmap().
+
+        * tests/Sendfile_Test.cpp:
+
+          Use configurable temporary directory.
+
+        * tests/TP_Reactor_Test.cpp:
+
+          Use ACE_LOCALHOST instead of localhost.
+
+Thu Nov 12 18:57:26 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/TSS_T.cpp:
+
+          Fixed an unused variable warning on LynxOS.
+
+Thu Nov 12 18:53:49 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/INET_Addr.cpp:
+        * ace/Log_Category.inl:
+        * ace/Log_Msg.cpp:
+        * ace/Mutex.cpp:
+        * ace/OS_NS_Thread.cpp:
+        * ace/OS_NS_devctl.h:
+        * ace/Time_Value.cpp:
+        * ace/config-face-safety.h:
+        * bin/PerlACE/TestTarget.pm:
+        * tests/MT_SOCK_Test.cpp:
+        * tests/Map_Test.cpp:
+        * tests/Monotonic_Message_Queue_Test.cpp:
+        * tests/SOCK_Send_Recv_Test.cpp:
+        * tests/UUID_Test.cpp:
+
+          Formatting, warnings, and wchar fixes.
+
+Wed Nov 11 22:01:11 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Process.cpp:
+
+          Changed one more use of sprintf to snprintf.
+
+        * ace/Log_Msg.cpp:
+        * ace/TSS_T.cpp:
+
+          LynxOS-178 has some issues in its thread specific storage.
+
+        * tests/RW_Process_Mutex_Test.cpp:
+
+          Test can't run when ACE_LACKS_FILELOCKS.
+
+        * tests/run_test.lst:
+
+          Split up the MT_Reference_Counted_Event_Handler_Test
+          on LynxOS due to resource limitations.
+
+Wed Nov 11 21:57:00 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/config-lynxos-178.h:
+
+          remove undef of ACE_LACKS_PTHREAD
+
+Tue Nov 10 21:57:42 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/INET_Addr.cpp:
+          VC14 is more pedantic about using reinterpret_cast inapropriately.
+
+Tue Nov 10 16:02:52 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+          Add braces to silence a compiler warning.
+
+        * ace/Unbounded_Set_Ex.cpp:
+          Clear the dummy reference value used when searching for an entry to
+          remove. If the items stored in the set are of a reference counted
+          type, then this is necessary to ensure there are no lingering
+          references to otherwise cleaned up objects.
+
+Tue Nov 10 15:52:42 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * bin/PerlACE/Process_Unix.pm:
+
+          Change No PID found at Spawn log message to not say Warning.
+
+Mon Nov  9 21:34:24 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * bin/PerlACE/Process_Unix.pm:
+
+          Don't try to read PID when no remote process.
+
+Mon Nov  9 18:26:18 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * bin/PerlACE/Process_Unix.pm:
+
+          If remote PID is unknown, still kill child remote shell process.
+          Kill remote shell process after killing remote process (and time has
+          passed).
+
+Mon Nov  9 18:08:11 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_netdb.cpp:
+
+          Fixed bugs in ACE_OS::getaddrinfo_emulation.
+
+Mon Nov  9 15:22:46 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_netdb.h:
+        * ace/OS_NS_netdb.inl:
+
+          ACE_OS::gai_strerror now returns ACE_TCHAR to support Win32 API.
+
+        * ace/Process.cpp:
+
+          Restored this change which was lost in a subsequent merge:
+          Tue Feb 10 15:44:42 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+          Allow redirection of child's stdout/stderr when there is no
+          stdin handle available (for example when running in a service).
+
+Fri Nov  6 19:32:43 UTC 2015  Jeff Schmitz <schmitzj@ociweb.com>
+
+        * bin/PerlACE/Process_Unix.pm:
+
+          If reading PID file fails, try again at kill time.
+
+Fri Nov  6 15:43:32 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/INET_Addr.cpp:
+
+          When using getaddrinfo to resolve hostnames, need to
+          explicitly set address family to IPv4 if this build is
+          not ACE_HAS_IPV6.  Otherwise the platform may return an
+          IPv6 address which can't be stored in an ACE_INET_Addr.
+
+Fri Nov  6 15:01:34 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.cpp:
+
+          Fixed typo in wchar-only code.
+
+Fri Nov  6 14:51:33 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.h:
+
+          Provide a 1-arg overload of ACE_Thread_ID::to_string()
+          for backwards compatibility with existing application
+          code (see examples/APG/ThreadPools/ThreadPool.cpp).
+
+Thu Nov  5 23:48:58 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+        * tests/OS_Test.cpp:
+
+          Fixed a few corner cases for 0-padding in emulated snprintf.
+
+Thu Nov  5 16:58:58 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/ACE.cpp:
+        * ace/Acceptor.cpp:
+        * ace/Connector.cpp:
+        * ace/DEV_IO.cpp:
+        * ace/FILE_IO.cpp:
+        * ace/High_Res_Timer.cpp:
+        * ace/Lib_Find.cpp:
+        * ace/Local_Tokens.cpp:
+        * ace/Logging_Strategy.cpp:
+        * ace/MEM_Acceptor.cpp:
+        * ace/Naming_Context.cpp:
+        * ace/OS_NS_stdlib.cpp:
+        * ace/OS_NS_string.cpp:
+        * ace/OS_NS_sys_socket.cpp:
+        * ace/OS_NS_sys_utsname.cpp:
+        * ace/OS_NS_time.cpp:
+        * ace/Pipe.cpp:
+        * ace/Profile_Timer.cpp:
+        * ace/SOCK_Dgram.cpp:
+        * ace/SOCK_IO.cpp:
+        * ace/SPIPE_Stream.cpp:
+        * ace/Service_Manager.cpp:
+        * ace/Service_Types.cpp:
+        * ace/Stats.cpp:
+        * ace/UUID.cpp:
+
+          Use snprintf instead of sprintf.
+          When ACE_HAS_ALLOC_HOOKS, use ACE_Allocator instead of heap.
+
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+
+          Snprintf changes (see above), support for semaphores that don't
+          unlink when destroyed (see below), and ACE_Thread_ID::to_string()
+          now takes an additional parameter so the buffer length is known.
+
+        * ace/Malloc_T.inl:
+
+          Release the lock before attempting to remove the memory pool.
+
+        * ace/Mutex.h:
+        * ace/Mutex.inl:
+        * ace/Mutex.cpp:
+        * ace/Process_Mutex.h:
+        * ace/Process_Mutex.inl:
+        * ace/Process_Mutex.cpp:
+        * ace/os_include/os_semaphore.h:
+
+          With safety profile, pthread mutexes may not be used in the
+          interprocess mode.  ACE needs to use named POSIX semaphores to
+          implement interprocess mutex locking.  This mutex must not be
+          removed from the filesystem (unlinked) when any given ACE_Mutex
+          object is destroyed.  A new function is provided for unlinking.
+
+        * ace/MEM_IO.h:
+        * ace/MEM_IO.cpp:
+        * ace/MEM_SAP.cpp:
+
+          MEM_IO uses ACE_Process_Mutex, so it now needs to explicitly
+          unlink the semaphores that are backed by actual files.
+
+        * ace/INET_Addr.cpp:
+        * ace/OS_NS_netdb.h:
+        * ace/OS_NS_netdb.inl:
+        * ace/OS_NS_netdb.cpp:
+        * ace/os_include/os_netdb.h:
+        * ace/Sock_Connect.cpp:
+
+          Use new POSIX netdb.h functions (getaddrinfo/getnameinfo) instead of
+          old functions which were removed from POSIX (gethostbyname/addr).
+          On platforms that don't have the new functions, the ACE_OS namespace
+          versions of the new functions will delegate to the old functions.
+          Those platforms will not have IPv6 support available in ACE.
+
+        * ace/OS_NS_signal.inl:
+
+          ACE_LACKS_SIGNAL is distinct from ACE_LACKS_UNIX_SIGNALS.
+
+        * ace/OS_NS_sys_uio.cpp:
+
+          ACE_HAS_ALLOC_HOOKS support, and writev_emulation() updated so
+          it doesn't split one writev() into multiple write() calls.
+
+        * ace/Process.cpp:
+
+          When ACE_LACKS_EXECVP, execv() can be used in place of execvp().
+          The caller will need to provide an actual file name since no PATH
+          search is done by execv().  Also, use snprintf instead of sprintf.
+
+        * ace/config-face-conftest.h:
+        * ace/config-face-safety.h:
+        * ace/config-lynxos-178.h:
+
+          Config updates for the changes described above.
+
+        * tests/ARGV_Test.cpp:
+        * tests/Bug_2659_Regression_Test.cpp:
+        * tests/Bug_2980_Regression_Test.cpp:
+        * tests/Bug_3878_Regression_Test.cpp:
+        * tests/Bug_3911_Regression_Test.cpp:
+        * tests/Bug_3943_Regression_Test.cpp:
+        * tests/Compiler_Features_11_Test.cpp:
+        * tests/Config_Test.cpp:
+        * tests/Conn_Test.cpp:
+        * tests/Dev_Poll_Reactor_Test.cpp:
+        * tests/FlReactor_Test.cpp:
+        * tests/Logging_Strategy_Test.cpp:
+        * tests/MEM_Stream_Test.cpp:
+        * tests/MM_Shared_Memory_Test.cpp:
+        * tests/MT_Reference_Counted_Event_Handler_Test.cpp:
+        * tests/MT_SOCK_Test.cpp:
+        * tests/Malloc_Test.cpp:
+        * tests/Message_Queue_Test.cpp:
+        * tests/Multicast_Test_IPV6.cpp:
+        * tests/Naming_Test.cpp:
+        * tests/Proactor_Test.cpp:
+        * tests/Proactor_Test_IPV6.cpp:
+        * tests/Proactor_UDP_Test.cpp:
+        * tests/Process_Manager_Test.cpp:
+        * tests/Process_Manual_Event_Test.cpp:
+        * tests/Process_Mutex_Test.cpp:
+        * tests/Process_Strategy_Test.cpp:
+        * tests/Process_Test.cpp:
+        * tests/RW_Process_Mutex_Test.cpp:
+        * tests/SOCK_Send_Recv_Test.cpp:
+        * tests/Service_Config_DLL.cpp:
+        * tests/Signal_Test.cpp:
+        * tests/TP_Reactor_Test.cpp:
+        * tests/Thread_Manager_Test.cpp:
+        * tests/TkReactor_Test.cpp:
+        * tests/Upgradable_RW_Test.cpp:
+        * tests/XtAthenaReactor_Test.cpp:
+        * tests/XtMotifReactor_Test.cpp:
+        * tests/run_test.lst:
+        * bin/ace_tests.lst:
+
+          Test updates for the changes described above.
+
+Thu Nov  5 16:53:35 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * bin/PerlACE/Process_Unix.pm:
+        * bin/PerlACE/TestTarget.pm:
+
+          Detect when the remote filesystem is mappable to the host system,
+          then don't copy files, don't use remote shell to read PID file.
+
+Fri Oct 23 20:11:59 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * include/makeinclude/platform_vxworks7.0.GNU:
+
+          Avoid building TAO_IDL_BE and tao_idl on VxWorks.
+
+Tue Oct 20 15:22:14 UTC 2015 Don Hudson <hudsond@ociweb.com>
+
+        * ace/OS_NS_sys_wait.inl:
+
+        Changed ACE_OS::wait to return -1 instead of 0 when either ACE_LACKS_WAIT or ACE_LACKS_WAITPID are defined.
+
+Wed Oct 14 22:27:26 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-vxworks7.0.h:
+
+          ACE_HAS_RECURSIVE_THR_EXIT_SEMANTICS is required for rtp=0 pthread=1.
+
+Fri Oct  9 14:17:20 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/OS_NS_Thread.inl:
+
+          Call snprintf within ACE_OS::thr_id, even if ACE_LACKS_SNPRINTF.
+
+Thu Oct  8 21:03:20 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-vxworks7.0.h:
+        * ace/os_include/os_pthread.h:
+
+          VxWorks 7 support.
+
+Thu Oct  8 19:57:49 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          ACE_LACKS_SSCANF should be in safety base section.
+
+        * ace/OS_NS_Thread.inl:
+
+          Consider whether thread ID is opaque in snprintf section too.
+
+Wed Oct  7 19:43:42 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/OS_NS_Thread.inl:
+        * ace/config-kfreebsd.h:
+
+          Can't define/check ACE_HAS_SNPRINTF when other places check
+          ACE_LACKS_SNPRINTF.
+
+Mon Oct  5 19:49:52 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+
+          Use built-in conversion from thread ID to string in ACE_OS::thr_id
+
+        * ace/OS_NS_stdio.cpp:
+
+          Correct declaration of wint_t - will be in std namespace.
+
+        * ace/config-face-safety.h:
+
+          Move ACE_LACKS_* from ACE_FACE_SAFETY_BASE to ACE_FACE_SAFETY_EXTENDED
+          section where required.
+
+Fri Sep 25 20:30:39 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+
+          Added required include of std lib header.
+
+Fri Sep 25 16:38:18 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+        * tests/OS_Test.cpp:
+
+          Fixed warnings and more code review issues.
+
+Thu Sep 24 21:51:19 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_stdio.cpp:
+        * tests/OS_Test.cpp:
+
+          Implemented the final POSIX extension, positional arguments.
+          Addressed review comments, refactoring.
+
+Thu Sep 24 14:49:59 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+        * tests/OS_Test.cpp:
+
+          Fixed compile errors on some builds.
+
+Tue Sep 22 22:10:31 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+        * tests/OS_Test.cpp:
+
+          Implemented the digit grouping (for example, %'d) snprintf POSIX
+          extension, which depends on the current locale's LC_NUMERIC category.
+
+Tue Sep 22 20:00:22 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * tests/OS_Test.cpp:
+
+          Updated test case to avoid unwanted rounding error.
+
+Tue Sep 22 19:28:16 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.cpp:
+
+          Fixed ambiguous call to a std lib function on some GCCs.
+
+Tue Sep 22 16:55:04 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_stdio.h:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_stdio.cpp:
+        * ace/config-face-safety.h:
+        * tests/OS_Test.cpp:
+
+          Added ACE_OS::vsnprintf_emulation which is used to implement
+          {v,}snprintf on platforms that don't have it.  All std C/C++
+          features of snprintf are implemented.  Nontrivial POSIX extensions
+          to std C/C++ are not yet implemented.
+
+        * ace/config-win32-msvc.h:
+
+          Don't set ACE_LACKS_STDINT_H for newer versions of VC++ which have it.
+
+Wed Sep  2 14:50:29 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-face-safety.h:
+
+          Moved ACE_LACKS_STD_WSTRING from safety base to extended (where
+          it will apply to both base and extended profiles).
+
+Wed Sep  2 14:00:29 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-lynxos-178.h:
+
+          LynxOS-178 lacks pthread_cleanup_*() functions.
+
+Fri Aug 28 17:11:09 UTC 2015  Phil Mesnier  <mesnierp@ociweb.com>
+
+        * ACE version 6.2a_p7 released.
+
+Wed Aug 26 16:15:07 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_time.inl:
+        * ace/config-lynxos-178.h:
+
+          LynxOS-178 on x86 can use inline assembly for rdtsc,
+          but it kills the process with SIGBUS if attempted.
+          Now falling back on clock_gettime() for ACE's HR time.
+
+Tue Aug 25 22:28:17 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-macros.h:
+
+          If ACE_HAS_ALLOC_HOOKS, provide all needed overloads of class-scoped
+          operators new and delete.  Refactored macros to make this easier to
+          maintain.  This fixes "new (std::nothrow)" (as used by ACE macros) so
+          that it doesn't crash when the allocator is out of memory.
+
+        * tests/Bug_2815_Regression_Test.cpp:
+        * tests/Task_Ex_Test.cpp:
+
+          Adapt tests to run on LynxOS with fewer iterations.
+
+Tue Aug 25 14:47:11 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Log_Msg.h:
+        * ace/Log_Msg.cpp:
+
+          Use ACE_WCHAR_T for the new non-varargs logging parameters.
+
+        * ace/OS_NS_stdio.inl:
+
+          If ACE_LACKS_FGETS, implement ACE_OS::fgets() in terms of fgetc.
+
+        * tests/Thread_Pool_Test.cpp:
+
+          Use ACE_OS::snprintf in test.
+
+        * tests/run_test.lst:
+
+          Exclude a few tests from LynxOS configuration.
+
+Mon Aug 24 14:10:36 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_arpa_inet.cpp:
+
+          LynxOS doesn't have the in_addr_t typedef.
+
+Fri Aug 21 22:02:13 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_arpa_inet.inl:
+        * ace/config-win32-common.h:
+
+          Winsock's inet_ntop() 2nd parameter type doesn't match POSIX's.
+
+Fri Aug 21 21:36:05 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/INET_Addr.cpp:
+
+          Use ACE_OS::inet_aton() for IPv4 dotted-decimal to binary
+          conversions on all platforms.
+
+        * ace/OS_NS_arpa_inet.cpp:
+
+          Make ACE_OS::inet_aton() functional on all platforms, even when
+          the platform's inet_aton() and inet_addr() are not available.
+
+        * ace/OS_NS_arpa_inet.inl:
+
+          Cleaned up #ifdefs and code for ACE_OS::inet_ntop() and inet_pton().
+
+        * ace/config-win32-common.h:
+
+          Set ACE_LACKS_INET_NTOP/PTON based on the Windows SDK version.
+          Users requiring complete IPv6 support will need to set _WIN32_WINNT
+          to 0x600 or larger in config.h before including config-win32.h,
+          because config-win32-common.h sets it to 0x501 if it's not yet set.
+
+        * ace/config-face-safety.h:
+
+          Fixed typo.
+
+Tue Aug 18 15:00:22 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/OS_NS_Thread.h:
+        * ace/OS_NS_Thread.inl:
+        * ace/OS_NS_Thread.cpp:
+        * ace/os_include/os_pthread.h:
+
+          Decouple ACE_LACKS_RWLOCK_T from ACE_HAS_PTHREADS_UNIX98_EXT.
+          With FACE Safety Profiles, the platform does in effect lack
+          rwlocks but has most of the pthreads standard functions/structs.
+
+Mon Aug 17 19:43:14 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Array_Map.inl:
+        * ace/Array_Map.cpp:
+
+          Fixed an issue that came from the merge last Thursday:
+          array operator new can't be used portably in this way
+          along with placement new and the std Allocator concept
+
+        * ace/OS_NS_Thread.inl:
+
+          Also due to the merge last weeek, needed an update to how
+          ACE_OS::rw_trywrlock_upgrade() works when ACE_LACKS_RWLOCK_T.
+
+        * ace/Global_Macros.h:
+
+          Updated ACE_UNIMPLEMENTED_FUNC to match what's in the DOC Group repo.
+
+Fri Aug 14 19:30:34 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Malloc_Base.h:
+
+          Added required include for std::bad_alloc.
+
+Fri Aug 14 15:14:54 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/SSL/SSL_Context.cpp:
+
+          Added required include for MAXHOSTNAMELEN.
+
+        * ace/config-macros.h:
+
+          Guard include of <new> with ACE_HAS_ALLOC_HOOKS.
+          Code in TAO is #including this from a *.c source file.
+
+Fri Aug 14 14:09:53 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * examples/Log_Msg/test_callback.cpp:
+
+          Updated example to match change to ACE_Log_Record class.
+
+Fri Aug 14 13:54:56 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Malloc_Base.h:
+
+          Fixed prevention of 'max' macro replacement.
+
+Thu Aug 13 22:08:15 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Malloc_Base.h:
+        * ace/OS_NS_arpa_inet.inl:
+
+          Fixes for building on Win32 after the merge described below.
+
+Thu Aug 13 18:16:13 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * Merged branch tao-face-safety-22a which introduces configurable
+          support for the FACE (Future Airborne Capability Enviornment) safety
+          profiles and enhanced support for customzing ACE's dynamic memory
+          allocation.
+        * ChangeLogs/FACEChangeLog: contains detailed per-commit notes
+        * ace/config-face-safety.h: configures ACE for FACE safety profiles
+
+Wed Aug 12 19:49:39 UTC 2015  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * bin/fuzz.pl:
+          make fuzz.pl -m handle both git and svn checkouts
+
+Fri Aug  7 15:47:37 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Log_Msg.cpp:
+          Fix for bug 4205.
+
+        * ace/TP_Reactor.cpp:
+          For some yet undiscovered reason, an application crash occurred
+          because the reactor's timer queue was nil when handle_timeout was
+          reached. This patch should at least allow for graceful termination.
+
+Wed Jul 15 13:49:40 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/CDR_Base.cpp:
+        * ace/OS_NS_unistd.inl:
+        * ace/config-vxworks.h:
+        * ace/config-vxworks7.0.h:
+        * ace/os_include/sys/os_types.h:
+        * include/makeinclude/platform_linux.GNU:
+        * include/makeinclude/platform_vxworks.GNU:
+        * include/makeinclude/platform_vxworks7.0.GNU:
+        * include/makeinclude/rules.lib.GNU:
+
+          Merged changes for VxWorks 7.0 from upstream DOC Group repository.
+
+Mon Jul 13 21:48:43 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Configuration.cpp:
+        * ace/Connector.cpp:
+        * ace/Dev_Poll_Reactor.cpp:
+        * ace/Event_Handler.h:
+        * ace/Get_Opt.cpp:
+        * ace/MMAP_Memory_Pool.cpp:
+        * ace/OS_NS_stdio.inl:
+        * ace/OS_NS_time.inl:
+        * ace/SOCK_Dgram_Bcast.cpp:
+        * ace/Select_Reactor_Base.cpp:
+        * ace/Service_Gestalt.cpp:
+        * ace/Sock_Connect.cpp:
+        * ace/Thread_Manager.cpp:
+        * ace/WFMO_Reactor.cpp:
+        * ace/config-win32-msvc-11.h:
+        * ace/config-win32-msvc-12.h:
+        * ace/config-win32-msvc-14.h:
+        * ace/config-win32-msvc.h:
+        * apps/JAWS/clients/WebSTONE/src/nsapi-includes/base/buffer.h:
+        * apps/JAWS/clients/WebSTONE/src/nsapi-includes/base/daemon.h:
+        * bin/fuzz.pl:
+        * examples/Reactor/Proactor/test_udp_proactor.cpp:
+        * tests/Bug_2820_Regression_Test.cpp:
+
+          Imported configs for newer MSVC versions from upstream DOC Group.
+          The same commits contained some minor bug and typo fixes,
+          which are also included here.
+
+Fri Jul 10 14:13:20 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/config-macosx-yosemite.h:
+        * include/makeinclude/platform_macosx_yosemite.GNU:
+
+          Imported Mac OS X 10.10 "Yosemite" configs from upstream DOC Group.
+
+Mon Jul  6 16:46:04 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Abstract_Timer_Queue.h:
+          Add required explicit include as identified by VC12.
+
+        * ace/pre.h:
+          Mask warnings from casting operations on 64 bit builds. These
+          warnings are only present on VS builds so masking is warranted.
+
+Tue Jun 30 16:41:05 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/CDR_Base.cpp:
+
+          Fixed bugs caused by changes to normalize.
+
+Wed Jun 10 21:17:16 UTC 2015  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/CDR_Base.cpp:
+        * tests/CDR_Fixed_Test.cpp:
+
+          Rewrote normalize to fix off-by-one error.  Fixed bug in
+          division and added test.
+
+Thu May 28 21:39:24 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SSL/SSL_Context.cpp:
+          Clean up logging.
+
+Thu Apr 30 15:36:15 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/CDR_Base.h:
+        * ace/CDR_Base.inl:
+        * ace/CDR_Base.cpp:
+        * ace/CDR_Size.h:
+        * ace/CDR_Size.inl:
+        * ace/CDR_Stream.h:
+        * ace/CDR_Stream.inl:
+        * tests/CDR_Fixed_Test.cpp:
+        * tests/CDR_Test.cpp:
+        * tests/run_test.lst:
+        * tests/tests.mpc:
+
+          Added support for the IDL/CDR fixed data type (fixed point decimal).
+
+Fri Mar 20 20:49:08 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * bin/MakeProjectCreator/modules/GNUACEWorkspaceCreator.pm:
+
+          Prevent running depgen twice during "make depend".
+
+Wed Mar 11 20:47:25 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-lite.h:
+          Support Solaris Studio 12.4.
+
+Mon Mar  9 22:19:02 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SSL/SSL_Context.cpp:
+          Fix cut & paste error.
+
+Mon Mar  9 15:10:07 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SSL/SSL_Context.h:
+        * ace/SSL/SSL_Context.cpp:
+          Improve robustness of version limiting method. Add a new method
+          for verifying the peer host name matches the supplied certificate.
+
+Thu Mar  5 23:10:07 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * OCIReleaseNotes.html:
+          Update release notes.
+
+        * ace/OS_NS_pwd.inl:
+          Address pthread/sthread variation.
+
+        * include/makeinclude/platform_sunos5_sunc++.GNU:
+          Define a flag to control selection of pthread semantics.
+
+Wed Feb 25 23:11:09 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SSL/SSL_Context.h:
+        * ace/SSL/SSL_Context.cpp:
+          Add new version limiting feature.
+
+        * include/makeinclude/platform_macosx_lion.GNU:
+          Permit building ssl components on MacOS.
+
+Wed Feb 25 16:14:06 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a_p6 released.
+
+Tue Feb 10 15:44:42 UTC 2015  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Process.cpp:
+
+          Allow redirection of child's stdout/stderr when there is no
+          stdin handle available (for example when running in a service).
+
+Fri Jan 30 20:53:46 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a_p5 released.
+
+Thu Jan 29 20:44:13 UTC 2015  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SSL/SSL_Context.cpp:
+          Adopted DOC commit db578e3 to detect lack of TLS versions.
+
+Mon Dec 15 23:58:43 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/OS_NS_Thread.inl:
+          Fix deprecated code warnings from clang-600.0.56.
+
+Fri Nov 14 16:47:56 UTC 2014  Justin Wilson  <wilsonj@ociweb.com>
+
+        * ace/Dev_Poll_Reactor.cpp:
+        * test/Dev_Poll_Reactor_Echo_Test.cpp:
+
+          Fix to resume and register event handlers after returing -1 from
+          handle_*.  Dev_Poll_Reactor on Linux uses epoll with one-shot and
+          suspends handlers when an event is received.  New logic attempts
+          to resume handler when -1 is returned.  Added test.
+
+Mon Nov 10 17:48:59 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a_p4 released.
+
+Mon Nov  3 21:54:20 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/ETCL/ETCL_l.cpp:
+          improved the dead code cleanup
+
+Fri Oct 31 19:07:44 UTC 2014  Adam Mitz  <mitza@ociweb.com>
+
+        * ace/Process.cpp:
+        * protocols/ace/INet/FTP_Session.cpp:
+
+          Imported changes 97377,97594 from DOC to fix errors
+          and warnings on vc12 (Visual Studio 2013).
+
+Mon Oct 20 16:51:01 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACEXML/common/XMLFilterImpl.h:
+        * ACEXML/common/XMLFilterImpl.cpp:
+        * ACEXML/parser/parser/Entity_Manager.h:
+        * ace/ETCL/ETCL_l.cpp:
+        * ace/Filecache.h:
+        * ace/Filecache.cpp:
+        * ace/config-macosx-lion.h:
+        * ace/config-macosx-mountainlion.h:
+        * ace/os_include/os_stropts.h:
+        * protocols/ace/RMCast/Flow.h:
+        * protocols/ace/RMCast/Flow.cpp:
+        * protocols/ace/RMCast/Reassemble.h:
+        * protocols/ace/RMCast/Reassemble.cpp:
+        * protocols/ace/TMCast/TransactionController.hpp:
+          Clean up unused member warnings identified by clang 6.0.
+
+        * bin/PerlACE/Process_Unix.pm:
+          increase the valgrind wait factor to accommodate slower machines.
+
+        * OCIReleaseNotes.html:
+          update supported platforms list.
+
+Mon Oct  6 20:43:48 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-macosx-mavericks.h:
+        * include/makeinclude/platform_macosx_mavericks.GNU:
+          Build support for MacOSX Mavericks
+
+Mon Aug 11 18:46:22 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a_p3 released.
+
+Tue May  6 18:28:36 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a_p2 released.
+
+Fri Apr 11 21:26:28 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SSL/SSL_Context.cpp:
+          Scoreboard cleanup. The directory add feature discussed in
+          bug 3337 still doesn't work on windows.
+
+Thu Apr 10 14:16:34 UTC 2014  Jeff Schmitz  <schmitzj@ociweb.com>
+
+        * ace/config-win32-common.h:
+
+          Prevent double-definition of _interlockedbittestandset()
+          and _interlockedbittestandreset() in VC8
+
+Tue Apr  8 19:27:23 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SOCK_Connector.cpp:
+          Fix to allow the extended connection semantics on windows to be
+          overridden by adding #define ACE_NON_BLOCKING_BUG_DELAY 0 to
+          config.h prior to including config-win32.h. The default behavior
+          is unchanged but in cases where a tight connection timeout is
+          requested and the application's using local connections on newer
+          windows platforms, the wait then try again step may be skipped.
+
+Tue Feb 25 15:08:41 UTC 2014  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a_p1 released.
+
+Wed Dec 11 18:23:13 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/SOCK_Acceptor.cpp:
+          In order for Windows Vista and newer IPV6 sockets to also accept IPv4
+          traffic, the socket must be explicitly set to "dual stack mode" prior
+          to binding it to an address. Since this is making windows deployments
+          exhibit behavior consistent with other platforms, this is always done.
+          We can add an option later if necessary.
+
+Mon Dec  2 18:44:35 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Sock_Connect.cpp:
+
+          Fix for a recursion that happens on windows with the new code to validate
+          IPv6 support when ACE_HAS_IPV4_IPV6_MIGRATION is set. The fix, suggested by
+          MSDev users, is to utilize get_ip_interfaces to find IPv4 and IPv6 support
+          but since that method makes ACE_INET_Addr objects, and the ctor for that
+          checks the ip type available, this is a recursion
+
+Tue Oct 22 21:55:20 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/Sock_Connect.cpp:
+
+          As of the release of Windows 2008, even hosts that have IPv6
+          interfaces disabled will still permit the creation of a PF_INET6
+          socket, thus rendering the socket creation test inconsistent. The
+          reccommended solution is to get the list of endpoint addresses and
+          see if any match the desired family.
+
+Tue Oct  1 20:49:19 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/ACE.h:
+
+          Removed unneeded include of math.h wrapper, it can cause namespace
+          collisions.
+
+Mon Jul 29 20:00:21 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * ace/config-sunos5.7.h:
+
+          Fix for redefinition warning.
+
+Thu Jun 20 16:59:39 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * protocols/ace/INet/FTP_Response.h:
+
+          Change the name of the "NONE" value in the status subtype enum
+          to avoid a conflict on VxWorks builds.
+
+        * OCIReleaseNotes.html:
+
+          Fixed some typos and added a note about the above.
+
+Mon Jun 10 20:27:39 UTC 2013  Phil  <mesnier_p@ociweb.com>
+
+        * ACE version 6.2a released.
+
+Fri Jun  7 20:44:13 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * OCIReleaseNotes.html:
+        * PROBLEM-REPORT-FORM:
+        * VERSION:
+
+        * ace/Version.h:
+        * ace/ace.rc:
+
+          Reset version numbers ahead of release.
+
+Wed Jun  5 16:14:35 UTC 2013  Phil Mesnier  <mesnier_p@ociweb.com>
+
+        * DOC-README:
+        * OCIChangeLog:
+        * OCIReleaseNotes.html:
+        * PROBLEM-REPORT-FORM:
+        * README:
+        * VERSION:
+
+        * ace/Version.h:
+
+        * include/makeinclude/wrapper_macros.GNU:
+
+          Updated version identifier to be consistent with OCI builds.
+
+        * bin/add_rel_link.sh:
+        * bin/clean_sems.sh:
+        * bin/copy-script.sh:
+        * bin/diff-builds-and-group-fixed-tests-only.sh:
+        * bin/footprint_stats.sh:
+        * bin/g++_metric.sh:
+        * bin/generate_compile_stats.sh:
+        * bin/generate_footprint_chart.sh:
+        * bin/generate_performance_chart.sh:
+        * bin/generate_topinfo_charts.sh:
+        * bin/group_test_stats.sh:
+        * bin/mail_test_stats.sh:
+        * bin/package_copy_script.sh:
+        * bin/performance_stats.sh:
+        * bin/topinfo_iorsize_stats.sh:
+        * bin/topinfo_simple_stats.sh:
+        * bin/topinfo_stats.sh:
+        * bin/update-ace+tao.sh:
+
+          Set the executable property on these files.
+
+        * ACE.mwc:
+
+          Removed this file.
+
+Local Variables:
+mode: change-log
+add-log-time-format: (lambda () (progn (setq tz (getenv "TZ")) (set-time-zone-rule "UTC") (setq time (format-time-string "%a %b %e %H:%M:%S %Z %Y" (current-time))) (set-time-zone-rule tz) time))
+indent-tabs-mode: nil
+End:

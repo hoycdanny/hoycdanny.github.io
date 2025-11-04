@@ -1,0 +1,21 @@
+//$Id: BMDisplay.idl 1861 2011-08-31 16:18:08Z mesnierp $
+
+#ifndef BMDISPLAY_IDL
+#define BMDISPLAY_IDL
+
+#include "BasicSP.idl"
+
+module BasicSP
+{
+  component BMDisplay
+  {
+    consumes  DataAvailable data_ready;
+    uses ReadData comp_data;
+  };
+
+  home BMDisplayHome manages BMDisplay
+  {
+  };
+};
+
+#endif /* BMDISPLAY_IDL */

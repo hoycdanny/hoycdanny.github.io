@@ -1,0 +1,7 @@
+// -*- MPC -*-
+//$Id: csd_threadpool.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : csd_framework, threads {
+  after += CSD_ThreadPool
+  libs += TAO_CSD_ThreadPool
+}

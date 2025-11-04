@@ -1,0 +1,5 @@
+// -*- MPC -*-
+// $Id: aceexe.mpb 1861 2011-08-31 16:18:08Z mesnierp $
+
+project: acedefaults, acenosubsets, ace_for_tao, versioned_namespace {
+}

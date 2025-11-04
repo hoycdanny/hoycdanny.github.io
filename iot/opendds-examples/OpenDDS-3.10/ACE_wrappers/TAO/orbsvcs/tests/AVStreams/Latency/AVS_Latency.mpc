@@ -1,0 +1,27 @@
+// -*- MPC -*-
+// $Id: AVS_Latency.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*ping): avstreamsexe, strategies {
+  exename  = ping
+
+  Source_Files {
+    ping.cpp
+  }
+}
+
+project(*pong): avstreamsexe, strategies {
+  exename  = pong
+
+  Source_Files {
+    pong.cpp
+  }
+}
+
+project(*cntl): avstreamsexe, strategies {
+  exename  = control
+
+  Source_Files {
+    control.cpp
+  }
+}
+

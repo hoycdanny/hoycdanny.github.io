@@ -1,0 +1,41 @@
+// -*- MPC -*-
+// $Id: CodeSets_simple.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project(*idl): taoidldefaults {
+  IDL_Files {
+    simple.idl
+  }
+  custom_only = 1
+}
+
+project(*client) : taoclient, anytypecode {
+  after += *idl
+
+  Source_Files {
+    client.cpp
+  }
+
+  Source_Files {
+    simpleC.cpp
+  }
+
+  IDL_Files {
+  }
+}
+
+project(*server) : taoserver {
+
+  after += *idl
+
+  Source_Files {
+    server.cpp
+  }
+
+  Source_Files {
+    simpleC.cpp
+    simpleS.cpp
+  }
+
+  IDL_Files {
+  }
+}

@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: Collocated_Best_ThruP.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+// Thru_Poa default enabled, Direct default disabled
+project(Collocated_Best_ThruP): taoserver {
+  exename = Collocated_Best_ThruP
+}

@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: taoserver.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : taoexe, negotiate_codesets, portableserver {
+  exename  = server
+}

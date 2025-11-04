@@ -1,0 +1,4 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This test is a modified version of Secure_Invocation.  It tests the fixes
+for bug 1107.

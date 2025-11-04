@@ -1,0 +1,13 @@
+//
+// $Id: idl_1.idl 2179 2013-05-28 22:16:51Z mesnierp $
+//
+
+module Skeleton_Inheritance
+{
+  interface Interface_1
+  {
+    string operation_1 ();
+
+    attribute long attribute_1;
+  };
+};

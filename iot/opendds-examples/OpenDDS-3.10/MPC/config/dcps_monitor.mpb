@@ -1,0 +1,6 @@
+// -*- MPC -*-
+
+project {
+  libs  += OpenDDS_monitor
+  after += OpenDDS_monitor
+}

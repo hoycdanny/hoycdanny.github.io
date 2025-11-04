@@ -1,0 +1,12 @@
+// $Id: Bug_2583_Regression.idl 14 2007-02-01 15:49:12Z mitza $
+
+// Test Bug 2583
+
+module Test {
+  local interface DynAny {};
+  struct NameDynAnyPair {
+    string   id;
+    DynAny      value;
+  };
+  typedef sequence<NameDynAnyPair> NameDynAnyPairSeq;
+};

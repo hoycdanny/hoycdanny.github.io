@@ -1,0 +1,4 @@
+$Id: README 943 2008-12-12 15:11:28Z mitza $
+
+This directory implement a DLL that contains the parser for XML based
+service configurator.

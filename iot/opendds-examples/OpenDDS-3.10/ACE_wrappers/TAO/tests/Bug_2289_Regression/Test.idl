@@ -1,0 +1,8 @@
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+
+typedef string MyString;
+
+interface MyInterface
+{
+    boolean myMethod (in MyString stringParam);
+};

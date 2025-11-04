@@ -1,0 +1,4 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This is a simple test of the DSI+AMH feature in TAO.
+To run it, just execute the script run_test.pl.

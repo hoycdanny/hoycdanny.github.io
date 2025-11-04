@@ -1,0 +1,6 @@
+// $Id: test.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+interface ID_Check
+{
+  boolean check_servant_id (in short index);
+};

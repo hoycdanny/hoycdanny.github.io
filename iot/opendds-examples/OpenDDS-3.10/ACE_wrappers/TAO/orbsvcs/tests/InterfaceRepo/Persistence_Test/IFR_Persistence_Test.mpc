@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: IFR_Persistence_Test.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project: taoexe, ifr_client, avoids_minimum_corba, avoids_corba_e_compact, avoids_corba_e_micro {
+  exename  = Persistence_Test
+}

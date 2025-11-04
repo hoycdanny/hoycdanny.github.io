@@ -1,0 +1,5 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+This test demonstrates Bug 2734 by running the Timeout test with different
+options.  If a name is given to the client's ORB, the test will stop working
+if Bug 2734 is reintroduced.

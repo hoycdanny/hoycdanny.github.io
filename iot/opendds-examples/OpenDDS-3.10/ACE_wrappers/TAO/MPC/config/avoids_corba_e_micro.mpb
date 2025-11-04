@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: avoids_corba_e_micro.mpb 14 2007-02-01 15:49:12Z mitza $
+
+feature(corba_e_micro) {
+  avoids += corba_e_micro
+}

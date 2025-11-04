@@ -1,0 +1,11 @@
+//
+// $Id: Job.idl 1861 2011-08-31 16:18:08Z mesnierp $
+//
+
+interface Job
+{
+  void work (in unsigned long work,
+             in short importance);
+
+  void shutdown ();
+};

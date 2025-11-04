@@ -1,0 +1,5 @@
+// $Id: Naming_Server.mpc 2858 2016-06-09 15:40:28Z mesnierp $
+
+project(*Messenger): namingexe, naming_serv {
+  requires += threads
+}

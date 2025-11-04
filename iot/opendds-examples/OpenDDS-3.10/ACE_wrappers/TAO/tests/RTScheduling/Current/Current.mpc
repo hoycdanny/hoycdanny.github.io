@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// $Id: Current.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(Current) : rtscheduling_client {
+ Source_Files {
+    ../Scheduler.cpp
+    Thread_Task.cpp
+    test.cpp
+  }
+
+  exename = Current
+}

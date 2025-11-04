@@ -1,0 +1,39 @@
+
+//=============================================================================
+/**
+ *  @file    test.idl
+ *
+ *  $Id: test.idl 1861 2011-08-31 16:18:08Z mesnierp $
+ *
+ * Simple IDL file to test portable interceptor support.
+ *
+ *
+ *  @author Nanbor Wang <nanbor@cs.wustl.edu>
+ */
+//=============================================================================
+
+
+module Test_Interceptors
+{
+  exception Silly
+    {};
+
+  interface Visual
+  {
+    void normal (in long arg);
+    // Normal operation.
+
+    long calculate (in long one, in long two);
+    // Normal operation with a return val.
+
+    void user ()
+      raises (Silly);
+    // throws a user exception.
+
+    void system ();
+    // thows a system exception.
+
+   oneway void shutdown ();
+    // shutdown the ORB
+  };
+};

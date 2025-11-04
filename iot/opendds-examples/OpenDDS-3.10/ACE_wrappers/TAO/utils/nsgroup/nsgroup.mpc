@@ -1,0 +1,9 @@
+// $Id: nsgroup.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project(nsgroup): orbsvcsexe, ftnaming, naming, install, svc_utils {
+  install = $(ACE_ROOT)/bin
+  exename = tao_nsgroup
+  Source_Files {
+    nsgroup.cpp
+  }
+}

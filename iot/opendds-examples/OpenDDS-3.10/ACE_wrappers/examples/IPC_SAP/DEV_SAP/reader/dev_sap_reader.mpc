@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: dev_sap_reader.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project : aceexe, avoids_ace_for_tao {
+  exename = reader
+  Source_Files {
+    reader.cpp
+  }
+}
+

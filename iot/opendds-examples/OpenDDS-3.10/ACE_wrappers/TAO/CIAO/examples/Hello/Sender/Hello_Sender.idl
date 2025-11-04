@@ -1,0 +1,19 @@
+// $Id: Hello_Sender.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+#ifndef HELLO_SENDER_IDL
+#define HELLO_SENDER_IDL
+
+#include <Components.idl>
+
+#include "Base/Hello.idl"
+
+module Hello
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif

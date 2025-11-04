@@ -1,0 +1,15 @@
+// $Id: Test_impl.cpp 2179 2013-05-28 22:16:51Z mesnierp $
+
+#include "Test_impl.h"
+
+
+
+Server_impl::Server_impl (CORBA::ORB_ptr orb)
+  : orb_ (CORBA::ORB::_duplicate (orb))
+{
+}
+
+void Server_impl::shutdown ()
+{
+  this->orb_->shutdown (0);
+}

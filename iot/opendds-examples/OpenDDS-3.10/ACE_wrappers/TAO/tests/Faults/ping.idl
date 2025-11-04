@@ -1,0 +1,18 @@
+// $Id: ping.idl 14 2007-02-01 15:49:12Z mitza $
+
+interface PingObject
+{
+  // = DESCRIPTION
+  //   An interface to ping-pong between two objects, it is used to
+  //   test a very interesting use-case reported by Andreas Geisler.
+
+  oneway void ping (in PingObject callback);
+  // The ping method, the server should respond by invoking <pong> on
+  // the <callback> object
+
+  oneway void pong ();
+  // A response from the server
+
+  oneway void shutdown ();
+  // Shutdown the peer
+};

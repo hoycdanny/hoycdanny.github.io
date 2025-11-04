@@ -1,0 +1,13 @@
+/**
+
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+@page Hello Test README File
+
+Test whether wait strategy mt_noupcall works with just basic hello server
+
+$ ./run_test.pl
+
+	the script returns 0 if the test was successful.
+
+*/

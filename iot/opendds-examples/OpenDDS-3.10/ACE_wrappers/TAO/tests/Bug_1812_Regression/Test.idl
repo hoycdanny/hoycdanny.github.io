@@ -1,0 +1,7 @@
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+
+#include <orb.idl>
+
+local interface foo {
+     void op (in CORBA::ValueFactory vf);
+};

@@ -1,0 +1,11 @@
+// -*- MPC -*-
+// $Id: Synch_Benchmarks_Base_Test.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : acelib {
+  sharedname = Base_Test
+  avoids   += ace_for_tao
+  after    += Synch_Lib
+  libs     += Synch_Lib
+  libpaths += ../Synch_Lib
+  includes += ..
+}

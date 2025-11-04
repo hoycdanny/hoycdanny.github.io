@@ -1,0 +1,9 @@
+// $Id: Bug_4097_Regression.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+union MultiLabelUnion switch (long) {
+  case 0:
+  case 1:
+    char mlu_char;
+  case 2:
+    long mlu_long;
+};

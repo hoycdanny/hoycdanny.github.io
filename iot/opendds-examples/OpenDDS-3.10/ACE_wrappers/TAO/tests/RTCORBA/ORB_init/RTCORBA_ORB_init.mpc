@@ -1,0 +1,6 @@
+// $Id: RTCORBA_ORB_init.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project (ORB_init_RT) : rt_client {
+  exename = ORB_init
+}
+

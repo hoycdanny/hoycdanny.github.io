@@ -1,0 +1,15 @@
+// $Id: test.idl 2363 2014-09-12 14:50:12Z mesnierp $
+module Test
+{
+  interface Dummy
+  {
+    string getMessage();
+  };
+
+  interface Time
+  {
+    long current_time ();
+    oneway void shutdown ();
+  };
+
+};

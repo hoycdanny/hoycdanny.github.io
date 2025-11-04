@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: dslogadmin_serv.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, dslogadmin_skel, dynamicany, etcl, svc_utils, utils {
+  after      += DsLogAdmin_Serv
+  libs       += TAO_DsLogAdmin_Serv
+}

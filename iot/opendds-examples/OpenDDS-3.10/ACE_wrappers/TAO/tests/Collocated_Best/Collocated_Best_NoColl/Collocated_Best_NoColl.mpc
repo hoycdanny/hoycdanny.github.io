@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: Collocated_Best_NoColl.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+// Disable Thru_Pu and don't enable Direct
+project(Collocated_Best_NoColl): taoserver {
+  exename = Collocated_Best_NoColl
+  idlflags += -Sp
+}

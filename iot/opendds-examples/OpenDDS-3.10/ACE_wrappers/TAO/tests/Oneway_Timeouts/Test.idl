@@ -1,0 +1,6 @@
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+
+interface Tester {
+  oneway void test(in long id);
+  long test2(in long id);
+};

@@ -1,0 +1,22 @@
+
+//=============================================================================
+/**
+ *  @file    typecode.idl
+ *
+ *  $Id: typecode.idl 1861 2011-08-31 16:18:08Z mesnierp $
+ *
+ *  Test a sequence of typecodes
+ *
+ *
+ *  @author Johnny Willemsen  <jwillemsen@remedy.nl>
+ */
+//=============================================================================
+
+
+#include "orb.idl"
+
+module MyModule
+{
+  typedef sequence<CORBA::TypeCode> TypeCodeList;
+};
+

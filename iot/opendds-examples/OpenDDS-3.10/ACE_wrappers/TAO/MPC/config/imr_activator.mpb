@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: imr_activator.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : minimum_corba {
+  after += ImR_Activator
+  libs  += TAO_ImR_Activator
+}

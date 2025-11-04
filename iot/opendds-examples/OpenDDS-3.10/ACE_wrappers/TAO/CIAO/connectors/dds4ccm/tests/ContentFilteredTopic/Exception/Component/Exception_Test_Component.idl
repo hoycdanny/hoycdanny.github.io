@@ -1,0 +1,20 @@
+// $Id: Exception_Test_Component.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+/**
+ * @author Marcel Smit (msmit@remedy.nl)
+ */
+
+#ifndef COMPONENT_IDL
+#define COMPONENT_IDL
+
+#include "Connector/Exception_Test_Connector.idl"
+
+module CFT_Exception_Test
+{
+  component CFTTestComponent
+  {
+    port CFTExceptionTestConn::DDS_Get getter;
+  };
+};
+
+#endif

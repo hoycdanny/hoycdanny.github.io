@@ -1,0 +1,9 @@
+// $Id: DeploymentPlanDump.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+project : dance, taoexe, xerces, dance_config_handlers, dance_logger {
+  exename   = DeploymentPlanDump
+
+  Source_Files {
+    test.cpp
+  }
+}
+

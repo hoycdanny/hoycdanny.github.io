@@ -1,0 +1,28 @@
+//$Id: Sender.idl 1861 2011-08-31 16:18:08Z mesnierp $
+
+#ifndef CIAO_SENDER_IDL
+#define CIAO_SENDER_IDL
+
+
+#include "../Minimum_Base/Minimum_Base.idl"
+
+module Minimum
+{
+  /* This is a Sender specific interface which will be used to get the
+   * process start.
+   */
+
+  interface trigger
+  {
+    void bar ();
+  };
+
+  component Sender supports trigger
+  {
+  };
+
+  home SenderHome manages Sender
+  {
+  };
+};
+#endif /*CIAO_SENDER_IDL*/

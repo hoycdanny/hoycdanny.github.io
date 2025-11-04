@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: CosEvent_lib.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(CosEvent Test Lib): orbsvcslib, event_skel, svc_utils, iortable, portableserver {
+  sharedname   = CECTests
+  dynamicflags += CEC_TEST_BUILD_DLL
+  Header_Files {
+    cectest_export.h
+  }
+}

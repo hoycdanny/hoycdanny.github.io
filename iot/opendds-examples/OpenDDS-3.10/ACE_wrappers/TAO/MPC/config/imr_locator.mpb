@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: imr_locator.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcsexe, avoids_minimum_corba, avoids_corba_e_compact, avoids_corba_e_micro {
+  after += ImR_Locator
+  libs  += TAO_ImR_Locator
+}

@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: Notify_lib.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(NotifyTests_Lib): orbsvcslib, notification_skel, notify_serv, naming, svc_utils {
+  sharedname = TAO_NotifyTests
+  dynamicflags += TAO_NOTIFY_TEST_BUILD_DLL
+}
+

@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: dsnotifylogadmin.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, dslogadmin, dseventlogadmin, event, notification {
+  after      += DsNotifyLogAdmin
+  libs       += TAO_DsNotifyLogAdmin
+}

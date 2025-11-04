@@ -1,0 +1,35 @@
+// -*- MPC -*-
+// $Id: Retry_On_Reply_Failure.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project(*idl): taoidldefaults {
+  IDL_Files {
+    test.idl
+  }
+  custom_only = 1
+}
+
+project(*Server): taoserver, iortable {
+  after += *idl
+  Source_Files {
+    test_i.cpp
+    server.cpp
+  }
+  Source_Files {
+    testC.cpp
+    testS.cpp
+  }
+  IDL_Files {
+  }
+}
+
+project(*Client): taoclient, anytypecode {
+  after += *idl
+  Source_Files {
+    client.cpp
+  }
+  Source_Files {
+    testC.cpp
+  }
+  IDL_Files {
+  }
+}

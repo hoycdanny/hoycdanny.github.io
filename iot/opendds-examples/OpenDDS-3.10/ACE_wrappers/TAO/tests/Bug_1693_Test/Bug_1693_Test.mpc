@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: Bug_1693_Test.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Client): taoclient, codecfactory {
+  Source_Files {
+    testC.cpp
+    client.cpp
+  }
+}
+

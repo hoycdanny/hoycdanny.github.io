@@ -1,0 +1,15 @@
+// -*- MPC -*-
+// $Id: utils.mwc 2179 2013-05-28 22:16:51Z mesnierp $
+
+workspace {
+  nslist
+  catior
+
+  // must have wxWindows=1 in $ACE_ROOT/bin/MakeProjectCreator/config/default.features to generate Makefile for wxNamingViewer
+  wxNamingViewer
+
+  // must have mfc=1 in $ACE_ROOT/bin/MakeProjectCreator/config/default.features to generate Makefile for wxNamingViewer
+  NamingViewer
+
+  nsgroup
+}

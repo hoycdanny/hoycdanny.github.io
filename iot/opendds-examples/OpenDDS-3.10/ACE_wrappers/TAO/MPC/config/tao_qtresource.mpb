@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: tao_qtresource.mpb 1861 2011-08-31 16:18:08Z mesnierp $
+
+project : taolib, ace_qt4reactor {
+  requires += tao_qtresource
+  after    += TAO_QtResource
+  libs     += TAO_QtResource
+}

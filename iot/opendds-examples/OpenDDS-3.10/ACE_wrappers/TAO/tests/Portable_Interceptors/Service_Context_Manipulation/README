@@ -1,0 +1,8 @@
+# $Id: README 943 2008-12-12 15:11:28Z mitza $
+
+This test allows you to visually check proper manipulation of a
+request's ServiceContextList through Portable Interceptors.
+
+  server -o test.ior
+
+  client

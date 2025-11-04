@@ -1,0 +1,11 @@
+//  -*- MPC -*-
+// $Id: svcconf.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(ACEXML_XML_Svc_Conf_Parser): ace_output, acelib, acexml, install {
+  sharedname = ACEXML_XML_Svc_Conf_Parser
+
+  specific {
+    install_dir = ACEXML/apps/svcconf
+  }
+
+}

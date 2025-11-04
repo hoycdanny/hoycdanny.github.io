@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: smart_proxies.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project: taolib_with_idl {
+  after    += SmartProxies
+  libs     += TAO_SmartProxies
+  idlflags += -Gsp
+}

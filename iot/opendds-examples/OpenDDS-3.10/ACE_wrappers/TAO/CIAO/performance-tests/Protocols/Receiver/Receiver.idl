@@ -1,0 +1,23 @@
+// $Id: Receiver.idl 1861 2011-08-31 16:18:08Z mesnierp $
+
+#include <Components.idl>
+#include "../common/Protocols.idl"
+
+#pragma ciao lem "ReceiverE.idl"
+
+module Protocols
+{
+  interface Receiver_Controller
+  {
+    void shutdown ();
+  };
+
+  component Receiver supports Receiver_Controller
+  {
+    provides test writer;
+  };
+
+  home ReceiverHome manages Receiver
+  {
+  };
+};

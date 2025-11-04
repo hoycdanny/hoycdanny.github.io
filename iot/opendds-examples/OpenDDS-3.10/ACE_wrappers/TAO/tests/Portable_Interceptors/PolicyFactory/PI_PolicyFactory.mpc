@@ -1,0 +1,14 @@
+// -*- MPC -*-
+//
+// $Id: PI_PolicyFactory.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Server): taoserver, iorinterceptor, interceptors {
+  Source_Files {
+    testC.cpp
+    Policy.cpp
+    PolicyFactory.cpp
+    Server_ORBInitializer.cpp
+    IORInterceptor.cpp
+    server.cpp
+  }
+}

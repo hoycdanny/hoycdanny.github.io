@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: naming_serv.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project : orbsvcslib, naming_skel, iortable, messaging_optional, svc_utils {
+  after     += CosNaming_Serv
+  libs      += TAO_CosNaming_Serv
+}

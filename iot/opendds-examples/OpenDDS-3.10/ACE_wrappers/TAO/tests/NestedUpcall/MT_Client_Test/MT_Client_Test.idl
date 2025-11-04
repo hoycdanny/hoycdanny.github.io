@@ -1,0 +1,22 @@
+//=============================================================================
+/**
+ *  @file    MT_Client_Test.idl
+ *
+ *  $Id: MT_Client_Test.idl 1861 2011-08-31 16:18:08Z mesnierp $
+ *
+ *  An example of how nested upcalls work/fail?
+ *
+ *  @author Michael Kircher
+ */
+//=============================================================================
+
+interface Object_A {
+  long foo (in long time);
+};
+
+interface MT_Object;
+
+interface MT_Object
+{
+  long yadda (in long hop_count, in MT_Object partner);
+};

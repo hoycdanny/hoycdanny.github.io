@@ -1,0 +1,28 @@
+// -*- MPC -*-
+// $Id: Two_Way.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project(*application): messaging, rteventexe, rtevent_serv, naming {
+  after  += ECMcastTests_lib
+  libs     += ECMcastTests
+  libpaths += ../Common
+  includes += ../Common
+
+  exename   = application
+
+  Source_Files {
+    application.cpp
+  }
+}
+
+project(*gateway-ec): messaging, rteventexe, rtevent_serv, naming {
+  after  += ECMcastTests_lib
+  libs     += ECMcastTests
+  libpaths += ../Common
+  includes += ../Common
+
+  exename   = gateway-ec
+
+  Source_Files {
+    gateway-ec.cpp
+  }
+}

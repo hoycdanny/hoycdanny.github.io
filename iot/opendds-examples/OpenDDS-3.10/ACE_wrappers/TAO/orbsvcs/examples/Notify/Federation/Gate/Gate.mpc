@@ -1,0 +1,7 @@
+//  -*- MPC -*-
+// $Id: Gate.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(Gate) : rmcast, orbsvcsexe, notification, notification_skel {
+  sharedname   = Gate
+  dynamicflags += GATE_BUILD_DLL
+}

@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: qos.mpb 14 2007-02-01 15:49:12Z mitza $
+
+feature(qos) {
+  after  += QoS
+  libs   += ACE_QoS
+  macros += ACE_HAS_QOS
+}

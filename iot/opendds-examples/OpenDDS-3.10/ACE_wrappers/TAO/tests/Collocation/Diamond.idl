@@ -1,0 +1,24 @@
+// $Id: Diamond.idl 14 2007-02-01 15:49:12Z mitza $
+
+module Diamond
+{
+  interface Top
+    {
+      string shape ();
+    };
+
+  interface Left : Top
+    {
+      string color ();
+    };
+
+  interface Right : Top
+    {
+      long width ();
+    };
+
+  interface Buttom : Left, Right
+    {
+      string name ();
+    };
+};

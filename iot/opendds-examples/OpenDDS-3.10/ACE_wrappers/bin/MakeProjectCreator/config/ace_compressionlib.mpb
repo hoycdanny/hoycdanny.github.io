@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: ace_compressionlib.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : acelib {
+    libs    += ACE_Compression
+    after   += ACE_Compression
+}

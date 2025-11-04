@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: tc_iiop.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project: tc {
+  after   += TC_IIOP
+  libs    += TAO_TC_IIOP
+}

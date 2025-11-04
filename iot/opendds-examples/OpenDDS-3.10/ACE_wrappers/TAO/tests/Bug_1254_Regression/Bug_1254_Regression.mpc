@@ -1,0 +1,33 @@
+// -*- MPC -*-
+// $Id: Bug_1254_Regression.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*idl): taoidldefaults {
+  IDL_Files {
+    test.idl
+  }
+  custom_only = 1
+}
+
+project(*Server): taoserver {
+  after += *idl
+  Source_Files {
+    BlobServer.cpp
+    server.cpp
+    testC.cpp
+    testS.cpp
+  }
+  IDL_Files {
+  }
+}
+
+project(*Client): taoserver {
+  exename = client
+  after += *idl
+  Source_Files {
+    client.cpp
+    testC.cpp
+    testS.cpp
+  }
+  IDL_Files {
+  }
+}

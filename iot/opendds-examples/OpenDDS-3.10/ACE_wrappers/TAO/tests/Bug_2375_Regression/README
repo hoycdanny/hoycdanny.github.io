@@ -1,0 +1,5 @@
+$Id: README 2179 2013-05-28 22:16:51Z mesnierp $
+
+A build only test to check that the c++ source produced from an IDL file with a valuetype factory in it compiles OK.
+
+If it builds it's passed.

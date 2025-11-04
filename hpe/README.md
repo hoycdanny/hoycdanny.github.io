@@ -5,6 +5,7 @@ HPE (Hewlett Packard Enterprise) 相關產品的技術筆記。
 ## 內容
 
 - [HPE Ezmeral](ezmeral/) - HPE Ezmeral 資料平台相關技術
+- [HPE OneView](oneview/) - 使用 Ansible 自動化管理 HPE DL380 伺服器
 
 ## HPE Ezmeral 產品線
 

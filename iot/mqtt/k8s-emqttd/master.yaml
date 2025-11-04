@@ -1,0 +1,50 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: emqtt-master
+  namespace: emqtt
+  labels:
+    app: emqtt-master
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 30003
+    name: dashboard
+    port: 18083
+    targetPort: 18083
+  - nodePort: 30002
+    name: mqtt
+    port: 1883
+    targetPort: 1883
+  selector:
+    app: emqtt-master
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: emqtt-master
+  namespace: emqtt
+  labels:
+    app: emqtt-master
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: emqtt-master
+      labels:
+        app: emqtt-master
+    spec:
+      containers:
+      - name: emqtt-master
+        image: yellowiscool/emqttd-cluster
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          tcpSocket:
+            port: 1883
+          initialDelaySeconds: 5
+          timeoutSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 1883
+          initialDelaySeconds: 5

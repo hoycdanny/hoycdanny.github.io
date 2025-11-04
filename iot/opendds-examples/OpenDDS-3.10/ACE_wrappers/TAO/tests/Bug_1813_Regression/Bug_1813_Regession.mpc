@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: Bug_1813_Regession.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project (*Test) : taoserver {
+
+    Source_Files {
+        test.cpp
+    }
+}

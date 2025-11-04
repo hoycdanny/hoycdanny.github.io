@@ -1,0 +1,22 @@
+// $Id: Events.idl 1861 2011-08-31 16:18:08Z mesnierp $
+/**
+ * @file Events.idl
+ * @author Will Otte <wotte@dre.vanderbilt.edu>
+ *
+ * Tests implied IDL for event types.
+ */
+
+#include <Components.idl>
+
+module ImpliedEvent
+{
+  eventtype foo
+    {
+    };
+  /*
+  interface test_foo
+    {
+      fooConsumer test_op ();
+    };
+  */
+};

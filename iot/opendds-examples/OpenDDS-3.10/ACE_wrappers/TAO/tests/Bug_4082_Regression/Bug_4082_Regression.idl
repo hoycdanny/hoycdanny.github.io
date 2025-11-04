@@ -1,0 +1,4 @@
+// $Id: Bug_4082_Regression.idl 2179 2013-05-28 22:16:51Z mesnierp $
+#include "tao/LongSeq.pidl"
+
+typedef sequence<long> MyLongSeq;

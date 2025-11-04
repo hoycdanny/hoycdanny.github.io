@@ -1,0 +1,22 @@
+// $Id: RoundTripServer.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+project (RoundTrip_server) : strategies, ciao_executor {
+  exename = server
+  after += Benchmark_skel
+  libs    += Benchmark_stub Benchmark_skel
+  libpaths += ..
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    server.cpp
+    LatencyTest.cpp
+  }
+
+  Header_Files {
+    LatencyTest.h
+  }
+
+  Inline_Files {
+  }
+}

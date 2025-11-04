@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: portableserver.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project : taolib_with_idl, core_anytypecode {
+  after   += PortableServer
+  libs    += TAO_PortableServer
+}

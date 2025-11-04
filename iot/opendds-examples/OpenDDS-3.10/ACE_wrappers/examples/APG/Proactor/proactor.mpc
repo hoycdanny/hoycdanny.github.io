@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: proactor.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(HA Proactive Status) : aceexe, avoids_ace_for_tao {
+  exename = HA_Proactive_Status
+  Source_Files {
+    HA_Proactive_Status.cpp
+  }
+}

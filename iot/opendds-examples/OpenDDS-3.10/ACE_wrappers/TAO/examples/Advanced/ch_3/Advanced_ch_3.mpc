@@ -1,0 +1,31 @@
+// -*- MPC -*-
+// $Id: Advanced_ch_3.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project(*idl) : taoclient {
+  IDL_Files {
+    time.idl
+  }
+  custom_only = 1
+}
+
+project(*client) : taoclient, anytypecode {
+  after += *idl
+  requires += corba_messaging
+  source_files {
+    timeC.cpp
+    client.cpp
+  }
+  IDL_Files {
+  }
+}
+
+project(*server) : taoserver {
+  after += *idl
+  source_files {
+    timeC.cpp
+    timeS.cpp
+    server.cpp
+  }
+  IDL_Files {
+  }
+}

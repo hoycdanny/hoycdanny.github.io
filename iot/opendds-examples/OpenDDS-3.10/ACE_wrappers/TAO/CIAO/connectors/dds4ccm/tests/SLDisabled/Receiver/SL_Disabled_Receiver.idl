@@ -1,0 +1,21 @@
+// $Id: SL_Disabled_Receiver.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+/**
+ * @file
+ * @author Marijke Hengstmengel (mhengstmengel@remedy.nl)
+ */
+
+#ifndef RECEIVER_IDL
+#define RECEIVER_IDL
+
+#include "Connector/SL_Disabled_Connector.idl"
+
+module SL_Disabled
+{
+  component Receiver
+  {
+    port SL_DisabledConnector::DDS_StateListen info_out;
+  };
+};
+
+#endif

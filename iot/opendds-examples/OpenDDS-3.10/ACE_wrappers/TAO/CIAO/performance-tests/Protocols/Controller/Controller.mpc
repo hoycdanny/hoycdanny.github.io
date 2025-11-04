@@ -1,0 +1,12 @@
+// $Id: Controller.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project (Protocols_Controller) : ccm_stub, rtcorba {
+  after += Protocols_Sender_stub \
+           Protocols_Receiver_stub
+  includes += ../Sender
+  includes += ../Receiver
+  libs += Protocols_Receiver_stub \
+          Protocols_Sender_stub \
+          Protocols_stub
+  libpaths += ../common ../Sender ../Receiver
+}

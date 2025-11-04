@@ -1,0 +1,9 @@
+# $Id: svcconf 943 2008-12-12 15:11:28Z mitza $
+#
+
+# This configuration file is used to use only the default TAO
+# strategies 
+
+dynamic Advanced_Resource_Factory Service_Object * TAO_Strategies:_make_TAO_Advanced_Resource_Factory () "-ORBReactorType select_mt"
+
+

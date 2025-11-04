@@ -1,0 +1,9 @@
+// -*- MPC -*-
+// $Id: ciaoidldefaults.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : ccm_lw, ccm_noevent, ccm_direct_collocation, taoidldefaults {
+  idlflags += -I$(CIAO_ROOT) -I$(CIAO_ROOT)/ccm
+
+  Modify_Custom (IDL) {
+  }
+}

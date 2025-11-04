@@ -1,0 +1,9 @@
+//$Id: test.idl 1861 2011-08-31 16:18:08Z mesnierp $
+interface test
+{
+  oneway void one_way (in string message);
+
+  string two_way (in string message);
+
+  oneway void shutdown ();
+};

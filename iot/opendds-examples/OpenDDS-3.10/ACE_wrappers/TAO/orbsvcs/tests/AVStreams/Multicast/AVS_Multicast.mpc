@@ -1,0 +1,19 @@
+// -*- MPC -*-
+// $Id: AVS_Multicast.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*server): avstreamsexe, strategies {
+  exename  = server
+
+  Source_Files {
+    server.cpp
+  }
+}
+
+project(*ftp): avstreamsexe, strategies {
+  exename  = ftp
+
+  Source_Files {
+    ftp.cpp
+  }
+}
+

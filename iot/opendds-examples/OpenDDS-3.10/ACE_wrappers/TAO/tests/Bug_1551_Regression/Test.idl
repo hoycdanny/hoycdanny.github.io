@@ -1,0 +1,12 @@
+//
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+//
+
+module Test
+{
+  /// A very simple interface
+  interface Hello
+  {
+    void short_sleep();
+  };
+};

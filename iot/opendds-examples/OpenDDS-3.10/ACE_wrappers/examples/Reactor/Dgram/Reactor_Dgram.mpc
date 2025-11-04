@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: Reactor_Dgram.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*CO) : aceexe, avoids_ace_for_tao {
+  exename = codgram
+  Source_Files {
+    CODgram.cpp
+  }
+}
+
+project : aceexe {
+  exename = dgram
+  Source_Files {
+    Dgram.cpp
+  }
+}
+

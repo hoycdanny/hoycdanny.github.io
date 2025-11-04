@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// $Id: Bug_1393_Regression.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*Client): taoclient, ifr_client {
+  exename = client
+  IDL_Files {
+  }
+
+  Source_Files  {
+    client.cpp
+  }
+}

@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: trading.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib {
+  after     += CosTrading 
+  libs      += TAO_CosTrading
+  tagchecks += Trader
+}

@@ -1,0 +1,30 @@
+// -*- MPC -*-
+// $Id: QtTests.mpc 1861 2011-08-31 16:18:08Z mesnierp $
+
+project(*server): taoserver, tao_qtresource, ace_qt4  {
+
+  MOC_Files {
+   test_i.h
+  }
+
+  Source_Files {
+    test_i.cpp
+    test_i_moc.cpp
+    server.cpp
+  }
+}
+
+project(*client): taoclient, anytypecode, tao_qtresource, ace_qt4 {
+  after += *server
+
+  MOC_Files {
+    client.h
+  }
+
+  Source_Files {
+    testC.cpp
+    client_moc.cpp
+    client.cpp
+  }
+}
+

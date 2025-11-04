@@ -1,0 +1,15 @@
+//
+// $Id: Test.idl 14 2007-02-01 15:49:12Z mitza $
+//
+
+module Test
+{
+  interface Sender {
+
+    /// Number of active objects trying to use this interface
+    oneway void active_objects (in unsigned long ao);
+
+    /// Send a ready message
+    oneway void send_ready_message ();
+    };
+};

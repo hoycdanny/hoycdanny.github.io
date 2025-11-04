@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: rt_server.mpb 935 2008-12-10 21:47:27Z mitza $
+
+project : taoexe, negotiate_codesets, rtportableserver, rtcorba {
+  exename = server
+}

@@ -1,0 +1,10 @@
+// -*- MPC -*-
+//$Id: csd_pt_testinf_lib.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : csd_threadpool, taolib_with_idl {
+  after += csd_pt_testinf
+  includes += ../../CSD_Strategy
+  libs += CSD_PT_TestInf
+  libpaths += ../../CSD_Strategy/TestInf
+  idlflags += -I../../CSD_Strategy
+}

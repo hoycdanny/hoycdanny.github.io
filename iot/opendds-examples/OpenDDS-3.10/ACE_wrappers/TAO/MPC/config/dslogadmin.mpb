@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: dslogadmin.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib {
+  after     += DsLogAdmin
+  libs      += TAO_DsLogAdmin
+  tagchecks += Log
+}

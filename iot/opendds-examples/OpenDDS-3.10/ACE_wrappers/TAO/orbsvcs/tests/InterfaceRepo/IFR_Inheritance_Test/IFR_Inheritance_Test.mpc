@@ -1,0 +1,11 @@
+// -*- MPC -*-
+// $Id: IFR_Inheritance_Test.mpc 935 2008-12-10 21:47:27Z mitza $
+
+project: taoserver, ifr_client {
+  exename  = IFR_Inheritance_Test
+
+  IDL_Files {
+    // exclude this file
+    !IFR_Inheritance_Test.idl
+  }
+}

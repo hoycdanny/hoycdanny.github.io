@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: security.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : interceptors, portableserver, valuetype, corba_messaging, orbsvcslib, pi {
+  after     += Security
+  libs      += TAO_Security
+  tagchecks += Security
+}

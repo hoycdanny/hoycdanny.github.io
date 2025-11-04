@@ -1,0 +1,29 @@
+// $Id: EventSink.idl 1861 2011-08-31 16:18:08Z mesnierp $
+/**
+ * @file EventSink.idl
+ * @author Will Otte <wotte@dre.vanderbilt.edu>
+ */
+
+#include <Components.idl>
+
+module EventSink
+{
+  eventtype foo_event
+    {
+    };
+
+  eventtype bar_event
+    {
+    };
+
+  component Foo
+    {
+      consumes foo_event c_foo;
+    };
+
+  component Bar : Foo
+    {
+      consumes bar_event c_bar;
+    };
+
+};

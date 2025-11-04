@@ -1,0 +1,33 @@
+// $Id: RoundTripEI.idl 1861 2011-08-31 16:18:08Z mesnierp $
+
+//=============================================================================
+/**
+ * @file RoundTripEI.idl
+ *
+ *
+ * @author
+ */
+//=============================================================================
+
+#ifndef CIAO_ROUNDTRIPEI_IDL
+#define CIAO_ROUNDTRIPEI_IDL
+
+#include "RoundTripE.idl"
+
+module Benchmark
+{
+  /**
+   * @interface RoundTrip_Exec
+   *
+   * The actually Test executor need to support
+   * Components::SessionComponent interface.  Therefore, we need to
+   * define the component executor interface explicitly here.
+   */
+  local interface RoundTrip_Exec : CCM_RoundTrip, CCM_LatencyTest,
+                                   Components::SessionComponent
+  {
+  };
+
+};
+
+#endif /* CIAO_TESTEI_IDL */

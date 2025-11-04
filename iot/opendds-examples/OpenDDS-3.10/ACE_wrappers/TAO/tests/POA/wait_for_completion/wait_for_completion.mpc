@@ -1,0 +1,6 @@
+// -*- MPC -*-
+// $Id: wait_for_completion.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(POA*): taoserver {
+  exename = wait_for_completion
+}

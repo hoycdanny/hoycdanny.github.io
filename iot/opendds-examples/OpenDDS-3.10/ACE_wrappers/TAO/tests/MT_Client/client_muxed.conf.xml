@@ -1,0 +1,6 @@
+<?xml version='1.0'?>
+<!-- Converted from ./tests/MT_Client/client_muxed.conf by svcconf-convert.pl -->
+<ACE_Svc_Conf>
+ <!--  $Id: client_muxed.conf.xml 1861 2011-08-31 16:18:08Z mesnierp $ -->
+ <static id="Client_Strategy_Factory" params="-ORBClientConnectionHandler MT  -ORBTransportMuxStrategy MUXED"/>
+</ACE_Svc_Conf>

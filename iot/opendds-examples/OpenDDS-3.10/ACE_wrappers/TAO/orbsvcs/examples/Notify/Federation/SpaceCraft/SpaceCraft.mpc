@@ -1,0 +1,10 @@
+// -*- MPC -*-
+// $Id: SpaceCraft.mpc 2179 2013-05-28 22:16:51Z mesnierp $
+
+project : rmcast, orbsvcsexe, notification, notification_skel, notification_serv, typecodefactory {
+  exename = craft
+  after += Gate
+  libs += Gate
+  libpaths += ../Gate/.
+  includes += ..
+}

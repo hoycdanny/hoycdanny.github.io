@@ -1,0 +1,16 @@
+// $Id: OBV.idl 14 2007-02-01 15:49:12Z mitza $
+
+valuetype Event
+{
+  void do_print ();
+  public long value_;
+};
+
+interface Checkpoint
+{
+  void  put_event (in Event e);
+  // This operation will shutdown the server.
+  oneway void shutdown ();
+};
+
+

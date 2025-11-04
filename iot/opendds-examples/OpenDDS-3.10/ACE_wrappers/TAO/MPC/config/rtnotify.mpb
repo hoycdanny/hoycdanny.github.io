@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: rtnotify.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : notification_serv, rtcorba {
+  after     += RT_Notification
+  libs      += TAO_RT_Notification
+  tagchecks += RT_Notify
+}

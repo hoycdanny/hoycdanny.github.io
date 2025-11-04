@@ -1,0 +1,6 @@
+// $Id: vc11.features 2179 2013-05-28 22:16:51Z mesnierp $
+
+ssl=0
+qos=1
+rwho=0
+sctp=0

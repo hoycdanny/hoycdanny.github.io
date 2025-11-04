@@ -1,0 +1,22 @@
+// $Id: PSL_DeadlineTest_Receiver.idl 2179 2013-05-28 22:16:51Z mesnierp $
+
+/**
+ * @file
+ * @author Marijke Hengstmengel (mhengstmengel@remedy.nl)
+ */
+
+#ifndef RECEIVER_IDL
+#define RECEIVER_IDL
+
+#include "Connector/PSL_DeadlineTest_Connector.idl"
+
+module PSL_DeadlineTest
+{
+  component Receiver
+  {
+    port PSLDeadlineConnector::DDS_Get info_get;
+    port PSLDeadlineConnector::DDS_Listen info_out;
+  };
+};
+
+#endif

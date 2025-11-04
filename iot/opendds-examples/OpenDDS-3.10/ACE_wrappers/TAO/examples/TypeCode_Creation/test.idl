@@ -1,0 +1,28 @@
+//=============================================================================
+/**
+ *  @file     test.idl
+ *
+ *  $Id: test.idl 1861 2011-08-31 16:18:08Z mesnierp $
+ *
+ */
+//=============================================================================
+
+
+// IDL
+
+interface iface {};
+
+union foo switch (short)
+{
+  case  3:
+  case  4:
+  case  1: string foo_str_member;
+  default: iface foo_iface_member;
+  case  0: iface foo_iface_member2;
+};
+
+struct bar
+{
+  long bar_long_member;
+  foo bar_foo_member;
+};

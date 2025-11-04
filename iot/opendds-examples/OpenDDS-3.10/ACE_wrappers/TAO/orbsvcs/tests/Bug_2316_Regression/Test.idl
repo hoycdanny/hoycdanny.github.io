@@ -1,0 +1,12 @@
+// $Id: Test.idl 1861 2011-08-31 16:18:08Z mesnierp $
+
+#ifndef _TEST_IDL_
+#define _TEST_IDL_
+
+interface server
+{
+    void method (in Object obj);
+    oneway void shutdown ();
+};
+
+#endif // _TEST_IDL_

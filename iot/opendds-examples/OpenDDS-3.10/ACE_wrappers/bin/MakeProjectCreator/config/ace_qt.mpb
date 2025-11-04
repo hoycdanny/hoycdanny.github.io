@@ -1,0 +1,17 @@
+// -*- MPC -*-
+// $Id: ace_qt.mpb 2179 2013-05-28 22:16:51Z mesnierp $
+
+
+project: qt {
+  // Depends on configuration from include/makeinclude/platform_*.GNU
+  verbatim(gnuace,local) {
+    CPPFLAGS += $(PLATFORM_QT_CPPFLAGS)
+    LIBS += $(PLATFORM_QT_LIBS)
+    LDFLAGS += $(PLATFORM_QT_LDFLAGS)
+  }
+
+  specific(prop:microsoft) {
+    lit_libs -= qt-mt$(QT_VERSION)
+    pure_libs += $(PLATFORM_QT_LIBS)
+  }
+}

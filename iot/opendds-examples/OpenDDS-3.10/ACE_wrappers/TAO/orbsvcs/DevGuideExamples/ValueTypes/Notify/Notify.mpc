@@ -1,0 +1,23 @@
+// $Id: Notify.mpc 2823 2016-02-08 16:18:06Z mitza $
+
+project(*supplier) : taoexe, portableserver, valuetype, notify, portableserver, event_skel {
+  exename = supplier
+  source_files {
+    supplier.cpp
+  }
+  header_files {
+    Event_i.h
+  }
+}
+
+project(*consumer) : taoexe, portableserver, valuetype, notify, portableserver, event_skel {
+  exename = consumer
+  after += *supplier
+  source_files {
+    consumer.cpp
+  }
+  header_files {
+    Event_i.h
+  }
+}
+

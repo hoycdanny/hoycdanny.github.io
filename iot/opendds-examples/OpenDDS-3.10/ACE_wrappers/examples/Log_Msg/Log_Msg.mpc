@@ -1,0 +1,23 @@
+// -*- MPC -*-
+// $Id: Log_Msg.mpc 14 2007-02-01 15:49:12Z mitza $
+
+project(*test_log_msg) : aceexe {
+  exename = test_log_msg
+  Source_Files { 
+    test_log_msg.cpp
+  }
+}
+
+project(*test_ostream) : aceexe {
+  exename = test_ostream
+  Source_Files { 
+    test_ostream.cpp
+  }
+}
+
+project(*test_callback) : aceexe {
+  exename = test_callback
+  Source_Files { 
+    test_callback.cpp
+  }
+}

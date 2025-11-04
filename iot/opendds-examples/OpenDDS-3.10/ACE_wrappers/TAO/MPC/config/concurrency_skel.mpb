@@ -1,0 +1,7 @@
+// -*- MPC -*-
+// $Id: concurrency_skel.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : orbsvcslib, concurrency, portableserver {
+  after     += CosConcurrency_Skel
+  libs      += TAO_CosConcurrency_Skel
+}

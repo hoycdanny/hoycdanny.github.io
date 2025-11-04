@@ -1,0 +1,6 @@
+// $Id: service_config.idl 14 2007-02-01 15:49:12Z mitza $
+// Just provides a corba interface to the ACE Service Configurator
+interface ServiceConfigurator {
+  long process_directive(in string s);
+  void reconfigure();
+};

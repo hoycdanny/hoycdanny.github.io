@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// $Id: htiop.mpb 14 2007-02-01 15:49:12Z mitza $
+
+project : htbp {
+  after     += HTIOP
+  libs      += TAO_HTIOP
+  tagchecks += HTIOP
+}
