@@ -1,1 +1,23 @@
 theme: jekyll-theme-hacker
+title: 技術筆記 Blog
+description: 大數據、容器化、虛擬化、AI 與系統管理技術筆記
+show_downloads: false
+
+# 網站設定
+lang: zh-TW
+timezone: Asia/Taipei
+
+# Markdown 設定
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# 排除不需要的檔案
+exclude:
+  - .git
+  - .gitignore
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
